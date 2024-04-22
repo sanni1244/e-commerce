@@ -35,19 +35,14 @@ const Edit = () => {
         shippingFee: '',
         deliveryTime: ''
     });
-    // useEffect(() => {
-    //     if (myid) {
-    //         setItemId(myid.trim());
-    //     }
-    // }, [myid, itemId]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
 
         if (name === 'productImg' || name === 'itemImage') {
-            const index = parseInt(e.target.dataset.index); // Get the index from data attribute
-            const newArray = [...(formData[name] || [])]; // Copy the array or initialize with an empty array if it doesn't exist
-            newArray[index] = value; // Update the specific index
+            const index = parseInt(e.target.dataset.index); 
+            const newArray = [...(formData[name] || [])];
+            newArray[index] = value; 
             setFormData({ ...formData, [name]: newArray });
         } else {
             setFormData({ ...formData, [name]: value });

@@ -87,8 +87,9 @@ const Login = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => { setErrorMessage(''); setPassword(e.target.value) }}
-          />
+          /><br/>
           {errorMessage && <center className='dfffa df2'>{errorMessage}</center>}
+          <br />
           <button className='button' type="submit">Login</button>
         </form>
         <br />
