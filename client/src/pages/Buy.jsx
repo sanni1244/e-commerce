@@ -109,19 +109,7 @@ function Buy() {
     console.log('Payment successful!', checkoutItems);
     setShowPaymentForm(false);
     setPaymentStatus(true)
-    // addHistory();
   };
-
-
-  const addHistory = async () => {
-    // try {
-    // let productId = checkoutItems.itemId
-    //     await axios.post(`${SERVER_URL}/addhistory`, {});
-    //     console.log('History added successfully');
-    //   } catch (error) {
-    //     console.error('Error adding history:', error);
-    //   }
-  }
 
   const showPayment = () => {
     let purchaseId = '';
@@ -214,7 +202,7 @@ function Buy() {
                 </div>
                 <div className="product-name">
                   <p><small>Price: {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice || 'Price Not Available')}</small></p>
-                  <p><small>Shipping: { (items.find((product) => product.productId === item?.itemId)?. shippingFee || 0)}</small></p>
+                  <p><small>Shipping: { (items.find((product) => product.productId === item?.itemId)?.shippingFee || 0)}</small></p>
                   <small><p>Total: <b>{"₦" + (parseInt(items.find((product) => product.productId === item?.itemId)?.productPrice) * parseInt(quantity[item.itemId] || item?.selectedValue) + parseInt(items.find((product) => product.productId === item?.itemId)?.shippingFee || 0)) || 0}</b></p></small>
                 </div>
                 <button className="remove-btn" onClick={() => removeContent(item.itemId)}>Remove</button>

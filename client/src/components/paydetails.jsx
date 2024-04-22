@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const Paydetails = () => {
     const [cardNumber, setCardNumber] = useState('');
@@ -8,7 +8,6 @@ const Paydetails = () => {
  
     const handleSubmit1 = (event) => {
         event.preventDefault();
-        console.log("Payment information received:", { cardNumber, expiryDate, cvv });
         setCardNumber('');
         setExpiryDate('');
         setCvv('');

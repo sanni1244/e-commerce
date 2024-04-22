@@ -178,18 +178,6 @@
   margin-top: 2rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .cmmt-section {
   padding: 3rem;
   box-sizing: border-box;
@@ -253,16 +241,6 @@
   font-size: 12px;
 }
 
-
-
-
-
-
-
-
-
-
-
 .select-statement {
   width: 100%;
   padding: 12px;
@@ -271,16 +249,13 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  appearance: none; /* Remove default appearance */
-  background-color: #fff; /* White background */
+  appearance: none; 
+  background-color: #fff; 
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="black" d="M6 8l4 4 4-4z"/></svg>'); /* Custom arrow */
   background-repeat: no-repeat;
   background-position: right 10px center;
   cursor: pointer;
 }
-
-
-
 
 td {
   width: 30rem;
@@ -446,14 +421,14 @@ td {
   }
 
   .dfffa {
-    font-size: 13px;
+    font-size: 12px;
     text-align: justify;
-    font-family: "Bree Serif", serif !important;
+    font-family: var(--primary_font) !important; 
   }
 
   .box {
     justify-content: end;
     justify-items: end;
     align-items: start;
-  }
+  }                
 }

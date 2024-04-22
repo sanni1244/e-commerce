@@ -205,7 +205,7 @@ const Items = () => {
                                         &#10095;
                                     </button>
                                     {item.productImg && item.productImg.map((image, index) => (
-                                        <img key={index} className={index === currentIndex ? 'slide active2' : 'slide'} src={image}/>
+                                        <img key={index} alt={item.productName} className={index === currentIndex ? 'slide active2' : 'slide'} src={image}/>
                                     ))}
                                 </div>
                                 <div className="center-stage">

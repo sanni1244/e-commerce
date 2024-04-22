@@ -98,6 +98,7 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {errorMessage && <center className='dfffa df2'>{errorMessage}</center>}
+          <br />
           <button className='button' type="submit">Register</button>
         </form>
         <br />
@@ -108,3 +109,4 @@ const Register = () => {
 };
 
 export default Register;
+ 

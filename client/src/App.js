@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navigation from './components/navigation';
 import Footer from './components/Footer';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Items from './pages/items';
@@ -42,10 +42,6 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/services" element={<Services />} />
         <Route path="/profile" element={<Profile />} />
-        
-        
-        
-        
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

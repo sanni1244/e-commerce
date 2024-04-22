@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Content from '../components/Content.jsx';
 import useFetchItems from '../components/pickdatabase';
 
