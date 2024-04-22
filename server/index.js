@@ -482,16 +482,13 @@ app.get('/order/history/:username', async (req, res) => {
       if (!user || !user.purchases || user.purchases.length === 0) {
         return res.status(404).json({ message: 'Order history not found' });
       }
-  
-      // Sort orders by date in descending order
-      const sortedOrders = user.purchases.sort((a, b) => new Date(b.date) - new Date(a.date));
-  
+        const sortedOrders = user.purchases.sort((a, b) => new Date(b.date) - new Date(a.date));
       res.status(200).json({ orders: sortedOrders });
     } catch (error) {
       console.error('Error fetching order history:', error);
       res.status(500).json({ message: 'Internal server error' });
     } finally {
-      client.close(); // Close MongoDB connection
+      client.close();
     }
   });
 
@@ -524,17 +521,6 @@ app.get('/order/history/:username', async (req, res) => {
       } 
   });
   
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
