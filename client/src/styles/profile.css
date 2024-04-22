@@ -1,0 +1,144 @@
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  flex: 1;
+}
+
+.profile-section {
+  display: none;
+}
+
+.profile-section.active {
+  display: block;
+}
+
+.profile-container form {
+  margin-bottom: 20px;
+}
+
+.profile-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.profile-container input[type="text"],
+.profile-container input[type="email"],
+.profile-container input[type="password"],
+.profile-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profile-container th,
+.profile-container td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.profile-container th {
+  background-color: #f2f2f2;
+  text-align: left;
+  font-weight: bold;
+}
+
+.notification {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 5px solid #007bff;
+  background-color: #f9f9f9;
+}
+
+.left-nav {
+  padding: 20px;
+  font-family: var(--primary_font);
+  border-right: 1px solid #ccc;
+}
+
+.left-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.left-nav li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.left-nav li svg {
+  margin-right: 10px;
+}
+
+.profile-section {
+  display: none;
+}
+
+.profile-section.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+h2 {
+  color: var(--primary_color) !important;
+  font-family: var(--primary_font) !important;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--primary_color);
+  color: black;
+}
+
+@media (min-width: 700px) {
+  .profile-container {
+    padding: 20px;
+  }
+
+  .main-content {
+    margin-top: 20px;
+  }
+
+  .left-nav {
+    flex: none;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-container {
+    flex-direction: column;
+  }
+  .bsector3 {
+    max-width: 95vw !important
+    ;
+} 
+}

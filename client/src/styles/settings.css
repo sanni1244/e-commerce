@@ -1,0 +1,57 @@
+
+.settings form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.settings .setting-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.settings .setting-option label {
+    flex: 1;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.settings .setting-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.settings .setting-option input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60px;
+}
+
+.fddd-select {
+    appearance: none;
+    position: relative;
+    flex: 0.2;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-family: "Bree Serif", serif !important;
+}
+
+.fddd-select:focus {
+    outline: none;
+    border-color: var(--primary_color);
+    box-shadow: 0 0 0 3px var(--primary_color);
+}
+
+.fddd-select option:checked {
+    background-color: var(--primary_color);
+    color: #fff;
+}
