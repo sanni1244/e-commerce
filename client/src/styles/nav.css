@@ -13,34 +13,7 @@
   text-decoration: none;
 }
 
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.search-input {
-  padding: 0px 15px;
-  height: 35px;
-  border: none;
-  width: 200px;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: #fff;
-}
-
-.search-button1 {
-  background: none !important;
-  border: none !important;
-  cursor: pointer;
-  width: 30px !important;
-}
-
-.search-icon {
-  color: #fff;
-  font-size: 20px;
-  width: 15px;
-}
 
 .nav-list {
   display: none;

@@ -27,8 +27,8 @@ const Edit = () => {
         productRatings: '',
         productBrand: '',
         productType: '',
-        productPrice: '',
-        productAvailability: '',
+        productPrice: 0,
+        productAvailability: true,
         productDescription: '',
         aboutItem: '',
         itemImage: [],
@@ -40,9 +40,9 @@ const Edit = () => {
         const { name, value } = e.target;
 
         if (name === 'productImg' || name === 'itemImage') {
-            const index = parseInt(e.target.dataset.index); 
+            const index = parseInt(e.target.dataset.index);
             const newArray = [...(formData[name] || [])];
-            newArray[index] = value; 
+            newArray[index] = value;
             setFormData({ ...formData, [name]: newArray });
         } else {
             setFormData({ ...formData, [name]: value });
@@ -81,36 +81,24 @@ const Edit = () => {
         setMessage({
             text: "Item is being updated",
             color: "black"
-        })
-        console.log(formData.productAvailability)
-        if (
-            Number(formData.productRatings) < 6 && Number(formData.productRatings) >= 0 &&
-            formData.productName !== "" && formData.productName !== null &&
-            (formData.productAvailability === "true" || formData.productAvailability === true || formData.productAvailability === false || formData.productAvailability === "True" || formData.productAvailability === "TRUE" || formData.productAvailability === "False" || formData.productAvailability === "FALSE" || formData.productAvailability === "false") &&
-            formData.productCategory !== "" && formData.productCategory !== null &&
-            formData.productSubCategory !== "" && formData.productSubCategory !== null) {
-            try {
-                await axios.put(`${SERVER_URL}/items/${itemId}`, formData);
-                console.log('Item updated successfully');
-                setMessage({
-                    text: "Changes were successfully made",
-                    color: "green"
-                })
-            } catch (error) {
-                console.error('Error updating item:', error);
-                setMessage({
-                    text: "Failed to update",
-                    color: "red"
-                })
-            }
-        }
-        else {
+        });
+
+        try {
+            await axios.put(`${SERVER_URL}/items/${itemId}`, formData);
+            console.log('Item updated successfully');
             setMessage({
-                text: "Make sure fields are filled correctly",
+                text: "Changes were successfully made",
+                color: "green"
+            });
+        } catch (error) {
+            console.error('Error updating item:', error);
+            setMessage({
+                text: "Failed to update",
                 color: "red"
-            })
+            });
         }
     };
+
     if (loggedInUser !== "admin") {
         window.location.href = "/";
     }
@@ -157,7 +145,12 @@ const Edit = () => {
                         </label>
                         <label className="input-label">
                             Product Ratings
-                            <input type="number" min={1} max={5} maxLength={1} className="input-field" name="productRatings" value={formData.productRatings} onChange={handleChange} />
+                            <select className="input-field" name="productRatings" value={formData.productRatings} onChange={handleChange}>
+                                <option value="">Select Rating</option>
+                                {[1, 2, 3, 4, 5].map(rating => (
+                                    <option key={rating} value={rating}>{rating}</option>
+                                ))}
+                            </select>
                         </label>
                         <label className="input-label">
                             Product Brand
@@ -173,7 +166,11 @@ const Edit = () => {
                         </label>
                         <label className="input-label">
                             Product Availability
-                            <input type="text" className="input-field" placeholder='true or false' name="productAvailability" value={formData.productAvailability} onChange={handleChange} />
+                            <select className="input-field" name="productAvailability" value={formData.productAvailability} onChange={handleChange}>
+                                <option value="">Select Availability</option>
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
                         </label>
                         <label className="input-label">
                             Product Description
@@ -205,7 +202,7 @@ const Edit = () => {
                         </label>
                         <p className="message-text" style={{ color: message.color }}>{message.text}</p>
                         <br />
-                        <button type="button" onClick={handleUpdate} className="update-button">Add Item</button>
+                        <button type="button" onClick={handleUpdate} className="update-button">Update</button>
                     </form>
                 )}
             </div>

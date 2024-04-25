@@ -1,7 +1,7 @@
 import React from 'react';
 import Price from './Price';
 import Laptop from './laptopdeals';
-import Appliances from './Appliances';
+import Clothes from './Clothes';
 import Ratings from './highratings';
 import Random from './random';
 import Apple from './Appledeals';
@@ -59,7 +59,7 @@ if (!items[0]) {
           <div className='beautiful-space'></div>
           <Laptop s={items} />
           <div className='beautiful-space'></div>
-          <Appliances s={items} />
+          <Clothes s={items} />
           <div className='beautiful-space'></div>
           <Random s={items} />
           <div className='beautiful-space'></div>

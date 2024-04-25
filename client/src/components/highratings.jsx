@@ -46,9 +46,8 @@ const Ratings = () => {
 
   return (
     <div className='showcaseheader'>
-      <center><h2>Biggest Deals 🎁🎁</h2></center>
       <div className='showcasecontainer'>
-        {sortedProducts.slice(0, 12).map((item, index) => (
+        {sortedProducts.slice(0, 8).map((item, index) => (
           <div className='productCard' key={index}>
             <Content item={item} />
           </div>

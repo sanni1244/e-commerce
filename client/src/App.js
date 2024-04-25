@@ -20,25 +20,31 @@ import Services from './pages/Services';
 import NotFoundPage from './pages/NotFound';
 import Profile from './pages/profile';
 import Back from './components/back';
+import Demo from './pages/demo';
+import GroceriesPage from './pages/Groceries';
 
 function App() {
   return (
     <Router>
-      <Navigation />
+      {/* <Navigation /> */}
       <Back />
       <Routes>
+        <Route path="/" exact element={<Demo />} />
+        <Route path="/edit" element={<Edit />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/items" element={<Items />} />
+        <Route path="/display" element={<Display />} />
+        <Route path="/groceries" element={<GroceriesPage />} />
+
+
         <Route path="/" exact element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/items" element={<Items />} />
         <Route path="/buy" element={<Buy />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Search" element={<Search />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/create" element={<Create />} />
         <Route path="/Delete" element={<Delete />} />
-        <Route path="/edit" element={<Edit />} />
-        <Route path="/display" element={<Display />} />
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/services" element={<Services />} />
         <Route path="/profile" element={<Profile />} />

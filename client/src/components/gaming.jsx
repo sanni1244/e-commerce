@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Content from './Content';
 import useFetchItems from './pickdatabase';
 
-const Appliances = () => {
+const Gaming = () => {
   const { items, loading, error } = useFetchItems();
   const [sortedProducts, setSortedProducts] = useState([]);
 
   useEffect(() => {
-    const filteredProducts = Object.values(items).flat().filter(item => item.productCategory === "Clothing");
+    const filteredProducts = Object.values(items).flat().filter(item => item.productSubCategory === 'Video Game Consoles & Accessories');
     const shuffledProducts = shuffle(filteredProducts);
     setSortedProducts(shuffledProducts);
   }, [items]);
@@ -41,14 +41,20 @@ const Appliances = () => {
       </div>
     );
   }
+  if (!items[0]) {
+    return (
+      <div className='error1'>
+        <p>Empty cart</p>
+      </div> 
+    );
+  }
+
   return (
     <div className='showcaseheader'>
-      <center><h2>Clothings 🩳👕🕶️👠</h2></center>
       <div className='showcasecontainer'>
-        {sortedProducts.slice(0, 12).map((item, index) => (
+        {sortedProducts.slice(0, 8).map((item, index) => (
           <div className='productCard' key={index}>
-            <Content item={item} />
-
+            <Content item={item} discount={true} />
           </div>
         ))}
       </div>
@@ -56,4 +62,4 @@ const Appliances = () => {
   );
 };
 
-export default Appliances;
+export default Gaming;

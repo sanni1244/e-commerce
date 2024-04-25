@@ -9,10 +9,7 @@
   border-right: 2px solid black;
   padding: 1rem;
 }
-.img-style{
-  width: 100%;
-  object-fit: cover;
-}
+
 
 .CategoryContainer .ffs{
   position: -webkit-sticky; /* For Safari */
@@ -92,15 +89,7 @@
 }
 
 
-.productCard {
-  border: 1px solid rgb(225, 224, 224);
-  box-shadow: 0px 0px 5px 1px var(--primary_color);
-  padding-top: 6px;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  width: calc(25% - 20px);
-}
+
 .shave{
   width: calc(19% - 10px);
 }

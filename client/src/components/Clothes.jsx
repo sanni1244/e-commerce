@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Content from './Content';
 import useFetchItems from './pickdatabase';
 
-const Apple = () => {
+const Clothes = () => {
   const { items, loading, error } = useFetchItems();
   const [sortedProducts, setSortedProducts] = useState([]);
 
   useEffect(() => {
-    const filteredProducts = Object.values(items).flat().filter(item => item.productBrand === 'Apple');
+    const filteredProducts = Object.values(items).flat().filter(item => item.productCategory === "Clothing");
     const shuffledProducts = shuffle(filteredProducts);
     setSortedProducts(shuffledProducts);
   }, [items]);
@@ -41,13 +41,14 @@ const Apple = () => {
       </div>
     );
   }
-
   return (
     <div className='showcaseheader'>
+      <center><h2>Clothings 🩳👕🕶️👠</h2></center>
       <div className='showcasecontainer'>
         {sortedProducts.slice(0, 8).map((item, index) => (
           <div className='productCard' key={index}>
             <Content item={item} />
+
           </div>
         ))}
       </div>
@@ -55,4 +56,4 @@ const Apple = () => {
   );
 };
 
-export default Apple;
+export default Clothes;

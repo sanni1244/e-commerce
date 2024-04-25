@@ -28,32 +28,35 @@ app.post('/items', async (req, res) => {
             deliveryTime
         } = req.body;
 
+        const parsedProductPrice = parseFloat(productPrice);
+        const parsedShippingFee = parseFloat(shippingFee);
+        const parsedDeliveryTime = parseInt(deliveryTime);
+        const parsedProductRatings = parseInt(productRatings);
+        const parsedProductAvailability = productAvailability === 'true';
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection('items');
 
-        // Check if the productId already exists in the database
         const existingItem = await collection.findOne({ productId });
         if (existingItem) {
             return res.status(401).send('id already exists');
         }
-
         const newItem = {
             productId,
             productCategory,
             productSubCategory,
             productName,
             productImg,
-            productRatings,
+            productRatings: parsedProductRatings,
             productBrand,
             productType,
-            productPrice,
-            productAvailability,
+            productPrice: parsedProductPrice,
+            productAvailability: parsedProductAvailability,
             productDescription,
             aboutItem,
             itemImage,
-            shippingFee,
-            deliveryTime
+            shippingFee: parsedShippingFee,
+            deliveryTime: parsedDeliveryTime
         };
         await collection.insertOne(newItem);
         res.status(200).send('Item added successfully');
@@ -82,10 +85,10 @@ app.get('/items/:productId', async (req, res) => {
         const db = client.db(dbName);
         const collection = db.collection('items');
 
-        const item = await collection.findOne({ 
-            productId: { $regex: new RegExp(productId, 'i') } 
+        const item = await collection.findOne({
+            productId: { $regex: new RegExp(productId, 'i') }
         });
-        
+
         if (!item) {
             return res.status(404).send('Item not found');
         }
@@ -124,15 +127,27 @@ app.get('/ito', async (req, res) => {
 app.put('/items/:productId', async (req, res) => {
     try {
         const productId = req.params.productId;
-        const updatedItemData = req.body;
-
-        // Remove the _id field from the updated data
-        delete updatedItemData._id;
+        const myData = req.body;
+        delete myData._id;
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection('items');
+        const parsedProductAvailability = myData.productAvailability === 'true';
+        const parsedProductPrice = parseFloat(myData.productPrice);
+        const parsedShippingFee = parseFloat(myData.shippingFee);
+        const parsedDeliveryTime = parseInt(myData.deliveryTime);
+        const parsedProductRatings = parseInt(myData.productRatings);
 
-        await collection.updateOne({ productId }, { $set: updatedItemData });
+        await collection.updateOne({ productId }, {
+            $set: {
+                ...myData,
+                productAvailability: true,
+                productPrice: parsedProductPrice,
+                shippingFee: parsedShippingFee,
+                deliveryTime: parsedDeliveryTime,
+                productRatings: parsedProductRatings
+            }
+        });
 
         res.status(200).send('Item updated successfully');
     } catch (error) {
@@ -454,14 +469,14 @@ app.post('/purchase/add', async (req, res) => {
                             price: price,
                             quantity: quantity,
                             purchaseId: purchaseId,
-                            status: status, 
+                            status: status,
                             date: new Date()
                         }
                     }
                 }
             );
         }
-        
+
         return res.status(200).json({ message: 'Items added to purchases successfully' });
     } catch (error) {
         console.error('Error adding items to purchases:', error);
@@ -472,55 +487,55 @@ app.post('/purchase/add', async (req, res) => {
 
 app.get('/order/history/:username', async (req, res) => {
     try {
-      const username = req.params.username;
-      await client.connect();
+        const username = req.params.username;
+        await client.connect();
         const db = client.db(dbName);
         const collection = db.collection('users');
-  
-      const user = await collection.findOne({ username });
-  
-      if (!user || !user.purchases || user.purchases.length === 0) {
-        return res.status(404).json({ message: 'Order history not found' });
-      }
+
+        const user = await collection.findOne({ username });
+
+        if (!user || !user.purchases || user.purchases.length === 0) {
+            return res.status(404).json({ message: 'Order history not found' });
+        }
         const sortedOrders = user.purchases.sort((a, b) => new Date(b.date) - new Date(a.date));
-      res.status(200).json({ orders: sortedOrders });
+        res.status(200).json({ orders: sortedOrders });
     } catch (error) {
-      console.error('Error fetching order history:', error);
-      res.status(500).json({ message: 'Internal server error' });
+        console.error('Error fetching order history:', error);
+        res.status(500).json({ message: 'Internal server error' });
     } finally {
-      client.close();
+        client.close();
     }
-  });
+});
 
 
 
-  app.get('/comments', async (req, res, next) => {
+app.get('/comments', async (req, res, next) => {
     try {
-      const db = client.db(dbName);
-      const collection = db.collection('comments');
-      const comments = await collection.find().toArray();
-      res.json(comments);
+        const db = client.db(dbName);
+        const collection = db.collection('comments');
+        const comments = await collection.find().toArray();
+        res.json(comments);
     } catch (error) {
-      next(error);
+        next(error);
     }
-  });
-  app.delete('/comments/:id', async (req, res) => {
+});
+app.delete('/comments/:id', async (req, res) => {
     try {
-      const db = client.db(dbName);
-      const collection = db.collection('comments');
-      const { id } = req.params;
-      const result = await collection.deleteOne({ _id: new ObjectId(id) });
-      if (result.deletedCount === 0) {
-        res.status(404).json({ message: 'Comment not found' });
-      } else {
-        res.json({ message: 'Comment deleted successfully' });
-      }
+        const db = client.db(dbName);
+        const collection = db.collection('comments');
+        const { id } = req.params;
+        const result = await collection.deleteOne({ _id: new ObjectId(id) });
+        if (result.deletedCount === 0) {
+            res.status(404).json({ message: 'Comment not found' });
+        } else {
+            res.json({ message: 'Comment deleted successfully' });
+        }
     } catch (error) {
         console.error('Error fetching:', error);
         res.status(500).json({ message: 'Internal server error' });
-      } 
-  });
-  
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

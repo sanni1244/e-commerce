@@ -1,13 +1,437 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Jersey+25&family=Lexend:wght@100..900&family=Roboto+Slab:wght@100..900&family=Teko:wght@300..700&family=Tilt+Neon&display=swap');
+
+* {
+  transition: all 0.1s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --font: "Roboto Slab", serif;
+  --background: rgba(209, 229, 228, 0.658);
+}
+.container {
+  width: 70vw;
+  margin: auto;
+}
+@media (max-width: 1100px) {
+  .container {
+    width: 80vw;
+    margin: auto;
+  }  
+}
+/* nav bar  */
+.nav-bar {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-bar .link {
+  width: 50%;
+}
+
+.nav-bar .link ul {
+  display: flex;
+  list-style-type: none;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: right;
+}
+
+.nav-bar .link a {
+  text-decoration: none;
+  font-size: 13px;
+  color: black;
+  font-weight: 900;
+}
+
+.nav-bar .logo,
+.nav-bar .user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-bar .user {
+  gap: 1.4rem;
+}
+
+.nav-bar .logo img {
+  width: 40px;
+}
+
+
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(1.75px);
+  z-index: -1;
+}
+
+.content {
+  position: absolute;
+  top: 20%;
+  left: 6%;
+  font-weight: 900;
+  color: hwb(0 13% 86%);
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 1rem 3rem 2rem;
+  border-radius: 30px;
+}
+
+.content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  font-family: "Jersey 25", sans-serif;
+}
+
+.content p {
+  font-size: 17px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  width: 70%;
+  font-family: "Teko", sans-serif;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.search-input {
+  padding: 0px 15px;
+  height: 32px;
+  border: none;
+  width: 200px;
+  border-radius: 13px;
+  font-size: 13px;
+}
+
+.search-button1 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+}
+
+.search-icon {
+  font-size: 20px;
+  width: 15px;
+}
+
+
+
+/* categories  */
+
+.category-show,
+.showcase {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.box-cat {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+  width: 110px;
+  height: 150px;
+  text-align: center;
+  background-color: var(--background);
+  border-radius: 20px;
+  color: rgb(11, 55, 25);
+  font-size: 12px;
+  font-family: var(--font);
+}
+
+section:not(:nth-child(2)) {
+  margin-top: 3.7rem;
+}
+
+.cat-icon {
+  color: rgb(131, 191, 139);
+  width: 30px;
+  height: 30px;
+}
+
+
+
+/* products  */
+
+
+
+.showcasecontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+
+/* .product-container {
+  padding: 4rem;
+  gap: 1.5rem;
+} */
+
+.productCard {
+  box-shadow: 0px 0px 10px 1px rgba(56, 135, 56, 0.633);
+  padding-top: 3px;
+  border-radius: 8px;
+  width: calc(22%);
+  word-break: break-all;
+}
+
+.prod-details {
+  padding: 0 17px;
+  padding-bottom: 0px;
+}
+
+/* .showcaseheader h2 {
+  font-family: var(--primary_font);
+} */
+
+.img-container {
+  height: 160px;
+  margin-top: 10px;
+  display: flex;
+}
+
+.img-style {
+  height: 95%;
+  width: 80%;
+  margin: auto;
+  object-fit: contain;
+}
+
+
+.product-name {
+  font-size: 13px;
+  font-family: var(--font);
+  font-weight: 700;
+  display: block;
+  height: 2.2rem;
+}
+
+.product-desc {
+  font-size: 11.8px;
+  font-family: var(--font);
+  font-weight: 400;
+  display: block;
+  height: 2.3rem;
+}
+
+
+
+.cot-tain {
+  height: 90px;
+  margin-top: 8px;
+}
+
+.fg {
+  font-size: 11px;
+  color: rgb(13, 94, 80);
+}
+
+.fixed-bottom {
+  position: absolute;
+  top: -30px;
+  left: -3px;
+}
+
+/* apple section  */
+.cover-up {
+  background-color: var(--background);
+  padding: 3rem;
+  border-radius: 25px;
+}
+
+.cover-up .productCard {
+  background-color: white;
+}
+
+
+/* img section between  */
+.border-class {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 800px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+}
+
+.img-side {
+  width: 40%; 
+  height: auto; 
+  border-radius: 20px;
+  object-fit: cover; 
+  box-shadow: 0 0 20px var(--background); 
+}
+
+.content9 {
+  width: 60%; 
+  padding-left: 20px; 
+}
+
+h2 {
+  font-size: 24px; /* Increase font size */
+  margin-bottom: 20px; /* Add spacing below heading */
+}
+
+.groceries-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.groceries-list li {
+  margin-bottom: 10px; /* Add spacing between list items */
+}
+
+.groceries-list a {
+  text-decoration: none;
+  color: #333; /* Dark text color */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.groceries-list a:hover {
+  color: #007bff; /* Change text color on hover */
+}
+
+.flex{
+  display: flex;
+  flex-direction: row;
+  gap: 8rem;
+}
+
+
+
+
+
+.deals-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px;
+  background-color: #f0f0f0; /* Light background color */
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.deals-content {
+  max-width: 50%;
+}
+
+.deals-content h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.deals-content p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.deals-image img {
+  width: 85%;
+  max-height: 400px;
+  border-radius: 20px;
+  object-fit: cover;
+  transform: rotate(-5deg); /* Rotate the image slightly */
+}
+ 
+
+.prd-price {
+  float: right;
+  color: rgba(38, 52, 54, 0.87);
+  font-family: var(--font);
+  font-weight: bold;
+  font-size: 11px; 
+}
+
+.prd-price1 {
+  font-size: 11px;
+  text-decoration: line-through;
+  color: rgb(173, 23, 23);
+  margin-right: 7px;
+}
+
+.discount-price {
+  color: #333;
+  font-size: 12px; 
+  text-decoration: none; 
+}
+
+.groceries-order{
+  position: relative;
+
+}
+
+.groceries-order .branch{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.groceries-order h2{
+  text-align: center;
+  padding: 30px 0px;
+  background-color: var(--background);
+  font-size: 25px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow:  0px 0px 5px gray;
+  width: 85vw;
+}
+.lostfile{
+  width: 25rem;
+  height: 15rem;
+  border-radius: 10px;
+}
+
+.groceries-order .productCard {
+  width: calc(13%);
+}
+.groceries-order .product-desc {
+  display: none;
+}
+
+.groceries-order .cot-tain{
+  height: 2rem;
+}
+
+.groceries-order .img-container {
+  height: 110px;
+  margin-top: 5px;
+}
+
+.groceries-order .img-style {
+  height: 90%;
 }

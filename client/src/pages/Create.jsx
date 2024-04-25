@@ -15,7 +15,7 @@ const Create = () => {
         productRatings: '',
         productBrand: '',
         productType: '',
-        productPrice: '',
+        productPrice: 0,
         productAvailability: '',
         productDescription: '',
         aboutItem: '',
@@ -32,8 +32,8 @@ const Create = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === 'productImg' || name === 'itemImage') {
-            const index = parseInt(e.target.dataset.index); 
-            const newArray = [...(formData[name] || [])]; 
+            const index = parseInt(e.target.dataset.index);
+            const newArray = [...(formData[name] || [])];
             newArray[index] = value;
             setFormData({ ...formData, [name]: newArray });
         } else {
@@ -135,7 +135,12 @@ const Create = () => {
                     <br />
                     <label className="input-label">
                         Product Ratings
-                        <input type="number" min={1} max={5} maxLength={1} placeholder="Value must be between 0 and 5" className="input-field" name="productRatings" value={formData.productRatings} onChange={handleChange} />
+                        <select className="input-field" name="productRatings" value={formData.productRatings} onChange={handleChange}>
+                            <option value="">Select Rating</option>
+                            {[1, 2, 3, 4, 5].map(rating => (
+                                <option key={rating} value={rating}>{rating}</option>
+                            ))}
+                        </select>
                     </label>
                     <br />
                     <label className="input-label">
@@ -155,7 +160,11 @@ const Create = () => {
                     <br />
                     <label className="input-label">
                         Product Availability
-                        <input type="text" className="input-field" placeholder='true or false' name="productAvailability" value={formData.productAvailability} onChange={handleChange} />
+                        <select className="input-field" name="productAvailability" value={formData.productAvailability} onChange={handleChange}>
+                            <option value="">Select Availability</option>
+                            <option value={true}>True</option>
+                            <option value={false}>False</option>
+                        </select>
                     </label>
                     <br />
                     <label className="input-label">
