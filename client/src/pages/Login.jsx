@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
+import bcrypt from 'bcryptjs';
+
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
 
@@ -59,14 +61,23 @@ const Login = () => {
       await axios.post(`${SERVER_URL}/login`, { username: username.toLowerCase(), password });
 
       setErrorMessage('Login was successful');
+
+      bcrypt.hash(username.toLowerCase(), 10, (err, hash) => {
+        if (err) {
+          console.error('Error hashing text:', err);
+        } else {
+          localStorage.setItem('loggedInUser', username.toLowerCase());
+          localStorage.setItem('hdfe', hash);
+        }
+      });
       setTimeout(() => {
-        localStorage.setItem('loggedInUser', username.toLowerCase());
+
         window.location.href = "/";
       }, 1000);
     } catch (error) {
       console.error('Error logging in:', error);
-      <b>{error.code === "ERR_NETWORK" ? setErrorMessage(error.message) : setErrorMessage('Invalid Details')}: Please try again</b> 
-      
+      <b>{error.code === "ERR_NETWORK" ? setErrorMessage(error.message) : setErrorMessage('Invalid Details')}: Please try again</b>
+
     }
   };
 
@@ -87,13 +98,13 @@ const Login = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => { setErrorMessage(''); setPassword(e.target.value) }}
-          /><br/>
+          /><br />
           {errorMessage && <center className='dfffa'>{errorMessage}</center>}
           <br />
           <button className='button' type="submit">Login</button>
         </form>
         <br />
-    <small><i>Dont have an account? <a href="/register">Sign up</a> </i></small>
+        <small><i>Dont have an account? <a href="/register">Sign up</a> </i></small>
 
       </Card>
     </Container>

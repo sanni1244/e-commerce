@@ -15,27 +15,6 @@
 
 
 
-.nav-list {
-  display: none;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  margin-right: 20px;
-}
-
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  font-family: var(--primary_font);
-  
-}
 
 .nav-icon {
   margin-right: 5px;
@@ -80,9 +59,7 @@
   text-decoration: none;
   padding: 0 15px;
   font-weight: 500;
-  /* Medium font weight */
   transition: color 0.3s ease;
-  /* Smooth color transition */
 }
 
 .navbar-hamburger {
@@ -194,28 +171,6 @@
     background-color: #fff;
   }
 
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #333;
-    width: 100%;
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in;
-  }
-
-  .nav-links.show {
-    max-height: 300px;
-  }
-
-  .nav-item {
-    margin: 10px 0;
-    margin-left: 20px;
-  }
 }
 
 @media screen and (max-width: 600px) {

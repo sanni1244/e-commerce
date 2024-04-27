@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
-import logo from '../images/logo.jpg';
+import logo from '../images/img.jpg';
 import '../styles/nav.css';
 import { useEffect } from 'react';
 import { MdDesignServices, MdOutlineContactSupport, MdLogin, MdLogout } from "react-icons/md";

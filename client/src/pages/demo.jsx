@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import background from '../images/img.jpg';
 import img1 from '../images/img1.jpg';
+import { CSSTransition } from 'react-transition-group';
 import img2 from '../images/img2.jpg';
-
+import Categories from '../components/Categories';
 import { Cat1 } from "../resources/categories";
 import logo from '../images/l.png';
 import { MdOutlineLaptopChromebook, MdElectricalServices, MdDesignServices, MdOutlineContactSupport, MdLogin, MdLogout } from "react-icons/md";
@@ -14,28 +15,53 @@ import { BsPhone } from "react-icons/bs";
 import { PiTelevisionSimpleBold } from "react-icons/pi";
 import Ratings from '../components/highratings';
 import Apple from '../components/Appledeals';
-
-
 import Clothes from '../components/Clothes';
 import Gaming from '../components/gaming';
+import { ImHome3 } from "react-icons/im";
+import bcrypt from 'bcryptjs'
 
 
 const BackgroundPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+    const h1 = localStorage.getItem('loggedInUser');
+    const hr = localStorage.getItem('hdfe');
+
     const [change, setChange] = useState(true);
-    localStorage.setItem('loggedInUser', 'admin');
+
+    useEffect(() => {
+        if(h1){
+            bcrypt.compare(h1, hr, (err, result) => {
+                if (err) {
+                    console.error('Error comparing passwords:', err);
+                } else {
+                    if (result) {
+                        console.log('');
+                    } else {
+                        window.location.href = '/login';
+                    }
+                }
+            });
+        }
+    }, [])
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         window.location.href = `/search?query=${searchQuery}`;
     };
 
-    useEffect(() => { }, [change])
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
     };
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
-
+    const handleLogout = () => {
+        localStorage.removeItem('loggedInUser');
+        localStorage.removeItem('hdfe');
+        setChange(!change)
+    };
 
     return (
         <div className='container'>
@@ -45,31 +71,55 @@ const BackgroundPage = () => {
                         <img src={logo} alt="logo" />
                         <span>Rizz</span>
                     </div>
-                    <div className="logo category">
-                        <FaBars /> <span>Categories</span>
+                    <div className='category123'>
+                        <div className="sss11" onClick={toggleMenu}>
+                            {isOpen ? <><FaTimes /></> : <><FaBars /> <span>Categories</span></>}
+                        </div>
+                        <CSSTransition in={isOpen} timeout={300}
+                            classNames="fade"
+                            unmountOnExit>
+                            <p className='cat-hold'><Categories /></p>
+                        </CSSTransition>
                     </div>
                     <div className="link">
                         <ul>
-                            <li><a href="">Login</a></li>
-                            <li><a href="">Service</a></li>
-                            <li><a href="">Contacts</a></li>
-                            <li><a href="">About</a></li>
+                            <Link to="/" className="nav-link"> Home</Link>
+                            <Link to="/about" className="nav-link"> About</Link>
+                            <Link to="/services" className="nav-link"> Services</Link>
+                            {!h1 ? (
+                                <>
+                                    <Link to="/login" className="nav-link">
+                                        Log in
+                                    </Link>
+                                    <Link to="/register" className="nav-link">
+                                        Sign up
+                                    </Link>
+                                </>
+                            ) : (
+                                <Link to="/profile" className='nav-link'>
+                                    <span>{h1.toUpperCase()}</span>
+                                </Link>
+                            )}
+                            {h1 && (
+                                <Link to="/login" className="nav-link" onClick={handleLogout}>
+                                    Log out
+                                </Link>
+                            )}
                         </ul>
                     </div>
                     <div className="user">
-                        <FaSearch />
-                        <FaUserCircle />
-                        <TiShoppingCart />
+
+                        <Link to={"/search"}><FaSearch /></Link>
+                        <Link to={"/profile"}><FaUserCircle /></Link>
+                        <Link to={"/buy"}><TiShoppingCart /></Link>
                     </div>
                 </div>
             </nav>
             <section>
                 <div className="background-container">
-                    <img
-                        src={background}
+                    <img src={background}
                         alt="Random Cartoonish Image"
-                        className="background-image"
-                    />
+                        className="background-image" />
                     <div className="content">
                         <h1>Shopping for all</h1>
                         <p>Discover the ideal gift for your loved ones or treat yourself to a gift of self-love.</p>
@@ -80,8 +130,7 @@ const BackgroundPage = () => {
                                     placeholder={"🔎 Search..."}
                                     value={searchQuery}
                                     onChange={handleSearchChange}
-                                    className="search-input"
-                                />
+                                    className="search-input" />
                             </form>
                         </div>
                     </div>
@@ -166,7 +215,7 @@ const BackgroundPage = () => {
                             </ul>
                             <ul className='groceries-list'>
                                 <li><Link to="/groceries#snacks-section">Snacks and Junks</Link></li>
-                                <li><Link to="/groceries#perfumes-section">Perfumes</Link></li>
+                                <li><Link to="/groceries#perfumes-section">Fragrance</Link></li>
                                 <li><Link to="/groceries#household-section">Household care</Link></li>
                             </ul>
                         </div>
@@ -208,23 +257,3 @@ const BackgroundPage = () => {
 
 export default BackgroundPage;
 
-
-
-
-
-
-
-
-
-// {Cat1.map((category, index) => (
-//     <div key={category.id} className={`category`}>
-//         <h3>{category.Department}</h3>
-//         <ul className={`sub-menu`}>
-//             {category.SubCategories.map((subCategory, subIndex) => (
-//                 <li className='sublinkclass' key={subIndex}>
-//                     <Link to={`/products?cat=${encodeURIComponent(category.Department)}&subcat=${encodeURIComponent(subCategory)}`}>{subCategory}</Link>
-//                 </li>
-//             ))}
-//         </ul>
-//     </div>
-// ))}
