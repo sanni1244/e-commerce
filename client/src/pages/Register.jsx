@@ -99,7 +99,7 @@ const Register = () => {
           />
           {errorMessage && <center className='dfffa df2'>{errorMessage}</center>}
           <br />
-          <button className='button' type="submit">Register</button>
+          <button className='button lgb1' type="submit">Register</button>
         </form>
         <br />
         <small><i>Already registered? <a href="/login">Login</a> </i></small>

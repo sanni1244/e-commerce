@@ -45,7 +45,6 @@ const Profile = () => {
     );
   }
 
-
   return (
     <div className="profile-container">
       <div className="left-nav">

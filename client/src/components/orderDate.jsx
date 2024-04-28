@@ -48,11 +48,11 @@ const OrderDate = () => {
               <th>Quantity</th>
               <th>Item ID</th>
               <th>Product Name</th>
-              <th>Amount paid (Naira)</th>
+              <th>Amount paid</th>
               <th>Delivery Date</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='small-table'>
             {orders.length > 0 ? (
               orders.map(order => {
                 const matchingItem = items.find(item => item.productId === order.itemId);
@@ -63,10 +63,10 @@ const OrderDate = () => {
                     <td>{formatDate(order.date)}</td>
                     <td>{order.quantity}</td>
                     <td>{matchingItem.productId}</td>
-                    <td style={{ maxWidth: '150px' }}>
+                    <td>
                       <a href={`/items?item=${matchingItem.productId}`}>{matchingItem.productName}</a>
                     </td>
-                    <td>{(order.price * order.quantity) + matchingItem.shippingFee}</td>
+                    <td>₦{((order.price * order.quantity) + matchingItem.shippingFee).toLocaleString()}</td>
                     <td>{saveDate(order.date, matchingItem.deliveryTime)}</td>
                   </tr>
                 );

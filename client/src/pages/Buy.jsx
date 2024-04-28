@@ -20,7 +20,7 @@ function Buy() {
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [passedData, setPassedData] = useState([])
 
-  if(!loggedInUser){
+  if (!loggedInUser) {
     window.location.href = '/login';
   }
   useEffect(() => {
@@ -35,7 +35,9 @@ function Buy() {
     getCart();
   }, [loggedInUser]);
 
+
   const handleSelectChange = (e, itemId) => {
+    setShowPaymentForm(false);
     const newQuantity = { ...quantity };
     newQuantity[itemId] = e.target.value;
     setQuantity(newQuantity);
@@ -51,8 +53,10 @@ function Buy() {
     });
     setCheckoutItems(updatedCheckoutItems);
   };
+
   const handleCancel = () => {
     setShowPaymentForm(false);
+    setPassedData([]);
   };
 
   const removeContent = async (itemId) => {
@@ -102,19 +106,19 @@ function Buy() {
       const itemTotal = (price * selectedQuantity) + shippingFee;
       totalPrice += itemTotal;
     });
-    return totalPrice;
+    return totalPrice.toLocaleString();
   };
 
   const handlePayment = (formData) => {
-    console.log('Payment successful!', checkoutItems);
     setShowPaymentForm(false);
     setPaymentStatus(true)
+    setPassedData([]);
   };
 
   const showPayment = () => {
     let purchaseId = '';
     for (let i = 0; i < 5; i++) {
-      purchaseId += Math.floor(Math.random() * 100); // Generate random digit (0-9)
+      purchaseId += Math.floor(Math.random() * 100);
     }
 
     const updatedPassedData = checkoutItems.map((items) => ({
@@ -157,8 +161,8 @@ function Buy() {
         <div className="not-found-content">
           <p className='dfffa'>"Shopping online is like being in a candy store, except the candy is virtual, and your wallet is the one crying out for mercy!"</p>
           <center>
-          <div className="loading-spinner">
-          </div>
+            <div className="loading-spinner">
+            </div>
           </center>
         </div>
       </div>
@@ -167,46 +171,38 @@ function Buy() {
 
   return (
     <div className="cart-container">
-      <div className="cart-header">
-        <p className='class-header'>🛒 Cart Items</p>
-      </div>
+      <p className='cart-header'>🛒 Cart Items</p>
       {cartItems && cartItems.cart && cartItems.cart.length > 0 ? (
         <ul className="cart-list">
           {cartItems.cart.map((item, index) => (
             <li className="cart-item" key={index}>
-              <div className="cart-item-details">
-                <div className="cart-item-image">
-                  <input
-                    type="checkbox"
-                    checked={isChecked[index] || false}
-                    onChange={(e) => handleCheckboxChange(e, index)}
-                  />
-                  <img src={items.find((product) => product.productId === item?.itemId)?.productImg && items.find((product) => product.productId === item?.itemId)?.productImg[0] ? items.find((product) => product.productId === item?.itemId)?.productImg[0] : "https://cdn4.iconfinder.com/data/icons/storeage-box/100/DPid-ICONS-61-512.png"} alt="" />
-                  {console.log()}
-                </div>
-                <div className="cart-item-info">
-                  <h3 className='product-name'><a href={`/items?item=${item?.itemId}`}>{items.find((product) => product.productId === item?.itemId)?.productName || 'Product Name Not Available'}</a></h3>
-                  <p className='product-desc'>Category: <a href={`/search?query=${items.find((product) => product.productId === item?.itemId)?.productCategory}`}>{items.find((product) => product.productId === item?.itemId)?.productCategory || 'Category Not Available'}</a></p>
-                  <p className='product-desc'>Sub Category: {items.find((product) => product.productId === item?.itemId)?.productSubCategory || 'Sub Category Not Available'}</p>
-                  <p className='product-desc'>Brand: <a href={`/search?query=${items.find((product) => product.productId === item?.itemId)?.productBrand}`}>{items.find((product) => product.productId === item?.itemId)?.productBrand || 'Brand Not Available'}</a></p>
-                </div>
+              <input
+                type="checkbox"
+                checked={isChecked[index] || false}
+                onChange={(e) => handleCheckboxChange(e, index)}
+              />
+              <div className="cart-item-image">
+                <img src={items.find((product) => product.productId === item?.itemId)?.productImg && items.find((product) => product.productId === item?.itemId)?.productImg[0] ? items.find((product) => product.productId === item?.itemId)?.productImg[0] : "https://cdn4.iconfinder.com/data/icons/storeage-box/100/DPid-ICONS-61-512.png"} alt="" />
               </div>
-              <div className="cart-item-actions">
-                <div className="item-quantity">
-                  <span className='product-name'><small>Quantity</small></span>
-                  <select value={quantity[item.itemId] || item?.selectedValue} onChange={(e) => handleSelectChange(e, item.itemId)}>
-                    {Array.from({ length: 50 }, (_, i) => i + 1).map((value) => (
-                      <option key={value} value={value}>{value}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="product-name">
-                  <p><small>Price: {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice || 'Price Not Available')}</small></p>
-                  <p><small>Shipping: { (items.find((product) => product.productId === item?.itemId)?.shippingFee || 0)}</small></p>
-                  <small><p>Total: <b>{"₦" + (parseInt(items.find((product) => product.productId === item?.itemId)?.productPrice) * parseInt(quantity[item.itemId] || item?.selectedValue) + parseInt(items.find((product) => product.productId === item?.itemId)?.shippingFee || 0)) || 0}</b></p></small>
-                </div>
-                <button className="remove-btn" onClick={() => removeContent(item.itemId)}>Remove</button>
+              <div className="cart-item-info">
+                <h3><a href={`/items?item=${item?.itemId}`}>{items.find((product) => product.productId === item?.itemId)?.productName || 'Product Name Not Available'}</a></h3>
+                <p>Category: <a href={`/search?query=${items.find((product) => product.productId === item?.itemId)?.productCategory}`}>{items.find((product) => product.productId === item?.itemId)?.productCategory || 'Category Not Available'}</a></p>
+                <p>Sub Category: {items.find((product) => product.productId === item?.itemId)?.productSubCategory || 'Sub Category Not Available'}</p>
+                <p>Brand: <a href={`/search?query=${items.find((product) => product.productId === item?.itemId)?.productBrand}`}>{items.find((product) => product.productId === item?.itemId)?.productBrand || 'Brand Not Available'}</a></p>
               </div>
+              <div className="item-quantity">
+                <select value={quantity[item.itemId] || item?.selectedValue} onChange={(e) => handleSelectChange(e, item.itemId)}>
+                  {Array.from({ length: 50 }, (_, i) => i + 1).map((value) => (
+                    <option key={value} value={value}>{value}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="product-q">
+                <p>Price: {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice || 'Price Not Available').toLocaleString()} x {quantity[item.itemId] || item?.selectedValue}</p>
+                <p>Shipping: {(items.find((product) => product.productId === item?.itemId)?.shippingFee || 0).toLocaleString()}</p>
+                <p>Total: <b>{"₦" + (parseInt(items.find((product) => product.productId === item?.itemId)?.productPrice) * parseInt(quantity[item.itemId] || item?.selectedValue) + parseInt(items.find((product) => product.productId === item?.itemId)?.shippingFee || 0)).toLocaleString() || 0}</b></p>
+              </div>
+              <button className="button" onClick={() => removeContent(item.itemId)}>Remove</button>
             </li>
           ))}
         </ul>
@@ -220,26 +216,28 @@ function Buy() {
       )}
       {isChecked.includes(true) && (
         <div className="checkout-section">
-          {showPaymentForm && <PaymentForm loggedInUser={loggedInUser} mysent={passedData} total={calculateTotal()} handlePayment={handlePayment} handleCancel={handleCancel} />}
+          {showPaymentForm && <PaymentForm tot={"aa"} loggedInUser={loggedInUser} mysent={passedData} total={calculateTotal()} handlePayment={handlePayment} handleCancel={handleCancel} />}
           {!showPaymentForm && !paymentStatus && (
             <div>
-              <h2 className='checkcolor'> <FaCalendarCheck className='checkcolor'/> Checkout</h2>
+              <h2 className='checkcolor'> <FaCalendarCheck className='checkcolor' /> Checkout</h2>
               <table className="checkout-table">
-              <tbody>
-                {checkoutItems.map((item, index) => (
-                      <tr key={index}>
-                        <td>
-                          {items.find((product) => product.productId === item?.itemId)?.productName}
-                        </td>
-                        <td>
-                          {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice * (quantity[item.itemId] || item.selectedValue) + items.find((product) => product.productId === item?.itemId)?.shippingFee)}
-                        </td>
-                      </tr>
-                ))}
-                    </tbody>
+                <tbody>
+                  {checkoutItems.map((item, index) => (
+                    <tr key={index}>
+                      <td>
+                        {items.find((product) => product.productId === item?.itemId)?.productName}
+                      </td>
+                      <td>
+                        {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice * (quantity[item.itemId] || item.selectedValue) + items.find((product) => product.productId === item?.itemId)?.shippingFee).toLocaleString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
                 <tfoot className='ltl'>
-                  <td>Total payment </td>
-                  <td>₦{calculateTotal()}</td>
+                  <tr>
+                    <td>Total payment </td>
+                    <td>₦{calculateTotal()}</td>
+                  </tr>
                 </tfoot>
               </table>
               <br /><br />

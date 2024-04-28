@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Jersey+25&family=Lexend:wght@100..900&family=Roboto+Slab:wght@100..900&family=Teko:wght@300..700&family=Tilt+Neon&display=swap');
 
-* {
-  transition: all 0.1s ease;
+body {
+  padding: 0;
+  margin: 0;
 }
 
 :root {
   --font: "Roboto Slab", serif;
+  --primary_color: #028421;
   --background: rgba(209, 229, 228, 0.658);
 }
 
@@ -189,8 +191,6 @@
 
 
 
-
-
 .background-container {
   position: relative;
   width: 100%;
@@ -309,6 +309,7 @@ section:not(:nth-child(2)) {
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 
@@ -341,23 +342,6 @@ section:not(:nth-child(2)) {
   width: 80%;
   margin: auto;
   object-fit: contain;
-}
-
-
-.product-name {
-  font-size: 13px;
-  font-family: var(--font);
-  font-weight: 700;
-  display: block;
-  height: 2.2rem;
-}
-
-.product-desc {
-  font-size: 11.8px;
-  font-family: var(--font);
-  font-weight: 400;
-  display: block;
-  height: 2.3rem;
 }
 
 
@@ -419,6 +403,11 @@ h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
+h3 {
+  font-size: 20px;
+  font-family: var(--font);
+}
+
 
 .groceries-list {
   list-style: none;

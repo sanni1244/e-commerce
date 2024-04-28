@@ -101,7 +101,7 @@ const Login = () => {
           /><br />
           {errorMessage && <center className='dfffa'>{errorMessage}</center>}
           <br />
-          <button className='button' type="submit">Login</button>
+          <button className='button lgb1' type="submit">Login</button>
         </form>
         <br />
         <small><i>Dont have an account? <a href="/register">Sign up</a> </i></small>

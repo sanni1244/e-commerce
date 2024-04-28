@@ -22,7 +22,10 @@ function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(mysent)
     handlePayment(formData);
+
+    
 
     try {
       await axios.post(`${SERVER_URL}/purchase/add`, { mysent, loggedInUser });

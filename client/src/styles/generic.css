@@ -1,0 +1,54 @@
+  
+  h1 {
+    font-size: 24px;
+    color: #333;
+  }
+
+  .back-btn {
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+    color: var(--primary_color);
+  }
+
+  .back-btn:hover {
+    transform: rotate(-20deg);
+  }
+
+  .button {
+    padding: 13px;
+    color: #fff;
+    width: 18rem;
+    margin: 0 auto;
+    font-weight: 600;
+    background-color: #0D6EFD;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+   
+  .button:hover {
+    background-color: #0d6dfdca;
+  }
+
+
+  .product-name {
+    font-size: 13px;
+    font-family: var(--font);
+    font-weight: 700;
+    display: block;
+    height: 2.2rem;
+  }
+  
+  .product-desc {
+    font-size: 11.8px;
+    font-family: var(--font);
+    font-weight: 400;
+    display: block;
+    height: 2.3rem;
+  }
+
+  .small-table{
+    font-size: 12px;
+  }
