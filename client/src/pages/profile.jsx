@@ -17,7 +17,7 @@ const Profile = () => {
 
   if (!loggedInUser) {
     window.location.href = '/login';
-  }
+  } 
 
   const handleNavClick = (section) => {
     setActiveSection(section);

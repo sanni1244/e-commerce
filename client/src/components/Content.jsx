@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import { CiStar } from 'react-icons/ci';
 import { GrFormEdit } from "react-icons/gr";
 import '../styles/content.css';
@@ -31,11 +31,12 @@ const Content = ({ item, discount }) => (
             </div>
             <span>
                 <p className='fg'>
-                    {[...Array(parseInt(item.productRatings))].map((_, index) => (
-                        <FaStar key={index} className="color-stars" />
+                    {[...Array(Math.floor(item.productRatings))].map((_, index) => (
+                        <FaStar key={index} className='color-stars' />
                     ))}
-                    {[...Array(5 - parseInt(item.productRatings))].map((_, index) => (
-                        <CiStar key={index} />
+                    {item.productRatings % 1 !== 0 && <FaStarHalfAlt key="half" className='color-stars' />}
+                    {[...Array(5 - Math.ceil(item.productRatings))].map((_, index) => (
+                        <FaRegStar key={index} className='color-stars' />
                     ))}
                     {discount ?
                         <>

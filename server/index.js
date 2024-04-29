@@ -31,7 +31,6 @@ app.post('/items', async (req, res) => {
         const parsedProductPrice = parseFloat(productPrice);
         const parsedShippingFee = parseFloat(shippingFee);
         const parsedDeliveryTime = parseInt(deliveryTime);
-        const parsedProductRatings = parseInt(productRatings);
         const parsedProductAvailability = productAvailability === 'true';
         await client.connect();
         const db = client.db(dbName);
@@ -47,7 +46,7 @@ app.post('/items', async (req, res) => {
             productSubCategory,
             productName,
             productImg,
-            productRatings: parsedProductRatings,
+            productRatings,
             productBrand,
             productType,
             productPrice: parsedProductPrice,
@@ -69,7 +68,6 @@ app.post('/items', async (req, res) => {
 });
 app.post('/paste', async (req, res) => {
     await client.connect();
-
     const db = client.db(dbName);
     const collection = db.collection('items');
     const updatedItems = await collection.find({}).toArray();
@@ -80,7 +78,6 @@ app.post('/paste', async (req, res) => {
 app.get('/items/:productId', async (req, res) => {
     try {
         const productId = req.params.productId.toUpperCase();
-
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection('items');
@@ -92,7 +89,6 @@ app.get('/items/:productId', async (req, res) => {
         if (!item) {
             return res.status(404).send('Item not found');
         }
-
         res.status(200).json(item);
     } catch (error) {
         console.error('Error fetching item:', error);
@@ -535,6 +531,28 @@ app.delete('/comments/:id', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+app.put('/crating', async (req, res) => {
+    try {
+        const { itemId, ratingMerge } = req.body;
+        await client.connect();
+        const db = client.db(dbName);
+        const collection = db.collection('items');
+        const existingItem = await collection.findOne({ productId: itemId });
+        if (!existingItem) {
+            return res.status(404).send('Item not found');
+        }
+        await collection.updateOne(
+            { productId: itemId },
+            { $set: { productRatings: ratingMerge } }
+        );
+        res.status(200).send('Product ratings updated successfully');
+    } catch (error) {
+        console.error('Error updating product ratings:', error);
+        res.status(500).send('Error updating product ratings');
+    }
+});
+
 
 
 app.listen(port, () => {

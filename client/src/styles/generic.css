@@ -52,3 +52,11 @@
   .small-table{
     font-size: 12px;
   }
+
+  .showcasecontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }

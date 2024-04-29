@@ -2,7 +2,6 @@ import Recomm from "../components/recomm";
 import React, { useState } from 'react';
 import { FaStar, FaRegStar, FaStarHalfAlt, FaCheck, FaClipboardList, FaStarOfDavid, FaLock } from "react-icons/fa";
 import { FcSalesPerformance, FcCancel } from "react-icons/fc";
-import { CiStar } from "react-icons/ci";
 import { IoMdChatboxes, IoIosPricetag } from "react-icons/io";
 import { TiWarning } from "react-icons/ti";
 import { TbTruckDelivery } from "react-icons/tb";
@@ -20,26 +19,35 @@ const Items = () => {
     const itemId = searchParams.get('item')
     const { items, loading, error } = useFetchItems();
     const [alternate, setAlternate] = useState(true);
-    const [selectedValue, setSelectedValue] = useState(1);
+    const [selectedValue, setSelectedValue] = useState(5);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [rating, setRating] = useState(5);
+    const [rating, setRating] = useState(1);
     const loggedInUser = localStorage.getItem('loggedInUser');
     const [displayedComments, setDisplayedComments] = useState(4);
     const [comment, setComment] = useState('');
+    const [ratingMerge, setRatingMerge] = useState()
     const [errorMessage, setErrorMessage] = useState('');
     const [errorMessage2, setErrorMessage2] = useState('');
     const [comments, setComments] = useState([]);
     const [ghj, Sghj] = useState(null);
 
-
     const fetchComments = async () => {
         try {
             const response = await axios.get(`${SERVER_URL}/comments/${itemId}`);
             setComments(response.data);
+            let sum = 0;
+            response.data.map((d1, index) => {
+                sum += d1.rating;
+            })
+            let average = sum / response.data.length;
+            setRatingMerge(average)
+
+
         } catch (error) {
             console.error('Error fetching comments:', error);
         }
     };
+
     const handleReadMore = () => {
         setDisplayedComments(displayedComments + 5);
     };
@@ -48,6 +56,8 @@ const Items = () => {
     useEffect(() => {
         Sghj(Math.floor(Math.random() * 25001))
         fetchComments();
+
+
     }, []);
     useEffect(() => { }, [items]);
 
@@ -85,7 +95,6 @@ const Items = () => {
         );
     }
 
-
     const handleComment = async (e) => {
         e.preventDefault();
         if (!loggedInUser) {
@@ -99,7 +108,11 @@ const Items = () => {
                     comment,
                     rating
                 });
-                console.log(response.data.message);
+
+                const response1 = await axios.put(`${SERVER_URL}/crating`, {
+                    itemId,
+                    ratingMerge
+                });
                 setErrorMessage2('You made a comment');
                 setComment('')
                 fetchComments();
@@ -232,17 +245,17 @@ const Items = () => {
                                     <br />
                                     <div className="fg">
                                         <b>
-                                            {[...Array(Math.floor(item.productRatings))].map((_, index) => (
+                                            {[...Array(Math.floor(ratingMerge))].map((_, index) => (
                                                 <FaStar key={index} className='color-stars' />
                                             ))}
-                                            {item.productRatings % 1 !== 0 && <FaStarHalfAlt key="half" className='color-stars' />}
-                                            {[...Array(5 - Math.ceil(item.productRatings))].map((_, index) => (
+                                            {ratingMerge % 1 !== 0 && <FaStarHalfAlt key="half" className='color-stars' />}
+                                            {[...Array(5 - Math.ceil(ratingMerge))].map((_, index) => (
                                                 <FaRegStar key={index} className='color-stars' />
                                             ))} &nbsp;
-                                            {item.productRatings}
+                                            {parseFloat(ratingMerge).toFixed(1)}
                                         </b>
                                         <span>
-                                            <IoMdChatboxes /> {comments.length} reviews
+                                            <IoMdChatboxes /> {comments.length === 1 ? comments.length + " review" : comments.length + " reviews"}
                                         </span>
                                         <span>
                                             <FcSalesPerformance /> {ghj}  orders
@@ -254,7 +267,7 @@ const Items = () => {
                                         <p>{item.productDescription} <br />
                                             {
                                                 item.aboutItem && item.aboutItem !== item.productDescription ?
-                                                    <div className="dfffa" dangerouslySetInnerHTML={{ __html: item.aboutItem }} /> : null
+                                                    <span className="dfffa" dangerouslySetInnerHTML={{ __html: item.aboutItem }} /> : null
                                             }
                                         </p>
                                     </div>
@@ -264,7 +277,7 @@ const Items = () => {
                                         {item.productPrice ? "₦" + item.productPrice.toLocaleString() : "Unavailable"}
                                         <i className="shadow">Price of item</i>
                                     </p>
-                                    <p className="myprice"> 
+                                    <p className="myprice">
                                         {item.shippingFee ? "₦" + item.shippingFee.toLocaleString() : "Free"}
                                         <i className="shadow">Shipping Fee</i>
                                     </p>
@@ -289,7 +302,7 @@ const Items = () => {
                             <div className="img-group-padd">
                                 {
                                     (() => {
-                                        if (item.itemImage > 0) { 
+                                        if (item.itemImage && item.itemImage.length > 0) {
                                             let imageElements = [];
                                             for (let i = 0; i < item.itemImage.length; i++) {
                                                 imageElements.push(
@@ -307,7 +320,7 @@ const Items = () => {
                             </div>
                             <section>
                                 <div className="cmmt-section">
-                                    <center><h2 class="comment-heading">Leave a comment</h2></center>
+                                    <center><h2 className="comment-heading">Leave a comment</h2></center>
                                     <form className="comment-form" onSubmit={handleComment}>
                                         <textarea className="tx-ar"
                                             value={comment}
@@ -328,46 +341,46 @@ const Items = () => {
                                     </form>
 
                                     {errorMessage2 && <p className="errbad">{errorMessage2}</p>} <br /><br /><br />
-                                    <div class="cmmt-section">
-                                        {comments.length > 0 ? (
-                                             <>
-                                             <h2>Users Reviews</h2>
-                                             <div>
-                                               {comments
-                                                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort comments by date
-                                                 .slice(0, displayedComments)
-                                                 .map((comment, index) => (
-                                                   <div key={index}>
-                                                     <div class="container-comments">
-                                                       <div class="fl">
-                                                         <p><b>{comment.loggedInUser}</b></p>
-                                                         <b>
-                                                           {[...Array(Math.floor(comment.rating))].map((_, index) => (
-                                                             <FaStar key={index} className='color-stars' />
-                                                           ))}
-                                                           {comment.rating % 1 !== 0 && <FaStarHalfAlt key="half" className='color-stars' />}
-                                                           {[...Array(5 - Math.ceil(comment.rating))].map((_, index) => (
-                                                             <FaRegStar key={index} className='color-stars' />
-                                                           ))} &nbsp;
-                                                         </b>
-                                                       </div>
-                                                       <p>{comment.comment}</p>
-                                                       <p class="small-date">{`${new Date(comment.createdAt).toDateString()}`}</p>
-                                                     </div>
-                                                     <br />
-                                                   </div>
-                                                 ))}
-                                             </div>
-                                             {comments.length > displayedComments && (
-                                               <button class="button spt-btton" onClick={handleReadMore}>More comments</button>
-                                             )}
-                                           </>
+                                    <div className="cmmt-section">
+                                        {comments.length && comments.length > 0 ? (
+                                            <>
+                                                <h2>Users Reviews</h2>
+                                                <div>
+                                                    {comments
+                                                        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort comments by date
+                                                        .slice(0, displayedComments)
+                                                        .map((comment, index) => (
+                                                            <div key={index}>
+                                                                <div className="container-comments">
+                                                                    <div className="fl">
+                                                                        <p><b>{comment.loggedInUser}</b></p>
+                                                                        <b>
+                                                                            {[...Array(Math.floor(comment.rating))].map((_, index) => (
+                                                                                <FaStar key={index} className='color-stars' />
+                                                                            ))}
+                                                                            {comment.rating % 1 !== 0 && <FaStarHalfAlt key="half" className='color-stars' />}
+                                                                            {[...Array(5 - Math.ceil(comment.rating))].map((_, index) => (
+                                                                                <FaRegStar key={index} className='color-stars' />
+                                                                            ))} &nbsp;
+                                                                        </b>
+                                                                    </div>
+                                                                    <p>{comment.comment}</p>
+                                                                    <p className="small-date">{`${new Date(comment.createdAt).toDateString()}`}</p>
+                                                                </div>
+                                                                <br />
+                                                            </div>
+                                                        ))}
+                                                </div>
+                                                {comments.length > displayedComments && (
+                                                    <button className="button spt-btton" onClick={handleReadMore}>More comments</button>
+                                                )}
+                                            </>
                                         ) : (
 
 
-                                            <div class="comment-section">
-                                                <h2 class="comment-heading">No Reviews yet</h2>
-                                                <p class="comment-description">Share your thoughts on this product. Your feedback is valuable!</p>
+                                            <div className="comment-section">
+                                                <h2 className="comment-heading">No Reviews yet</h2>
+                                                <p className="comment-description">Share your thoughts on this product. Your feedback is valuable!</p>
                                             </div>
 
                                         )}

@@ -7,7 +7,7 @@ import Categories from '../components/Categories';
 import { Cat1 } from "../resources/categories";
 import logo from '../images/l.png';
 import { MdOutlineLaptopChromebook, MdElectricalServices, MdDesignServices, MdOutlineContactSupport, MdLogin, MdLogout } from "react-icons/md";
-import { FaBars, FaTimes, FaSearch, FaUserCircle } from 'react-icons/fa';
+import { FaBars, FaUser, FaTimes, FaSearch, FaUserCircle } from 'react-icons/fa';
 import { TiShoppingCart } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 import { IoShirt, IoGameController } from "react-icons/io5";
@@ -83,7 +83,6 @@ const BackgroundPage = () => {
                     </div>
                     <div className="link">
                         <ul>
-                            <Link to="/" className="nav-link"> Home</Link>
                             <Link to="/about" className="nav-link"> About</Link>
                             <Link to="/services" className="nav-link"> Services</Link>
                             {!h1 ? (
@@ -97,7 +96,7 @@ const BackgroundPage = () => {
                                 </>
                             ) : (
                                 <Link to="/profile" className='nav-link'>
-                                    <span>{h1.toUpperCase()}</span>
+                                    <span className='hot-prof'>{h1.toUpperCase()}</span>
                                 </Link>
                             )}
                             {h1 && (
@@ -108,10 +107,9 @@ const BackgroundPage = () => {
                         </ul>
                     </div>
                     <div className="user">
-
-                        <Link to={"/search"}><FaSearch /></Link>
-                        <Link to={"/profile"}><FaUserCircle /></Link>
-                        <Link to={"/buy"}><TiShoppingCart /></Link>
+                        <Link to={"/search"}><span className='hot-prof'><FaSearch /></span></Link>
+                        <Link to={"/profile"}><span className='hot-prof'><FaUser /></span></Link>
+                        <Link to={"/buy"}><span className='hot-prof'><TiShoppingCart /></span></Link>
                     </div>
                 </div>
             </nav>

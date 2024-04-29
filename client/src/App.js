@@ -1,3 +1,4 @@
+// App.js
 import React from 'react';
 import './App.css';
 import './styles/generic.css';
@@ -27,7 +28,7 @@ import GroceriesPage from './pages/Groceries';
 function App() {
   return (
     <Router>
-      {/* <Navigation /> */}
+      <Navigation />
       <Back />
       <Routes>
         <Route path="/" exact element={<Demo />} />
@@ -36,9 +37,7 @@ function App() {
         <Route path="/items" element={<Items />} />
         <Route path="/display" element={<Display />} />
         <Route path="/groceries" element={<GroceriesPage />} />
-
-
-        <Route path="/" exact element={<Home />} />
+        {/* <Route path="/" exact element={<Home />} /> */}
         <Route path="/products" element={<Products />} />
         <Route path="/buy" element={<Buy />} />
         <Route path="/login" element={<Login />} />
