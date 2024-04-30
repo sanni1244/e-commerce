@@ -60,3 +60,37 @@
     gap: 2rem;
     margin-bottom: 3rem;
   }
+
+
+
+
+
+
+
+  .item-not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+  
+  .item-not-found-content {
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #fff;
+  }
+  
+  
+  .item-not-found-content h2 {
+    color: #e74c3c;
+    font-size: 36px;
+    margin: 0 0 20px;
+  }
+  
+  .item-not-found-content p {
+    color: #666;
+    font-size: 20px;
+    margin: 0;
+  }
+

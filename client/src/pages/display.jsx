@@ -97,7 +97,7 @@ const Display = () => {
                                         Ratings : &nbsp;
                                         <span className="" >{item.productRatings} </span>
                                     </div>
-                                    <button onLoad={() => {updateRatings(item.productId)}}>update</button>
+                                    <button onClick={() => {updateRatings(item.productId)}}>update</button>
                                     <br />
                                 </div> 
                             ))}

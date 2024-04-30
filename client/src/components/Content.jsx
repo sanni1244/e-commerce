@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
-import { CiStar } from 'react-icons/ci';
 import { GrFormEdit } from "react-icons/gr";
 import '../styles/content.css';
 
 const loggedInUser = localStorage.getItem('loggedInUser');
-const Content = ({ item, discount }) => (
+const Content = ({ item, discount, discountVal }) => (
     <div className='written-content'>
         {item.productImg && item.productImg[0] ? (
             <div className='img-container'>
@@ -41,8 +40,8 @@ const Content = ({ item, discount }) => (
                     {discount ?
                         <>
                             <b className="prd-price discount-price ">{item.productPrice ? '₦' + item.productPrice.toLocaleString() : 'Unavailable'}</b>
-                            <span className="prd-price prd-price1">{'₦' + (item.productPrice + (item.productPrice * 10 / 100)).toLocaleString()}</span>
-                        </>
+                            <span className="prd-price prd-price1">{'₦' + (item.productPrice + ((item.productPrice * discountVal / 100) || (item.productPrice * 10 / 100))).toLocaleString()}</span>
+                        </> 
                         :
                         <b className="prd-price">{item.productPrice ? '₦' + item.productPrice.toLocaleString() : 'Unavailable'}</b>
                     }

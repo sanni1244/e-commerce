@@ -305,7 +305,8 @@ body {
   flex-wrap: wrap;
 }
 
-.box-cat {
+.box-cat, .bb2, .bb3 {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -320,6 +321,21 @@ body {
   color: rgb(11, 55, 25);
   font-size: 12px;
   font-family: var(--font);
+}
+
+.bb2::before, .bb3::before { 
+  content: "10% off"; 
+  position: absolute;
+  top: 27px; 
+  right: 5px; 
+  background-color: red; 
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transform: translateY(-50%) rotate(30deg); 
+} 
+.bb3::before{
+  content: "6% off"; 
 }
 
 section:not(:nth-child(2)) {

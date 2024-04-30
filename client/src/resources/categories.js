@@ -35,7 +35,9 @@ export const Cat1 = [
         Department: "Groceries",
         SubCategories: [
             "Drinks and alcohol",
-            "Snacks and Junks"
+            "Snacks and Junks",
+            "Food Stuff",
+            "Household care"
         ],
     }
 ];

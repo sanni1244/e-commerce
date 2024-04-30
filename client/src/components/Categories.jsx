@@ -17,7 +17,7 @@ const Categories = () => {
                         <h3 onClick={() => toggleSubcategories(index)}>{category.Department}</h3>
                         <ul className={`sub-menu ${activeIndex === index ? 'active' : ''}`}>
                             {category.SubCategories.map((subCategory, subIndex) => (
-                                <Link to={`/products?cat=${encodeURIComponent(category.Department)}&subcat=${encodeURIComponent(subCategory)}`}>
+                                <Link to={`/products?subcat=${encodeURIComponent(subCategory)}`}>
                                     <li className='sublinkclass' key={subIndex}>
                                         {subCategory}
                                     </li>

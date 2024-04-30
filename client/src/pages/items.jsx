@@ -19,18 +19,18 @@ const Items = () => {
     const itemId = searchParams.get('item')
     const { items, loading, error } = useFetchItems();
     const [alternate, setAlternate] = useState(true);
-    const [selectedValue, setSelectedValue] = useState(5);
+    const [selectedValue, setSelectedValue] = useState(1);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [rating, setRating] = useState(1);
     const loggedInUser = localStorage.getItem('loggedInUser');
     const [displayedComments, setDisplayedComments] = useState(4);
     const [comment, setComment] = useState('');
-    const [ratingMerge, setRatingMerge] = useState()
+    const [ratingMerge, setRatingMerge] = useState(null)
     const [errorMessage, setErrorMessage] = useState('');
     const [errorMessage2, setErrorMessage2] = useState('');
     const [comments, setComments] = useState([]);
     const [ghj, Sghj] = useState(null);
-
+    let abc = 0
     const fetchComments = async () => {
         try {
             const response = await axios.get(`${SERVER_URL}/comments/${itemId}`);
@@ -40,9 +40,15 @@ const Items = () => {
                 sum += d1.rating;
             })
             let average = sum / response.data.length;
+
+            await axios.put(`${SERVER_URL}/crating`, {
+                itemId,
+                ratingMerge : average
+            });
+
+            
             setRatingMerge(average)
-
-
+            setRating(average)
         } catch (error) {
             console.error('Error fetching comments:', error);
         }
@@ -102,17 +108,13 @@ const Items = () => {
         }
         else {
             try {
-                const response = await axios.post(`${SERVER_URL}/comments`, {
+                await axios.post(`${SERVER_URL}/comments`, {
                     loggedInUser,
                     itemId,
                     comment,
                     rating
                 });
-
-                const response1 = await axios.put(`${SERVER_URL}/crating`, {
-                    itemId,
-                    ratingMerge
-                });
+ 
                 setErrorMessage2('You made a comment');
                 setComment('')
                 fetchComments();
@@ -239,20 +241,22 @@ const Items = () => {
                                 <div className="center-stage">
                                     <div className=""><h2 id={document.title = item.productName}>{item.productName}</h2></div>
                                     <div className="">
-                                        <small>brand: <Link to={`/search?query=${item.productBrand}`}>{item.productBrand || "Not Available"}</Link> &nbsp;&nbsp;
+                                        <small>Brand: <Link to={`/search?query=${item.productBrand}`}>{item.productBrand || "None"}</Link> &nbsp;&nbsp;
                                             {loggedInUser === "admin" ? <Link to={`/edit?myid=${item.productId}`}><GrFormEdit style={{ color: "black" }} /></Link> : ""}</small> &nbsp;&nbsp;&nbsp;
                                     </div>
                                     <br />
                                     <div className="fg">
                                         <b>
-                                            {[...Array(Math.floor(ratingMerge))].map((_, index) => (
+                                            <div className="hidden">{abc = ratingMerge || item.productRatings}</div>
+                                            {[...Array(Math.floor(abc))].map((_, index) => (
                                                 <FaStar key={index} className='color-stars' />
                                             ))}
-                                            {ratingMerge % 1 !== 0 && <FaStarHalfAlt key="half" className='color-stars' />}
-                                            {[...Array(5 - Math.ceil(ratingMerge))].map((_, index) => (
+                                            {abc % 1 !== 0 && <FaStarHalfAlt key="half" className='color-stars' />}
+                                            {[...Array(5 - Math.ceil(abc))].map((_, index) => (
                                                 <FaRegStar key={index} className='color-stars' />
                                             ))} &nbsp;
-                                            {parseFloat(ratingMerge).toFixed(1)}
+                                            {abc ? parseFloat(abc).toFixed(1) : "0"} <br />
+                                            
                                         </b>
                                         <span>
                                             <IoMdChatboxes /> {comments.length === 1 ? comments.length + " review" : comments.length + " reviews"}
@@ -342,7 +346,7 @@ const Items = () => {
 
                                     {errorMessage2 && <p className="errbad">{errorMessage2}</p>} <br /><br /><br />
                                     <div className="cmmt-section">
-                                        {comments.length && comments.length > 0 ? (
+                                        {comments && comments.length > 0 ? (
                                             <>
                                                 <h2>Users Reviews</h2>
                                                 <div>

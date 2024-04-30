@@ -4,28 +4,83 @@ import Content from '../components/Content.jsx';
 import { useEffect, useState } from 'react'; // Import useState
 import '../styles/products.css';
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
 
 function Products() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const cat = searchParams.get('cat');
     const subcat = searchParams.get('subcat');
+    const [subcat1, setSub] = useState(searchParams.get('subcat'));
     const { items, loading, error } = useFetchItems();
     const [shuffledItems, setShuffledItems] = useState([]);
+    const [discount, setDiscount] = useState(false);
+    const [discountVal, setDiscountVal] = useState(0);
+
+
 
     useEffect(() => {
-        if (!loading && !error) {
-            const filteredItems = items.filter(item => item.productCategory.toUpperCase() === cat.toUpperCase() && item.productSubCategory.toUpperCase() === subcat.toUpperCase());
-            setShuffledItems(shuffleArray(filteredItems));
+        if (!loading && !error && subcat) {
+            let filteredItems = [];
+    
+            if (subcat === "clothing") {
+                filteredItems = items.filter(item => 
+                    item.productSubCategory.toUpperCase() === "ALL" || 
+                    item.productSubCategory.toUpperCase() === "WOMEN" || 
+                    item.productSubCategory.toUpperCase() === "MEN"
+                );
+                setSub("Fashion")
+                setDiscount(false)
+            } 
+            else if (subcat === "laptop"){
+                filteredItems = items.filter(item => 
+                    item.productCategory.toUpperCase() === "COMPUTER"
+                );
+                setSub("Computer and Accessories")
+                setDiscount(false)
+            }
+            else if (subcat === "phones"){
+                filteredItems = items.filter(item => 
+                    item.productSubCategory.toUpperCase() === "CELL PHONES"
+                );
+                setSub("Mobile phones")
+                setDiscount(false)
+            }
+            else if (subcat === "electronics"){
+                filteredItems = items.filter(item => 
+                    item.productCategory.toUpperCase() === subcat.toUpperCase()
+                );
+                setSub("Electronic Devices")
+                setDiscount(false)
+            }
+            else if (subcat === "video"){
+                filteredItems = items.filter(item => 
+                    item.productSubCategory.toLowerCase() === "video game consoles & accessories"
+                );
+                setDiscount(true)
+                setSub("Video games and consoles")
+                setDiscountVal(10)
+            }
+            else if (subcat === "drinks"){
+                filteredItems = items.filter(item => 
+                    item.productSubCategory.toLowerCase() === "drinks and alcohol"
+                    
+                );
+                setDiscount(true)
+                setSub("Drinks and alcohol")
+                setDiscountVal(6)
+            }
+            else {
+                filteredItems = items.filter(item => 
+                    item.productSubCategory.toUpperCase() === subcat.toUpperCase()
+                );
+                
+            }
+    
+            filteredItems.sort((a, b) => b.productRatings - a.productRatings);
+            setShuffledItems(filteredItems);
         }
-    }, [items, cat, subcat, loading, error]);
+    }, [items, subcat, loading, error]);
+    document.title = subcat1 || "Products category";
+
 
     if (loading) {
         return (
@@ -62,24 +117,25 @@ function Products() {
         );
     }
 
-    if (!shuffledItems.length) {
+    if (!shuffledItems.length || subcat === null) {
         return (
             <div className="item-not-found-container">
                 <div className="item-not-found-content">
                     <h2>Category does not exist</h2>
-                        <p>We couldn't find what you're looking for.</p>
+                    <p>We couldn't find what you're looking for.</p> <br />
+                    <a href="/"><button className='button'>Go Home</button></a>
                 </div>
             </div>);
     }
-    document.title = subcat;
+
 
     return (
         <div>
-            <center><h2 className='mainh'>{cat + ": " + subcat}</h2></center>
+            <center><h2 className='mainh'>{subcat1.toUpperCase()}</h2></center> <br />
             <div className='showcasecontainer'>
                 {shuffledItems.map((item, index) => (
                     <div className='productCard shave' key={index}>
-                        <Content item={item} />
+                        <Content item={item} discount={discount} discountVal={discountVal} />
                     </div>
                 ))}
             </div>

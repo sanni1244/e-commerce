@@ -4,20 +4,18 @@ import img1 from '../images/img1.jpg';
 import { CSSTransition } from 'react-transition-group';
 import img2 from '../images/img2.jpg';
 import Categories from '../components/Categories';
-import { Cat1 } from "../resources/categories";
 import logo from '../images/l.png';
-import { MdOutlineLaptopChromebook, MdElectricalServices, MdDesignServices, MdOutlineContactSupport, MdLogin, MdLogout } from "react-icons/md";
-import { FaBars, FaUser, FaTimes, FaSearch, FaUserCircle } from 'react-icons/fa';
+import { MdOutlineLaptopChromebook, MdElectricalServices } from "react-icons/md";
+import { FaBars, FaUser, FaTimes, FaSearch } from 'react-icons/fa';
+import { GiWineBottle } from "react-icons/gi";
 import { TiShoppingCart } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 import { IoShirt, IoGameController } from "react-icons/io5";
 import { BsPhone } from "react-icons/bs";
-import { PiTelevisionSimpleBold } from "react-icons/pi";
 import Ratings from '../components/highratings';
 import Apple from '../components/Appledeals';
 import Clothes from '../components/Clothes';
 import Gaming from '../components/gaming';
-import { ImHome3 } from "react-icons/im";
 import bcrypt from 'bcryptjs'
 
 
@@ -125,7 +123,7 @@ const BackgroundPage = () => {
                             <form onSubmit={handleSearchSubmit} className="search-form">
                                 <input
                                     type="text"
-                                    placeholder={"🔎 Search..."}
+                                    placeholder={"Search..."}
                                     value={searchQuery}
                                     onChange={handleSearchChange}
                                     className="search-input" />
@@ -136,44 +134,43 @@ const BackgroundPage = () => {
             </section>
             <section>
                 <div className="category-show">
-                    <p>Category</p>
-                    <p>Show More</p>
+                    <h2>Categories</h2>
                 </div>
                 <div className="showcase">
-                    <Link>
+                    <Link to={`/products?subcat=clothing`}>
                         <div className="box-cat">
                             <IoShirt className='box-cat cat-icon' />
                             <span>Clothes and footwear</span>
                         </div>
                     </Link>
-                    <Link>
+                    <Link to={`/products?subcat=laptop`}>
                         <div className="box-cat">
                             <MdOutlineLaptopChromebook className='box-cat cat-icon' />
                             <span>Laptops</span>
                         </div>
                     </Link>
-                    <Link>
+                    <Link to={`/products?subcat=phones`}>
                         <div className="box-cat">
                             <BsPhone className='box-cat cat-icon' />
                             <span>Mobile Phones</span>
                         </div>
                     </Link>
-                    <Link>
+                    <Link to={`/products?subcat=electronics`}>
                         <div className="box-cat">
                             <MdElectricalServices className='box-cat cat-icon' />
                             <span>Electronic gadgets</span>
                         </div>
                     </Link>
-                    <Link>
-                        <div className="box-cat">
+                    <Link to={`/products?subcat=video`}>
+                        <div className="box-cat bb2">
                             <IoGameController className='box-cat cat-icon' />
                             <span>Video Game</span>
                         </div>
                     </Link>
-                    <Link>
-                        <div className="box-cat">
-                            <PiTelevisionSimpleBold className='box-cat cat-icon' />
-                            <span>Television</span>
+                    <Link to={`/products?subcat=drinks`}>
+                        <div className="box-cat bb3">
+                            <GiWineBottle className='box-cat cat-icon' />
+                            <span>Drinks</span>
                         </div>
                     </Link>
                 </div>
