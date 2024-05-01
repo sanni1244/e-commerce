@@ -274,7 +274,7 @@ app.post('/cart/add', async (req, res) => {
 
 app.get('/cart/buy', async (req, res) => {
     try {
-        const { myusername } = req.query; // Use req.query instead of req.body
+        const { myusername } = req.query;
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection('users');

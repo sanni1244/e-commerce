@@ -1,8 +1,8 @@
 import Recomm from "../components/recomm";
 import React, { useState } from 'react';
-import { FaStar, FaRegStar, FaStarHalfAlt, FaCheck, FaClipboardList, FaStarOfDavid, FaLock } from "react-icons/fa";
+import { FaStar, FaRegStar, FaStarHalfAlt, FaCheck, FaStarOfDavid, FaLock } from "react-icons/fa";
 import { FcSalesPerformance, FcCancel } from "react-icons/fc";
-import { IoMdChatboxes, IoIosPricetag } from "react-icons/io";
+import { IoMdChatboxes } from "react-icons/io";
 import { TiWarning } from "react-icons/ti";
 import { TbTruckDelivery } from "react-icons/tb";
 import { Link, useLocation } from 'react-router-dom';
