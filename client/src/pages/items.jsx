@@ -62,8 +62,6 @@ const Items = () => {
     useEffect(() => {
         Sghj(Math.floor(Math.random() * 25001))
         fetchComments();
-
-
     }, []);
     useEffect(() => { }, [items]);
 

@@ -128,7 +128,6 @@ app.put('/items/:productId', async (req, res) => {
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection('items');
-        const parsedProductAvailability = myData.productAvailability === 'true';
         const parsedProductPrice = parseFloat(myData.productPrice);
         const parsedShippingFee = parseFloat(myData.shippingFee);
         const parsedDeliveryTime = parseInt(myData.deliveryTime);
@@ -552,6 +551,26 @@ app.put('/crating', async (req, res) => {
         res.status(500).send('Error updating product ratings');
     }
 });
+
+app.put('/addhist', async (req, res) => {
+    try {
+        const { username, views1 } = req.body;
+        if (!username || !views1) {
+            return res.status(400).json({ message: 'Both username and views1 are required' });
+        }
+        const db = client.db(dbName);
+        const collection = db.collection('users');
+        await collection.updateOne(
+            { username },
+            { $push: { views: views1 } }
+        );
+        return res.status(200).json({ message: 'Browsing history added successfully' });
+    } catch (error) {
+        console.error('Error updating user:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 
 
 

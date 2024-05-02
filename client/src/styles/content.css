@@ -2,9 +2,6 @@
   position: relative;
 }
 
-
-
-
 .load {
   display: flex;
   justify-content: center;
@@ -22,7 +19,6 @@
   font-size: 24px;
   color: #f00;
 }
-
 
 .link-color {
   color: #000000;
