@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link, useLocation } from 'react-router-dom';
-import '../styles/nav.css';
-import { FaBars, FaUser, FaTimes, FaSearch, FaUserCircle } from 'react-icons/fa';
+import { FaBars, FaUser, FaTimes, FaSearch } from 'react-icons/fa';
 import { TiShoppingCart } from "react-icons/ti";
 import Categories from './Categories';
 import logo from '../images/l.png';
 import bcrypt from 'bcryptjs'
 import axios from 'axios';
-
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);

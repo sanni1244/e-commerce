@@ -12,7 +12,7 @@ const Recomm = () => {
   const searchParams = new URLSearchParams(location.search);
   const itemId = searchParams.get('item');
   const [auser, setUser] = useState(null);
-  const { items, loading, error } = useFetchItems();
+  const { items } = useFetchItems();
 
   useEffect(() => {
     const getRc = async () => {
@@ -30,7 +30,7 @@ const Recomm = () => {
     getRc();
   }, [itemId]);
 
-  useEffect(() => { }, [items, auser]);
+  useEffect(() => { }, [items, auser]); 
 
 const filteredViews = auser && auser.views ? auser.views.reverse().filter((v, index, self) => {
   const lastIndex = self.lastIndexOf(v);
@@ -39,7 +39,7 @@ const filteredViews = auser && auser.views ? auser.views.reverse().filter((v, in
 
   return (
     <div>
-      {filteredViews.length > 0 && (
+      {filteredViews.length > 5 && (
         <div className='rshow'>
           <h2>Your browsing history</h2>
           <div className='showcasecontainer1'>
@@ -50,7 +50,7 @@ const filteredViews = auser && auser.views ? auser.views.reverse().filter((v, in
               return (
                 latestView && (
                   <div key={index} className="productCard">
-                    <Link to={`/items?item=${latestView.productId}`} className="link-color">
+                    <Link to={`/items?item=${latestView.productId}`} className="link-color ">
                       {latestView.productImg && latestView.productImg[0] ? (
                         <div className='img-container'>
                           <img

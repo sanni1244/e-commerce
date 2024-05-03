@@ -13,6 +13,7 @@ const Paydetails = () => {
         setCvv('');
         {setCong("Your details have been saved.")}
       };
+      
   return (
     <div>
       <div className="payment-info">

@@ -1,48 +1,35 @@
 import React from 'react'
-import '../styles/faq-about.css'
 
 const Services = () => {
   document.title = "Services"
     return (
-        <div className="dvv">
-            <div className='space-between'>
+        <div className="section-dvv">
                 <section id='contact' className="contact-us">
-                    {/* Contact Us Title */}
                     <h2>Contact Us</h2>
-
-                    {/* Contact Information */}
                     <div className="contact-info">
-                        {/* Customer Support Section */}
                         <div className="customer-support">
                             <h3>Customer Support</h3>
                             <p>Our dedicated customer support team is available to assist you with any questions, concerns, or feedback you may have. You can reach us through the following channels:</p>
                             <ul>
                                 <li>Phone: 1-800-123-4567 (Monday to Friday, 9am to 5pm)</li>
-                                <li>Email: support@o-flash.com</li>
-                                <li>Live Chat: Available on our website during business hours</li>
+                                <li>Email: support@rizz.com</li>
+                                <li>Live Chat: Available on our social media during business hours</li>
                             </ul>
                         </div>
-
-                        {/* Corporate Headquarters Section */}
                         <div className="corporate-headquarters">
                             <h3>Corporate Headquarters</h3>
                             <p>If you need to contact our corporate headquarters for business inquiries or partnerships, please use the following contact information:</p>
                             <ul>
                                 <li>Address: 123 Main Street, Cityville, State, ZIP</li>
-                                <li>Phone: 1-800-987-6543</li>
-                                <li>Email: info@o-flash.com</li>
+                                <li>Phone: 234-908-357-5587</li>
+                                <li>Email: info@rizz.com</li>
                             </ul>
                         </div>
                     </div>
                 </section>
 
-
-
                 <section id='faqs' className="faqs">
-                    {/* FAQs Title */}
                     <h2>Frequently Asked Questions</h2>
-
-                    {/* General Questions Section */}
                     <div className="faq-category">
                         <h3>General Questions</h3>
                         <ul>
@@ -125,13 +112,10 @@ const Services = () => {
                         </ul>
                     </div>
 
-                    {/* Payment & Shipping Section */}
                     <div className="faq-category">
                         <h3>Payment & Shipping</h3>
                         <p>If you have questions about payments, shipping, or returns, please refer to our Payment Information, Shipping Information, and Returns & Exchanges sections for more detailed information.</p>
                     </div>
-
-                    {/* Add more FAQ categories and questions here */}
                 </section>
 
 
@@ -154,8 +138,6 @@ const Services = () => {
                     <h3>Exchange Policy</h3>
                     <p>If you wish to exchange an item for a different size or color, please contact us to arrange for an exchange. Exchanges are subject to availability and must be initiated within 30 days of purchase.</p>
                 </section>
-
-            </div>
         </div>
     )
 }

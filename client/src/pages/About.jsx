@@ -4,7 +4,7 @@ function AboutUsPage() {
     document.title = "About"
 
     return (
-        <div className="about-us-container">
+        <div className="section-dvv">
             <section id="story" className="our-story">
                 <h2>Our Story</h2>
                 <p>Founded in 2024, O-Flash has rapidly grown from a small startup to a leading online marketplace, offering a diverse range of products to millions of customers worldwide. Our journey began with a simple idea: to make online shopping convenient, enjoyable, and accessible to everyone.</p>
@@ -110,7 +110,7 @@ function AboutUsPage() {
                 <h3>7. Updates to this Privacy Policy</h3>
                 <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify users of any material changes to this Privacy Policy by posting the updated version on our website.</p>
 
-                <p>If you have any questions or concerns about our Privacy Policy, please contact us at privacy@o-flash.com.</p>
+                <p>If you have any questions or concerns about our Privacy Policy, please contact us at privacy@rizz.com.</p>
             </section>
 
         </div>

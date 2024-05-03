@@ -55,7 +55,8 @@ const Edit = () => {
     };
 
 
-    const handleSearch = async () => {
+    const handleSearch = async (e) => {
+        e.preventDefault()
         setMessage({
             text: "Please wait while data is being retrieved",
             color: "black"
@@ -102,19 +103,18 @@ const Edit = () => {
     if (loggedInUser !== "admin") {
         window.location.href = "/";
     }
-    else {
-        console.log("")
-    }
 
     return (
         <div className="edit-container">
             <div className="within">
                 <h2 className="edit-heading">Edit Item</h2>
-                <label className="input-label">
-                    Enter Product ID:
-                    <input className="input-field" type="text" value={itemId} onChange={(e) => setItemId(e.target.value)} />
-                </label>
-                <button onClick={handleSearch} className="search-button">Search</button>
+                <form>
+                    <label className="input-label">
+                        Enter Product ID:
+                        <input className="input-field" type="text" value={itemId} onChange={(e) => setItemId(e.target.value)} />
+                    </label>
+                    <button onClick={(e) => {handleSearch(e)}} className="search-button">Search</button>
+                </form>
                 <p style={{ color: message.color }}>{message.text}</p>
 
                 {itemData && (

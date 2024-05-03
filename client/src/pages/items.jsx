@@ -1,5 +1,5 @@
 import Recomm from "../components/recomm";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaStar, FaRegStar, FaStarHalfAlt, FaCheck, FaStarOfDavid, FaLock } from "react-icons/fa";
 import { FcSalesPerformance, FcCancel } from "react-icons/fc";
 import { IoMdChatboxes } from "react-icons/io";
@@ -8,9 +8,9 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { Link, useLocation } from 'react-router-dom';
 import { GrFormEdit } from "react-icons/gr";
 import useFetchItems from '../components/pickdatabase';
-import { useEffect } from 'react';
 import axios from "axios";
-import '../styles/item.css'
+import { Loading1, Error1, Not1 } from "../components/Loading";
+
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
 const Items = () => {
@@ -30,7 +30,8 @@ const Items = () => {
     const [errorMessage2, setErrorMessage2] = useState('');
     const [comments, setComments] = useState([]);
     const [ghj, Sghj] = useState(null);
-    let abc = 0
+    let abc = 0;
+    
     const fetchComments = async () => {
         try {
             const response = await axios.get(`${SERVER_URL}/comments/${itemId}`);
@@ -38,6 +39,7 @@ const Items = () => {
             let sum = 0;
             response.data.map((d1, index) => {
                 sum += d1.rating;
+                return null
             })
             let average = sum / response.data.length;
 
@@ -45,8 +47,6 @@ const Items = () => {
                 itemId,
                 ratingMerge : average
             });
-
-            
             setRatingMerge(average)
             setRating(average)
         } catch (error) {
@@ -67,36 +67,15 @@ const Items = () => {
 
 
     if (loading) {
-        return (
-            <div className="loading-container">
-                <div className="loading-content">
-                    <div className="loading-spinner"></div>
-                    <p>Loading...</p>
-                </div>
-            </div>
-        );
+        return (<Loading1/>);
     }
 
     if (error) {
-        return (
-            <div className="error-container">
-                <div className="error-content">
-                    <h2>Oops! Something went wrong.</h2>
-                    <b>{error.code === "ERR_NETWORK" ? error.message : "Error while fetching data "}: Try again</b>
-                </div>
-            </div>
-        );
+        return (<Error1/>);
     }
 
     if (!items[0]) {
-        return (
-            <div className="not-found-container">
-                <div className="not-found-content">
-                    <h5>"Ever noticed how online shopping turns 'just browsing' into a full-blown retail adventure? It's like stumbling into Narnia, but instead of lions and witches, it's all about deals and wishlists!"</h5>
-                </div>
-                <div className="loading-spinner"></div>
-            </div>
-        );
+        return (<Not1/>);
     }
 
     const handleComment = async (e) => {
@@ -126,17 +105,15 @@ const Items = () => {
         }
     };
 
-
     const handleBuyNowClick = () => {
         if (loggedInUser) {
-            window.location.href = '/buy';
+            window.location.href = '/buy'; 
 
         } else {
             window.location.href = '/login';
             setErrorMessage('You have to login first!');
         }
     };
-
 
     const nextSlide = (item) => {
         setCurrentIndex((prevIndex) => {
@@ -216,7 +193,7 @@ const Items = () => {
     }
 
     return (
-        <div>
+        <div className="viewitems">
             {items.map((item, index) => {
                 if (item.productId === itemId) {
                     count++;
@@ -238,7 +215,7 @@ const Items = () => {
                                 </div>
                                 <div className="center-stage">
                                     <div className=""><h2 id={document.title = item.productName}>{item.productName}</h2></div>
-                                    <div className="">
+                                    <div>
                                         <small>Brand: <Link to={`/search?query=${item.productBrand}`}>{item.productBrand || "None"}</Link> &nbsp;&nbsp;
                                             {loggedInUser === "admin" ? <Link to={`/edit?myid=${item.productId}`}><GrFormEdit style={{ color: "black" }} /></Link> : ""}</small> &nbsp;&nbsp;&nbsp;
                                     </div>
@@ -317,7 +294,6 @@ const Items = () => {
                                             return null
                                         }
                                     })()
-
                                 }
                             </div>
                             <section>
@@ -378,8 +354,6 @@ const Items = () => {
                                                 )}
                                             </>
                                         ) : (
-
-
                                             <div className="comment-section">
                                                 <h2 className="comment-heading">No Reviews yet</h2>
                                                 <p className="comment-description">Share your thoughts on this product. Your feedback is valuable!</p>
@@ -393,11 +367,7 @@ const Items = () => {
                         </div>
                     )
                 }
-                else {
-                    return null;
-                }
-
-
+                else { return null;}
             })}
             {
                 count === 0 ? <div className="item-not-found-container">

@@ -53,7 +53,7 @@ const Create = () => {
             formData.productCategory !== "" && formData.productCategory !== null &&
             formData.productSubCategory !== "" && formData.productSubCategory !== null) {
             setMessage({
-                text: "Please wait----adding item",
+                text: "Please wait: Adding item",
                 color: "green"
             })
             try {
@@ -75,8 +75,7 @@ const Create = () => {
                     setMessage({
                         text: "An error occured",
                         color: "red"
-                    })
-                }
+                    })}
             }
         }
         else {

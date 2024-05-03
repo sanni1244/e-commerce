@@ -1,0 +1,38 @@
+.searching .searchbar {
+    padding: 0.5rem 1rem;
+    width: 75vw;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    margin-left: 12rem;
+    margin-top: 1.2rem;
+  }
+  
+ .searching .search-prompt-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+ .searching .search-prompt-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #666;
+  }
+  
+ .searching .search-prompt-container p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+ .searching .search-results-header {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 2rem;
+  }
+  
+ .searching .search-prompt-container {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 90vw;
+    text-align: center;
+  }

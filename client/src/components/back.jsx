@@ -15,7 +15,7 @@ const Back = () => {
     
     if(!isHome && !isHome2){ 
         return (
-            <FaAngleLeft className="back-btn newbck" onClick={() => {
+            <FaAngleLeft className="back-btn" onClick={() => {
                 if (window.history.length > 1) {
                     window.history.back();
                 } else {

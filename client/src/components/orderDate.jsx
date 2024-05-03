@@ -36,49 +36,56 @@ const OrderDate = () => {
     return orderDate.toLocaleDateString();
   }
   
+  const isPastDate = (deliveryDate) => {
+    const today = new Date();
+    const parts = deliveryDate.split('/');
+    const delivery = new Date(parts[2], parts[1] - 1, parts[0]); // Year, month (zero-based), day
+    return delivery < today;
+  }
+
   return (
-    <div>
+    <div style={{ overflowX: 'auto' }}>
       <h2 style={{ textAlign: 'center', margin: '20px 0' }}>Order History</h2>
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ backgroundColor: '#f2f2f2' }}>
-              <th>Order ID</th>
-              <th>Date & Time</th>
-              <th>Quantity</th>
-              <th>Item ID</th>
-              <th>Product Name</th>
-              <th>Amount paid</th>
-              <th>Delivery Date</th>
+      <table style={{ borderCollapse: 'collapse', minWidth: '100%' }}>
+        <thead>
+          <tr style={{ backgroundColor: '#f2f2f2' }}>
+            <th>Order ID</th>
+            <th>Date & Time</th>
+            <th>Qty</th>
+            <th>Item ID</th>
+            <th>Product Name</th>
+            <th>Amount</th>
+            <th>Delivery Date</th>
+          </tr>
+        </thead>
+        <tbody className='small-table'>
+          {orders.length > 0 ? (
+            orders.map(order => {
+              const matchingItem = items.find(item => item.productId === order.itemId);
+              if (!matchingItem) return null;
+              const deliveryDate = saveDate(order.date, matchingItem.deliveryTime);
+              const isPast = isPastDate(deliveryDate);
+              return (
+                <tr key={order.purchaseId}>
+                  <td>{order.purchaseId}</td>
+                  <td>{formatDate(order.date)}</td>
+                  <td>{order.quantity}</td>
+                  <td>{matchingItem.productId}</td>
+                  <td>
+                    <a href={`/items?item=${matchingItem.productId}`}>{matchingItem.productName}</a>
+                  </td>
+                  <td>₦{((order.price * order.quantity) + matchingItem.shippingFee).toLocaleString()}</td>
+                  <td class={ isPast ? 'dlb-order' : null }>{deliveryDate}</td>
+                </tr>
+              );
+            })
+          ) : (
+            <tr>
+              <td colSpan="7" style={{ textAlign: 'center' }}>No orders found</td>
             </tr>
-          </thead>
-          <tbody className='small-table'>
-            {orders.length > 0 ? (
-              orders.map(order => {
-                const matchingItem = items.find(item => item.productId === order.itemId);
-                if (!matchingItem) return null;
-                return (
-                  <tr key={order.purchaseId}>
-                    <td>{order.purchaseId}</td>
-                    <td>{formatDate(order.date)}</td>
-                    <td>{order.quantity}</td>
-                    <td>{matchingItem.productId}</td>
-                    <td>
-                      <a href={`/items?item=${matchingItem.productId}`}>{matchingItem.productName}</a>
-                    </td>
-                    <td>₦{((order.price * order.quantity) + matchingItem.shippingFee).toLocaleString()}</td>
-                    <td>{saveDate(order.date, matchingItem.deliveryTime)}</td>
-                  </tr>
-                );
-              })
-            ) : (
-              <tr>
-                <td colSpan="7" style={{ textAlign: 'center' }}>No orders found</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 }

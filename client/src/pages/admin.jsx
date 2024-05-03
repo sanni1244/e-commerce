@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/admin.css'
 const Admin = () => {
   document.title = "Admin"
   const loggedInUser = localStorage.getItem('loggedInUser');
 
   if (loggedInUser !== "admin") {
     window.location.href = "/";
-  }
-  else {
-    console.log("")
   }
   return (
     <div className="admin-container">
@@ -35,7 +31,6 @@ const Admin = () => {
           <p className="activity-description">Display all products from the inventory.</p>
           <Link to={'/display'} className="activity-link">Go to Display</Link>
         </div>
-        {/* Add more activities here if needed */}
       </div>
     </div>
   );

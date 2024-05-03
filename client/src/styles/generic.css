@@ -1,97 +1,132 @@
-  
-  h1 {
-    font-size: 24px;
-    color: #333;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Jersey+25&family=Lexend:wght@100..900&family=Poetsen+One&family=Roboto+Slab:wght@100..900&family=Teko:wght@300..700&family=Tilt+Neon&display=swap');
 
-  .back-btn {
-    cursor: pointer;
-    margin-right: 10px;
-    font-size: 24px;
-    transition: transform 0.3s ease;
-    color: var(--primary_color);
-  }
+body {
+  padding: 0;
+  margin: 0;
+}
 
-  .back-btn:hover {
-    transform: rotate(-20deg);
-  }
+:root {
+  --font: "Roboto Slab", serif;
+  --primary_color: #028421;
+  --background: rgba(209, 229, 228, 0.658);
+}
 
-  .button {
-    padding: 13px;
-    color: #fff;
-    width: 18rem;
-    margin: 0 auto;
-    font-weight: 600;
-    background-color: #0D6EFD;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
+.container {
+  width: 70vw;
+  margin: auto;
+}
+
+.hidden{
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+}
+h2 {
+  font-size: 24px;
+  font-family: var(--font);
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: 20px;
+  font-family: var(--font);
+}
+
+.white {
+  color: rgb(255, 255, 255);
+}
+
+section:not(:nth-child(2)) {
+  margin-top: 3.7rem;
+}
+
+.back-btn {
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  margin-left: 1rem;
+  position: absolute;
+  z-index: 1000;
+  margin-top: 1rem;
+}
+
+.back-btn:hover {
+  transform: rotate(-20deg);
+}
+
+.button {
+  padding: 13px;
+  color: #fff;
+  width: 18rem;
+  margin: 0 auto;
+  font-weight: 600;
+  background-color: #0D6EFD;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
    
-  .button:hover {
-    background-color: #0d6dfdca;
-  }
+.button:hover {
+  background-color: #0d6dfdca;
+}
 
-  .product-name {
-    font-size: 13px;
-    font-family: var(--font);
-    font-weight: 700;
-    display: block;
-    height: 2.2rem;
-  }
+.error1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  font-size: 24px;
+  color: #f00;
+}
+
+.relative {
+  position: relative;
+}
+.errbad {
+  color: rgb(0, 102, 255);
+  font-size: 13px;
+}
+
+/*   
   
-  .product-desc {
-    font-size: 11.8px;
-    font-family: var(--font);
-    font-weight: 400;
-    display: block;
-    height: 2.3rem;
-  }
 
-  .small-table{
-    font-size: 12px;
-  }
+  .realmoney {
+    font-family: Arial, sans-serif;
+    color: rgb(14, 27, 146);
+}
 
-  .showcasecontainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
+.realmoney::before {
+    content: "₦";
+    margin-right: 0px;
+}
 
-  .productCard {
-    box-shadow: 0px 0px 10px 1px rgba(56, 135, 56, 0.633);
-    padding-top: 3px;
-    border-radius: 8px;
-    width: calc(22%);
-    word-break: break-all;
-  }
 
-  .item-not-found-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-  }
-  
-  .item-not-found-content {
-    text-align: center;
-    padding: 40px;
-    border-radius: 20px;
-    background-color: #fff;
-  }
-  
-  
-  .item-not-found-content h2 {
-    color: #e74c3c;
-    font-size: 36px;
-    margin: 0 0 20px;
-  }
-  
-  .item-not-found-content p {
-    color: #666;
-    font-size: 20px;
-    margin: 0;
-  }
+.fade-enter {
+  opacity: 0;
+}
 
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+} */

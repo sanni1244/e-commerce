@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import useFetchItems from '../components/pickdatabase';
 import Content from '../components/Content.jsx';
-import { useEffect, useState } from 'react'; // Import useState
-import '../styles/products.css';
+import { Loading1, Error1, Not1 } from '../components/Loading';
 
 
 function Products() {
@@ -15,66 +15,64 @@ function Products() {
     const [discount, setDiscount] = useState(false);
     const [discountVal, setDiscountVal] = useState(0);
 
-
-
     useEffect(() => {
         if (!loading && !error && subcat) {
             let filteredItems = [];
-    
+
             if (subcat === "clothing") {
-                filteredItems = items.filter(item => 
-                    item.productSubCategory.toUpperCase() === "ALL" || 
-                    item.productSubCategory.toUpperCase() === "WOMEN" || 
+                filteredItems = items.filter(item =>
+                    item.productSubCategory.toUpperCase() === "ALL" ||
+                    item.productSubCategory.toUpperCase() === "WOMEN" ||
                     item.productSubCategory.toUpperCase() === "MEN"
                 );
                 setSub("Fashion")
                 setDiscount(false)
-            } 
-            else if (subcat === "laptop"){
-                filteredItems = items.filter(item => 
+            }
+            else if (subcat === "laptop") {
+                filteredItems = items.filter(item =>
                     item.productCategory.toUpperCase() === "COMPUTER"
                 );
                 setSub("Computer and Accessories")
                 setDiscount(false)
             }
-            else if (subcat === "phones"){
-                filteredItems = items.filter(item => 
+            else if (subcat === "phones") {
+                filteredItems = items.filter(item =>
                     item.productSubCategory.toUpperCase() === "CELL PHONES"
                 );
                 setSub("Mobile phones")
                 setDiscount(false)
             }
-            else if (subcat === "electronics"){
-                filteredItems = items.filter(item => 
+            else if (subcat === "electronics") {
+                filteredItems = items.filter(item =>
                     item.productCategory.toUpperCase() === subcat.toUpperCase()
                 );
                 setSub("Electronic Devices")
                 setDiscount(false)
             }
-            else if (subcat === "video"){
-                filteredItems = items.filter(item => 
+            else if (subcat === "video") {
+                filteredItems = items.filter(item =>
                     item.productSubCategory.toLowerCase() === "video game consoles & accessories"
                 );
                 setDiscount(true)
                 setSub("Video games and consoles")
                 setDiscountVal(10)
             }
-            else if (subcat === "drinks"){
-                filteredItems = items.filter(item => 
+            else if (subcat === "drinks") {
+                filteredItems = items.filter(item =>
                     item.productSubCategory.toLowerCase() === "drinks and alcohol"
-                    
+
                 );
                 setDiscount(true)
                 setSub("Drinks and alcohol")
                 setDiscountVal(6)
             }
             else {
-                filteredItems = items.filter(item => 
+                filteredItems = items.filter(item =>
                     item.productSubCategory.toUpperCase() === subcat.toUpperCase()
                 );
-                
+
             }
-    
+
             filteredItems.sort((a, b) => b.productRatings - a.productRatings);
             setShuffledItems(filteredItems);
         }
@@ -83,38 +81,15 @@ function Products() {
 
 
     if (loading) {
-        return (
-            <div className="loading-container">
-                <div className="loading-content">
-                    <div className="loading-spinner"></div>
-                    <p>Loading...</p>
-                </div>
-            </div>
-        );
+        return (<Loading1/>);
     }
 
     if (error) {
-        return (
-            <div className="error-container">
-                <div className="error-content">
-                    <h2>Oops! Something went wrong.</h2>
-                    <b>{error.code === "ERR_NETWORK" ? error.message : "Error while fetching data "}: Try again</b>
-                </div>
-            </div>
-        );
+        return (<Error1/>);
     }
 
     if (!items[0]) {
-        return (
-            <div className="not-found-container">
-                <div className="not-found-content">
-                    <h5>
-                        "Shopping online is like being in a candy store, except the candy is virtual, and your wallet is the one crying out for mercy!"
-                    </h5>
-                </div>
-                <div className="loading-spinner"></div>
-            </div>
-        );
+        return (<Not1/>);
     }
 
     if (!shuffledItems.length || subcat === null) {
@@ -131,10 +106,10 @@ function Products() {
 
     return (
         <div>
-            <center><h2 className='mainh'>{subcat1.toUpperCase()}</h2></center> <br />
+            <center><h2>{subcat1.toUpperCase()}</h2></center> <br />
             <div className='showcasecontainer'>
                 {shuffledItems.map((item, index) => (
-                    <div className='productCard shave' key={index}>
+                    <div className='productCard wider-container' key={index}>
                         <Content item={item} discount={discount} discountVal={discountVal} />
                     </div>
                 ))}

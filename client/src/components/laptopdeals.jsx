@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Content from './Content';
+import { Error1, Loading1, Not1 } from './Loading';
 import useFetchItems from './pickdatabase';
 
 const Laptop = () => {
@@ -28,21 +29,15 @@ const Laptop = () => {
   }
 
   if (loading) {
-    return (
-      <div className='load'>
-        <p>Loading...</p>
-      </div>
-    );
+    return (<Loading1/>);
   }
 
   if (error) {
-    return (
-      <div className='error1'>
-        <p>Error occured</p>
-      </div>
-    );
+    return (<Error1/>);
   }
- 
+  if (!items[0]) {
+    return (<Not1/>);
+  }
   return (
     <div className='showcaseheader'>
       <center><h2>Phones and Laptops Collection 💻💻</h2></center>

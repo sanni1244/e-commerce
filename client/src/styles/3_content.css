@@ -1,0 +1,138 @@
+.showcasecontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 10px;
+}
+
+.showcasecontainer1 {
+    display: flex;
+    flex-direction: row-reverse;
+    overflow-x: scroll;
+    justify-content: space-evenly;
+    gap: 1.4rem;
+    margin-bottom: 3rem;
+    scrollbar-width: none;
+}
+
+.showcasecontainer .productCard {
+    box-shadow: 0px 0px 10px 1px rgba(56, 135, 56, 0.633);
+    padding-top: 3px;
+    border-radius: 8px;
+    width: calc(22%);
+    word-break: break-all;
+}
+.showcasecontainer .wider-container{
+    width: calc(17% - 10px);
+  }
+  
+.showcasecontainer1 .productCard {
+    box-shadow: none;
+    border-radius: 0px;
+    border: 6px solid rgba(160, 165, 182, 0.633);
+    background-color: transparent;
+}
+
+.showcasecontainer1 .img-style {
+    width: 13rem;
+}
+
+.cover-up {
+    background-color: var(--background);
+    padding: 3rem;
+    border-radius: 25px;
+}
+  
+.cover-up .productCard {
+    background-color: white;
+}
+
+
+.written-content {
+    position: relative;
+}
+
+ .img-container {
+    height: 160px;
+    margin-top: 10px;
+    display: flex;
+}
+ .cot-tain {
+    height: 90px;
+    margin-top: 8px;
+}
+ .prod-details {
+    padding: 0 17px;
+    padding-bottom: 0px;
+}
+  
+ .img-style {
+    height: 95%;
+    width: 80%;
+    margin: auto;
+    object-fit: contain;
+}
+
+ .product-name {
+    font-size: 13px;
+    font-family: var(--font);
+    font-weight: 700;
+    display: block;
+    height: 2.2rem;
+}
+  
+ .product-desc {
+    font-size: 11.3px;
+    font-family: var(--font);
+    font-weight: 400;
+    display: block;
+    height: 2.3rem;
+}
+
+ .color-stars {
+    color: rgb(71, 107, 155);
+    width: 11px;
+}
+
+ .fixed-bottom {
+    position: absolute;
+    top: -30px;
+    left: -3px;
+}
+
+ .fg {
+    font-size: 11px;
+    padding: 4px 0;
+}
+
+ .prd-price {
+    float: right;
+    color: rgba(38, 52, 54, 0.87);
+    font-family: var(--font);
+    font-weight: bold;
+    font-size: 11px;
+}
+  
+ .prd-price1 {
+    font-size: 11px;
+    text-decoration: line-through;
+    color: rgb(173, 23, 23);
+    margin-right: 7px;
+}
+  
+ .discount-price {
+    color: #333;
+    font-size: 12px;
+}
+ 
+
+
+
+
+
+
+
+
+

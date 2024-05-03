@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Content from './Content';
+import { Loading1, Error1, Not1 } from './Loading';
 import useFetchItems from './pickdatabase';
+
 
 const Gaming = () => {
   const { items, loading, error } = useFetchItems();
@@ -27,26 +29,14 @@ const Gaming = () => {
   }
 
   if (loading) {
-    return (
-      <div className='load'>
-        <p>Loading...</p>
-      </div>
-    );
+    return (<Loading1/>);
   }
 
   if (error) {
-    return (
-      <div className='error1'>
-        <p>Error occured</p>
-      </div>
-    );
+    return (<Error1/>);
   }
   if (!items[0]) {
-    return (
-      <div className='error1'>
-        <p>Empty cart</p>
-      </div> 
-    );
+    return (<Not1/>);
   }
 
   return (

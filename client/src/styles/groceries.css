@@ -1,0 +1,63 @@
+.groceries-order {
+    width: 91vw;
+    margin: auto;
+    position: relative;
+}
+  
+.groceries-order h1 {
+    font-size: 36px;
+    font-family: var(--font);
+    margin-bottom: 2rem;
+}
+  
+.groceries-order .branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgb(46, 44, 44);
+    border: 2px solid white;
+    padding: 2rem;
+    border-radius: 20px;
+}
+  
+.groceries-order h2 {
+    text-align: center;
+    padding: 30px 0px;
+    background-color: var(--background);
+    font-size: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px gray;
+    width: max(65vw, 45rem);
+}
+
+.groceries-order .lostfile {
+    width: 35rem;
+    height: 19rem;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: bottom;
+}
+  
+.groceries-order .productCard {
+    width: calc(13%);
+}
+  
+.groceries-order .product-desc {
+    display: none;
+}
+  
+.groceries-order .cot-tain {
+    height: 2rem;
+}
+  
+.groceries-order .img-container {
+    height: 110px;
+    margin-top: 5px;
+}
+  
+.groceries-order .img-style {
+    height: 90%;
+}

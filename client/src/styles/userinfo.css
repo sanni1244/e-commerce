@@ -20,21 +20,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative; 
 }
-@media (max-width: 960px) {
-    .bsector3 {
-        max-width: 70vw;
-    } 
-}
-@media (max-width: 825px) {
-    .bsector3 {
-        max-width: 60vw;
-    } 
-}
-@media (max-width: 825px) {
-    .bsector3 {
-        max-width: 60vw;
-    }  
-}
+
 .bsector h2 {
     margin-bottom: 20px;
     font-size: 20px;
@@ -112,10 +98,9 @@
     transform: translateY(2px);
 }
 
-.vvdd {
+.bsector .vvdd {
     background-color: var(--primary_color) !important;
 }
-
 
 .bsector table {
     width: 100%;
@@ -168,17 +153,7 @@
     opacity: 1;
 }
 
-.realmoney {
-    font-family: Arial, sans-serif;
-    color: rgb(14, 27, 146);
-}
-
-.realmoney::before {
-    content: "₦";
-    margin-right: 0px;
-}
-
-.width-extra {
+.bsector .width-extra {
     width: 2000px;
 }
 
@@ -194,6 +169,64 @@
     }
 }
 
-.tablestyle td {
-    font-family: var(--primary_font);
+
+
+
+.settings form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.settings .setting-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.settings .setting-option label {
+    flex: 1;
+    margin-right: 10px;
+    font-size: 16px;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 100;
+    color: #666;
+}
+
+.settings .setting-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.settings .setting-option input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60px;
+}
+
+.settings .fddd-select {
+    appearance: none;
+    position: relative;
+    flex: 0.2;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-family: "Bree Serif", serif !important;
+}
+
+.settings .fddd-select:focus {
+    outline: none;
+    border-color: var(--primary_color);
+    box-shadow: 0 0 0 3px var(--primary_color);
+}
+
+.settings .fddd-select option:checked {
+    background-color: var(--primary_color);
+    color: #fff;
 }

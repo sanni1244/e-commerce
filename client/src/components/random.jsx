@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Content from './Content';
+import { Error1, Loading1, Not1 } from './Loading';
 import useFetchItems from './pickdatabase';
 
 const Random = () => {
@@ -21,20 +22,15 @@ const Random = () => {
     };
 
     if (loading) {
-        return (
-          <div className='load'>
-            <p>Loading...</p>
-          </div>
-        );
-      }
-    
-      if (error) {
-        return (
-          <div className='error1'>
-            <p>Error occured</p>
-          </div>
-        );
-      }
+      return (<Loading1/>);
+    }
+  
+    if (error) {
+      return (<Error1/>);
+    }
+    if (!items[0]) {
+      return (<Not1/>);
+    }
 
     return (
         <div className='showcaseheader'>

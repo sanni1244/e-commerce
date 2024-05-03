@@ -14,7 +14,7 @@ const Delete = () => {
     const handleDelete = async (e) => {
         e.preventDefault()
         setMessage({
-            text: 'Deleting item.......🔃🔃',
+            text: 'Deleting item...🔃🔃',
             color: 'red'
         });
         try {
@@ -25,19 +25,18 @@ const Delete = () => {
             });
 
         } catch (error) {
-            if(error.response.data === "Item not found"){
+            if (error.response.data === "Item not found") {
                 setMessage({
                     text: 'Item not found!',
                     color: 'red'
                 });
             }
-            else{
+            else {
                 setMessage({
                     text: 'An error occured!!',
                     color: 'red'
                 });
             }
-            
         }
     };
     if (loggedInUser !== "admin") {
@@ -48,15 +47,15 @@ const Delete = () => {
         <div className="edit-container">
             <div className="within">
                 <h2 className="edit-heading">Delete Item</h2>
-                <label>
-                    Enter Product ID: <br /><br />
-                    <input className="input-field" type="text" placeholder='Z1111' value={productId} onChange={(e) => setProductId(e.target.value)} />
-                </label> <br /> <br />
-                <button onClick={handleDelete} className="search-button">Delete</button>
-                <br /><br /><br /><br />
+                <form>
+                    <label className="input-label">
+                        Enter Product ID: 
+                        <input className="input-field" type="text" placeholder='iphone-pro-max' value={productId} onChange={(e) => setProductId(e.target.value)} />
+                    </label>
+                    <button onClick={handleDelete} className="search-button">Delete</button>
+                </form>
+                <br /><br /><br />
                 <b style={{ color: message.color }}>{message.text}</b>
-
-
             </div>
         </div>
     );

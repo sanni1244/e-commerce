@@ -131,7 +131,7 @@ app.put('/items/:productId', async (req, res) => {
         const parsedProductPrice = parseFloat(myData.productPrice);
         const parsedShippingFee = parseFloat(myData.shippingFee);
         const parsedDeliveryTime = parseInt(myData.deliveryTime);
-        const parsedProductRatings = parseInt(myData.productRatings);
+        const parsedProductRatings = parseFloat(myData.productRatings);
 
         await collection.updateOne({ productId }, {
             $set: {
@@ -497,12 +497,8 @@ app.get('/order/history/:username', async (req, res) => {
     } catch (error) {
         console.error('Error fetching order history:', error);
         res.status(500).json({ message: 'Internal server error' });
-    } finally {
-        client.close();
     }
 });
-
-
 
 app.get('/comments', async (req, res, next) => {
     try {
@@ -514,6 +510,7 @@ app.get('/comments', async (req, res, next) => {
         next(error);
     }
 });
+
 app.delete('/comments/:id', async (req, res) => {
     try {
         const db = client.db(dbName);
@@ -570,8 +567,6 @@ app.put('/addhist', async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 });
-
-
 
 
 app.listen(port, () => {

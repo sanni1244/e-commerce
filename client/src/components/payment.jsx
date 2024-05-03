@@ -25,8 +25,6 @@ function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
     console.log(mysent)
     handlePayment(formData);
 
-    
-
     try {
       await axios.post(`${SERVER_URL}/purchase/add`, { mysent, loggedInUser });
       console.log('Items purchased successfully');

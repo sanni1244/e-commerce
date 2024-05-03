@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Content from '../components/Content.jsx';
+import { Loading1, Error1, Not1 } from '../components/Loading.jsx';
 import useFetchItems from '../components/pickdatabase';
 
 const SearchPage = () => {
@@ -22,36 +23,15 @@ const SearchPage = () => {
     );
 
   if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-content">
-          <div className="loading-spinner"></div>
-          <p>Loading...</p>
-        </div>
-      </div>
-    );
+    return(<Loading1 />)
   }
 
   if (error) {
-    return (
-      <div className="error-container">
-        <div className="error-content">
-          <h2>Oops! Something went wrong.</h2>
-          <b>{error.code === "ERR_NETWORK" ? error.message : "Error while fetching data "}: Try again</b>
-        </div>
-      </div>
-    );
+    return (<Error1/>);
   }
 
   if (!items[0]) {
-    return (
-      <div className="not-found-container">
-        <div className="not-found-content">
-          <h5>"Ever noticed how online shopping turns 'just browsing' into a full-blown retail adventure? It's like stumbling into Narnia, but instead of lions and witches, it's all about deals and wishlists!"</h5>
-        </div>
-        <div className="loading-spinner"></div>
-      </div>
-    );
+    return (<Not1/>);
   }
 
   const handleSearchChange = (e) => {
@@ -59,7 +39,7 @@ const SearchPage = () => {
   };
 
   return (
-    <>
+    <div className='searching'>
       <input
         type="text"
         placeholder="Search..."
@@ -81,13 +61,13 @@ const SearchPage = () => {
           <center><h2>{searchQuery.toUpperCase()}</h2></center>
           <div className='showcasecontainer'>
             {filteredProducts.map((item, index) => (
-              <div className='productCard' key={index}>
+              <div className='productCard wider-container' key={index}>
                 <Content item={item} />
               </div>
             ))}
           </div>
         </div>}
-    </>
+    </div>
   );
 };
 

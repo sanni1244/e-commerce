@@ -1,0 +1,136 @@
+.nav-bar {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-bar .link {
+    width: 50%;
+}
+
+.nav-bar .link ul {
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    gap: 2.4rem;
+    justify-content: right;
+}
+
+.nav-bar .logo,
+.nav-bar .user,
+.nav-bar .sss11 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-bar .logo img {
+    width: 40px;
+}
+
+.nav-bar .user {
+    gap: 0.4rem;
+}
+.nav-bar .link a {
+    font-size: 14px;
+    color: rgb(107, 107, 107);
+    font-weight: 600;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 100;
+    transition: all ease-in 0.2s;
+}
+
+.nav-bar .user a {
+    color: rgb(69, 15, 79)
+}
+
+.nav-bar .link a:hover, .nav-bar .user a:hover  {
+    color: #007bff;
+}
+
+.nav-bar .hot-prof {
+    padding: 11px;
+    background-color: var(--background);
+    border-radius: 7px;
+    gap: 8px;
+}
+
+.nav-bar .hot-prof1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.category123 {
+    position: relative;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 100;
+}
+
+.category123 .cat-hold {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 12rem;
+    z-index: 1000;
+    border-radius: 10px;
+    background-color: rgb(233, 235, 235);
+    box-shadow: inset -19px -20px 11px 20px rgba(202, 202, 202, 0.605);
+    padding: 5px;
+}
+
+.navbar .category123 div {
+    cursor: pointer;
+}
+
+.navbar .category123 span {
+    margin-left: 5px;
+}
+
+.navbar .category123 .cat-hold p {
+    margin: 0;
+}
+
+.CategoryContainer .category {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.CategoryContainer h3 {
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: black;
+}
+
+.CategoryContainer ul {
+    background-color: rgba(233, 233, 233, 0.486);
+}
+
+.CategoryContainer li {
+    padding: 10px;
+    border-bottom: 2px solid rgb(218, 218, 218);
+    transition: color 0.3s;
+}
+
+.CategoryContainer .sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.3s ease-in-out;
+}
+
+.CategoryContainer .active .sub-menu {
+    max-height: 700px;
+}
+
+.CategoryContainer li:hover {
+    color: #007bff;
+}

@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import useFetchItems from '../components/pickdatabase';
 import PaymentForm from '../components/payment';
 import { FaCheck } from "react-icons/fa6";
-import '../styles/buy.css'
 import { FaCalendarCheck } from "react-icons/fa";
+import { Loading1, Error1, Not1 } from '../components/Loading';
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
@@ -134,39 +134,15 @@ function Buy() {
   };
 
   if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-content">
-          <div className="loading-spinner"></div>
-          <p>Loading...</p>
-        </div>
-      </div>
-    );
+    return (<Loading1/>);
   }
 
   if (error) {
-    return (
-      <div className="error-container">
-        <div className="error-content">
-          <h2>Oops! Something went wrong.</h2>
-          <b>{error.code === "ERR_NETWORK" ? error.message : "Error while fetching data "}: Try again</b>
-        </div>
-      </div>
-    );
+    return (<Error1/>);
   }
 
   if (!items[0]) {
-    return (
-      <div className="not-found-container">
-        <div className="not-found-content">
-          <p className='dfffa'>"Shopping online is like being in a candy store, except the candy is virtual, and your wallet is the one crying out for mercy!"</p>
-          <center>
-            <div className="loading-spinner">
-            </div>
-          </center>
-        </div>
-      </div>
-    );
+    return (<Not1/>);
   }
 
   return (
@@ -199,7 +175,7 @@ function Buy() {
               </div>
               <div className="product-q">
                 <p>Price: {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice || 'Price Not Available').toLocaleString()} x {quantity[item.itemId] || item?.selectedValue}</p>
-                <p>Shipping: {(items.find((product) => product.productId === item?.itemId)?.shippingFee || 0).toLocaleString()}</p>
+                <p>Shipping: {(items.find((product) => product.productId === item?.itemId)?.shippingFee || "Free").toLocaleString()}</p>
                 <p>Total: <b>{"₦" + (parseInt(items.find((product) => product.productId === item?.itemId)?.productPrice) * parseInt(quantity[item.itemId] || item?.selectedValue) + parseInt(items.find((product) => product.productId === item?.itemId)?.shippingFee || 0)).toLocaleString() || 0}</b></p>
               </div>
               <button className="button" onClick={() => removeContent(item.itemId)}>Remove</button>

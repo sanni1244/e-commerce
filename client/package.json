@@ -42,6 +42,9 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "sass": "^1.76.0",
+    "stylelint": "^10.1.0",
+    "stylelint-no-unused-selectors": "^1.0.40"
   }
 }

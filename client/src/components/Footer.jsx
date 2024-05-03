@@ -1,7 +1,6 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaGithub, FaWhatsapp } from "react-icons/fa";
 import { IoMail, IoCall } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import '../styles/footer.css'
 
 function Footer() {
   return (

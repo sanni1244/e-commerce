@@ -6,8 +6,7 @@ import con1 from '../images/con1.jpg'
 import con2 from '../images/con2.jpg'
 import con3 from '../images/con3.jpg'
 import con8 from '../images/con8.jpg'
-
-
+import { Loading1, Error1, Not1 } from '../components/Loading.jsx';
 
 function GroceriesPage() {
     const { items, loading, error } = useFetchItems();
@@ -16,7 +15,6 @@ function GroceriesPage() {
     const [sortedProducts3, setSortedProducts3] = useState([]);
     const [sortedProducts4, setSortedProducts4] = useState([]);
     const [sortedProducts5, setSortedProducts5] = useState([]);
-
 
     useEffect(() => {
         const filteredProducts1 = Object.values(items).flat().filter(item => item.productSubCategory === 'Drinks and alcohol');
@@ -34,27 +32,20 @@ function GroceriesPage() {
         const filteredProducts5 = Object.values(items).flat().filter(item => item.productSubCategory === 'Fragrances');
         setSortedProducts5(filteredProducts5);
 
-        // const filteredProducts1 = Object.values(items).flat().filter(item => item.productSubCategory === 'Drinks and alcohol');
-        // setSortedProducts1(filteredProducts1);
-
     }, [items]);
 
-
     if (loading) {
-        return (
-            <div className='load'>
-                <p>Loading...</p>
-            </div>
-        );
+      return(<Loading1 />)
+    }
+  
+    if (error) {
+      return (<Error1/>);
+    }
+  
+    if (!items[0]) {
+      return (<Not1/>);
     }
 
-    if (error) {
-        return (
-            <div className='error1'>
-                <p>Error occured</p>
-            </div>
-        );
-    }
     return (
         <div className='groceries-order'>
             <center><h1>Groceries</h1></center>
@@ -62,7 +53,7 @@ function GroceriesPage() {
             <section id="drinks-section">
                 <div className='branch'>
                     <h2>Drinks, Wine & Liquor</h2>
-                    <img className='lostfile' src={con1} alt="cart image" />
+                    <img className='lostfile' src={con1} alt="Drinks" />
                 </div>
                 <div className='showcaseheader'>
                     <div className='showcasecontainer'>
@@ -78,7 +69,7 @@ function GroceriesPage() {
             <section id="snacks-section">
                 <div className='branch'>
                     <h2>Snacks and Junks</h2>
-                    <img className='lostfile' src={con8} alt="cart image" />
+                    <img className='lostfile' src={con8} alt="Junks and items" />
                 </div>
                 <div className='showcaseheader'>
                     <div className='showcasecontainer'>
@@ -90,13 +81,10 @@ function GroceriesPage() {
                     </div>
                 </div>
             </section>
-
-
-
             <section id="food-section">
                 <div className='branch'>
                     <h2>Food Stuff</h2>
-                    <img className='lostfile' src={cart} alt="cart image" />
+                    <img className='lostfile' src={cart} alt="Food" />
                 </div>
                 <div className='showcaseheader'>
                     <div className='showcasecontainer'>
@@ -112,7 +100,7 @@ function GroceriesPage() {
             <section id="perfumes-section">
                 <div className='branch'>
                     <h2>Fragrance</h2>
-                    <img className='lostfile' src={con2} alt="cart image" />
+                    <img className='lostfile' src={con2} alt="Fragrances" />
                 </div>
                 <div className='showcaseheader'>
                         <div className='showcasecontainer'>
@@ -128,7 +116,7 @@ function GroceriesPage() {
             <section id="household-section">
                 <div className='branch'>
                     <h2>Household care</h2>
-                    <img className='lostfile' src={con3} alt="cart image" />
+                    <img className='lostfile' src={con3} alt="House care" />
                 </div>
                 <div className='showcaseheader'>
                     <div className='showcasecontainer'>

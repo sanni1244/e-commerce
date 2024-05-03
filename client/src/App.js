@@ -1,7 +1,28 @@
 // App.js
 import React from 'react';
-import './App.css';
+// import './App.css';
 import './styles/generic.css';
+// import './styles/settings.css';
+// import './styles/products.css';
+// import './styles/item.css'
+import './styles/buy.css'
+import './styles/admin.css'
+import './styles/footer.css'
+import './styles/1_home.css'
+import './styles/2_nav.css'
+import './styles/3_content.css'
+import './styles/groceries.css'
+import './styles/loaderror.css'
+import './styles/search.css'
+import './styles/about.css'
+import './styles/item.css'
+import './styles/profile.css';
+import './styles/userinfo.css';
+
+
+
+
+
 import Navigation from './components/navigation';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -22,7 +43,6 @@ import Services from './pages/Services';
 import NotFoundPage from './pages/NotFound';
 import Profile from './pages/profile';
 import Back from './components/back';
-import Demo from './pages/demo';
 import GroceriesPage from './pages/Groceries';
 
 function App() {
@@ -31,13 +51,12 @@ function App() {
       <Navigation />
       <Back />
       <Routes>
-        <Route path="/" exact element={<Demo />} />
+        <Route path="/" exact element={<Home />} />
         <Route path="/edit" element={<Edit />} />
         <Route path="/create" element={<Create />} />
         <Route path="/items" element={<Items />} />
         <Route path="/display" element={<Display />} />
         <Route path="/groceries" element={<GroceriesPage />} />
-        <Route path="/" exact element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/buy" element={<Buy />} />
         <Route path="/login" element={<Login />} />
