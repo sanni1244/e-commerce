@@ -127,7 +127,13 @@
     font-size: 12px;
 }
  
-
+.link-color {
+    color: #473c3c;
+  }
+  
+  .link-color:hover {
+    color: rgb(104, 149, 36);
+  }
 
 
 

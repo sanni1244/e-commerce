@@ -62,9 +62,7 @@ app.post('/items', async (req, res) => {
     } catch (error) {
         console.error('Error adding item:', error);
         res.status(500).send('Error adding item');
-    } finally {
-        await client.close();
-    }
+    } 
 });
 app.post('/paste', async (req, res) => {
     await client.connect();
@@ -93,8 +91,6 @@ app.get('/items/:productId', async (req, res) => {
     } catch (error) {
         console.error('Error fetching item:', error);
         res.status(500).send('Error fetching item');
-    } finally {
-        await client.close();
     }
 });
 
@@ -115,9 +111,7 @@ app.get('/ito', async (req, res) => {
     } catch (error) {
         console.error('Error fetching item:', error);
         res.status(500).send('Error fetching item');
-    } finally {
-        await client.close();
-    }
+    } 
 });
 
 app.put('/items/:productId', async (req, res) => {
@@ -148,8 +142,6 @@ app.put('/items/:productId', async (req, res) => {
     } catch (error) {
         console.error('Error updating item:', error);
         res.status(500).send('Error updating item');
-    } finally {
-        await client.close();
     }
 });
 
@@ -171,9 +163,7 @@ app.delete('/items/:productId', async (req, res) => {
     } catch (error) {
         console.error('Error deleting item:', error);
         res.status(500).send('Error deleting item');
-    } finally {
-        await client.close();
-    }
+    } 
 });
 app.post('/register', async (req, res) => {
     try {
@@ -191,9 +181,7 @@ app.post('/register', async (req, res) => {
     } catch (error) {
         console.error('Error registering user:', error);
         res.status(500).json({ message: 'Internal server error' });
-    } finally {
-        await client.close();
-    }
+    } 
 });
 
 app.post('/login', async (req, res) => {
@@ -214,8 +202,6 @@ app.post('/login', async (req, res) => {
     } catch (error) {
         console.error('Error logging in:', error);
         res.status(500).json({ message: 'Internal server error' });
-    } finally {
-        await client.close();
     }
 });
 
@@ -237,8 +223,6 @@ app.get('/usercheck', async (req, res) => {
     } catch (error) {
         console.error('Error logging in:', error);
         res.status(500).json({ message: 'Internal server error' });
-    } finally {
-        await client.close();
     }
 });
 
@@ -553,7 +537,7 @@ app.put('/addhist', async (req, res) => {
     try {
         const { username, views1 } = req.body;
         if (!username || !views1) {
-            return res.status(400).json({ message: 'Both username and views1 are required' });
+            return res.status(400).json({ message: 'Both username and views are required' });
         }
         const db = client.db(dbName);
         const collection = db.collection('users');
@@ -565,6 +549,24 @@ app.put('/addhist', async (req, res) => {
     } catch (error) {
         console.error('Error updating user:', error);
         return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+app.put('/itodd', async (req, res) => {
+    const { productId, updatedFields } = req.body;
+    try {
+        const db = client.db(dbName);
+        const collection = db.collection('items');
+        const result = await collection.updateOne({ productId: productId }, { $set: updatedFields });
+
+        if (result.modifiedCount === 0) {
+            return res.status(404).send('Item not found');
+        }
+
+        res.status(200).send('Item updated successfully');
+    } catch (error) {
+        console.error('Error updating item:', error);
+        res.status(500).send('Error updating item');
     }
 });
 

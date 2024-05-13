@@ -1,5 +1,4 @@
 .viewitems{
-
 }
 
 .viewitems .bk {
@@ -9,7 +8,7 @@
 .viewitems .grid-items {
   display: grid;
   grid-template-columns: 1.4fr 1.7fr 1fr;
-  padding: 5rem;
+  padding: 3rem;
 }
 
 .viewitems .slider {
@@ -21,7 +20,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   padding: 4rem;
-  min-height: 60vh;
+  min-height: 40vh;
 }
 
 .viewitems .slide {
@@ -54,8 +53,7 @@
 }
 
 .viewitems .center-stage {
-  padding: 3rem;
-  padding-top: 0;
+  padding: 0 3rem;
 }
 
 .viewitems .center-stage h2 {
@@ -136,7 +134,7 @@
   flex-direction: row;
   font-family: var(--primary_font);
   color: rgb(96, 96, 96);
-  margin-top: 1.3rem;
+  margin-top: 1rem;
 }
 
 .viewitems .counter {
@@ -235,7 +233,6 @@
   display: flex;
   justify-content: center;
   font-weight: bold;
-  margin-top: 2rem;
 }
 
 /* comments  */

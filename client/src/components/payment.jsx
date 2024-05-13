@@ -1,9 +1,15 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import axios from 'axios';
+import { CardElement, Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe("pk_test_51PCVaeGiJpve5KVb9WgJBew3prfPtf62WdOznNvDSF59HhcjSa8ed19JIZubxu6z8tcjPlF08BLHmKnOPI67PJwB00AujiRKNH");
+
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
 function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
   const loggedInUser = localStorage.getItem('loggedInUser');
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -22,15 +28,14 @@ function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(mysent)
+    setLoading(true); // Set loading to true when Pay Now button is clicked
     handlePayment(formData);
 
-    try {
-      await axios.post(`${SERVER_URL}/purchase/add`, { mysent, loggedInUser });
-      console.log('Items purchased successfully');
-    } catch (error) {
-      console.error('Error purchasing items:', error);
-    }
+    setTimeout(() => {
+      setLoading(false); // Set loading to false after 5 seconds
+    }, 5000);
+
+    // Your payment processing logic here
   };
 
   const handleCancelClick = () => {
@@ -58,13 +63,32 @@ function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
           <label>Address:</label>
           <input type="text" name="address" value={formData.address} onChange={handleChange} required />
         </div>
-        <div style={{display: "flex", gap: "3rem"}} className="">
-          <button className='bttn'  type="submit">Pay Now</button>
-          <button className='remove-btn' type="button" onClick={handleCancelClick}>Cancel</button>
+        <div className="form-group">
+          <label>Card Details:</label>
+          <CardElement />
+        </div>
+        <div className="form-group">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <>
+              <button className='' type="submit">Pay Now</button>
+              <button style={{marginLeft: "3rem"}} className="pay-btn" onClick={handleCancelClick}>Cancel</button>
+
+            </>
+          )}  
         </div>
       </form>
     </div>
   );
 }
 
-export default PaymentForm;
+function PaymentFormWithElements(props) {
+  return (
+    <Elements stripe={stripePromise}>
+      <PaymentForm {...props} />
+    </Elements>
+  );
+}
+
+export default PaymentFormWithElements;

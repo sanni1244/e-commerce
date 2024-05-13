@@ -1,43 +1,45 @@
 export const Cat1 = [
     { 
-        Department: "Electronics",
+        Department: "Electronics and Gadgets",
         SubCategories: [
-            "Accessories & Supplies",
-            "Cell phones",
-            "Television, Video and Audio",
-            "Video Game Consoles & Accessories",
-        ],
-    },
-    {
-        Department: "Computer",
-        SubCategories: [
-            "Computer Accessories & Peripherals",
-            "Desktop, Components & Tablets",
+            "Electronic accessories",
+            "Cell Phones",
+            "Tv, audio and entertainment",
+            "Gaming and Peripherals",
+            "Power and Generators",
             "Laptops",
+            "Desktop & Tablets",
+
         ],
     },
-    
+ 
     {
-        Department: "Clothing",
+        Department: "Clothing and Accessories",
         SubCategories: [
-            "All",
-            "Women",
-            "Men",
+            "Children's Apparel",
+            "Women's Fashion",
+            "Fashion accessories",
+            "Footwears",
+            "Men's Fashion",
+
         ],
     },
     {
-        Department: "Toys & Games",
-        SubCategories: [
-            "Toys & Vehicles",
-        ],
-    },
-    {
-        Department: "Groceries",
+        Department: "Food, Home, Health and Beauty",
         SubCategories: [
             "Drinks and alcohol",
             "Snacks and Junks",
-            "Food Stuff",
-            "Household care"
+            "Foodstuff",
+            "Home utilities",
+            "Fragrances"
+        ],
+    },
+    {
+        Department: "Creativity and Sports",
+        SubCategories: [
+            "Hobbies",
+            "Art",
+            "Toys & Vehicles"
         ],
     }
 ];

@@ -40,7 +40,6 @@ const Clothes = () => {
 
   return (
     <div className='showcaseheader'>
-      <center><h2>Clothings 🩳👕🕶️👠</h2></center>
       <div className='showcasecontainer'>
         {sortedProducts.slice(0, 8).map((item, index) => (
           <div className='productCard' key={index}>

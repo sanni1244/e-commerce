@@ -23,7 +23,8 @@ function Products() {
                 filteredItems = items.filter(item =>
                     item.productSubCategory.toUpperCase() === "ALL" ||
                     item.productSubCategory.toUpperCase() === "WOMEN" ||
-                    item.productSubCategory.toUpperCase() === "MEN"
+                    item.productSubCategory.toUpperCase() === "MEN" ||
+                    ( item.productCategory.toUpperCase() === "CLOTHING")
                 );
                 setSub("Fashion")
                 setDiscount(false)
@@ -40,6 +41,13 @@ function Products() {
                     item.productSubCategory.toUpperCase() === "CELL PHONES"
                 );
                 setSub("Mobile phones")
+                setDiscount(false)
+            }
+            else if (subcat === "rating") {
+                filteredItems = items.filter(item =>
+                    item.productRatings >= 4.2
+                );
+                setSub("Highest Rated Products")
                 setDiscount(false)
             }
             else if (subcat === "electronics") {
@@ -60,11 +68,18 @@ function Products() {
             else if (subcat === "drinks") {
                 filteredItems = items.filter(item =>
                     item.productSubCategory.toLowerCase() === "drinks and alcohol"
-
                 );
                 setDiscount(true)
                 setSub("Drinks and alcohol")
                 setDiscountVal(6)
+            }
+            else if (subcat === "apple") {
+                filteredItems = items.filter(item =>
+                    item.productBrand.toLowerCase() === "apple"
+                );
+                setDiscount(true)
+                setSub("Apple Products")
+                setDiscountVal(2)
             }
             else {
                 filteredItems = items.filter(item =>

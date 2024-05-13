@@ -3,11 +3,8 @@
 body {
   padding: 0;
   margin: 0;
-}
-
-:root {
   --font: "Roboto Slab", serif;
-  --primary_color: #028421;
+  --primary_color: #840234;
   --background: rgba(209, 229, 228, 0.658);
 }
 
@@ -98,6 +95,10 @@ section:not(:nth-child(2)) {
 .errbad {
   color: rgb(0, 102, 255);
   font-size: 13px;
+}
+
+.active-link {
+  color: #219102 !important;
 }
 
 /*   

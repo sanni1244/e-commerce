@@ -1,16 +1,12 @@
-// App.js
 import React from 'react';
-// import './App.css';
+import './App.css';
 import './styles/generic.css';
-// import './styles/settings.css';
-// import './styles/products.css';
-// import './styles/item.css'
 import './styles/buy.css'
 import './styles/admin.css'
 import './styles/footer.css'
-import './styles/1_home.css'
-import './styles/2_nav.css'
-import './styles/3_content.css'
+import './styles/home.css'
+import './styles/nav.css'
+import './styles/content.css'
 import './styles/groceries.css'
 import './styles/loaderror.css'
 import './styles/search.css'
@@ -18,9 +14,6 @@ import './styles/about.css'
 import './styles/item.css'
 import './styles/profile.css';
 import './styles/userinfo.css';
-
-
-
 
 
 import Navigation from './components/navigation';

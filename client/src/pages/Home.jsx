@@ -177,12 +177,10 @@ const BackgroundPage = () => {
                 </div>
             </section>
 
-
-
             <section className='showcase-flash'>
                 <div className="category-show">
-                    <p>Most Popular</p>
-                    <p>Show More</p>
+                    <p>Highest Rated Products</p>
+                    <Link to={`/products?subcat=rating`}>Show More</Link>
                 </div>
                 <div className="">
                     <Ratings />
@@ -192,7 +190,7 @@ const BackgroundPage = () => {
                 <div className="cover-up">
                     <div className="category-show">
                         <p>Apple products</p>
-                        <p>Show More</p>
+                        <Link to={`/products?subcat=apple`}>Show More</Link>
                     </div>
                     <div className="">
                         <Apple />
@@ -221,7 +219,7 @@ const BackgroundPage = () => {
             <section className='showcase-flash'>
                 <div className="category-show">
                     <p>Clothing Isle</p>
-                    <p>Show More</p>
+                    <Link to={`/products?subcat=clothing`}>Show More</Link>
                 </div>
                 <div className="">
                     <Clothes />
@@ -239,8 +237,8 @@ const BackgroundPage = () => {
             <section className='showcase-flash'>
                 <div className="cover-up">
                     <div className="category-show">
-                        <p>Clothing Isle</p>
-                        <p>Show More</p>
+                        <p>Gaming Station</p>
+                        <Link to={`/products?subcat=video`}>Show More</Link>
                     </div>
                     <div className="">
                         <Gaming />

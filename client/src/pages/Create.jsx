@@ -47,11 +47,7 @@ const Create = () => {
 
     const addItem = async () => {
         if (formData.productId !== "" && formData.productId !== null &&
-            Number(formData.productRatings) < 6 && Number(formData.productRatings) >= 0 &&
-            formData.productName !== "" && formData.productName !== null &&
-            (formData.productAvailability === "true" || formData.productAvailability === true || formData.productAvailability === false || formData.productAvailability === "True" || formData.productAvailability === "TRUE" || formData.productAvailability === "False" || formData.productAvailability === "FALSE" || formData.productAvailability === "false") &&
-            formData.productCategory !== "" && formData.productCategory !== null &&
-            formData.productSubCategory !== "" && formData.productSubCategory !== null) {
+            formData.productName !== "" && formData.productName !== null ) {
             setMessage({
                 text: "Please wait: Adding item",
                 color: "green"

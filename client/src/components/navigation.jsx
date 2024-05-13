@@ -76,9 +76,9 @@ const Navbar = () => {
                 </div>
                 <div className="link">
                     <ul>
-                        <Link to="/" className="nav-link"> Home</Link>
-                        <Link to="/about" className="nav-link"> About</Link>
-                        <Link to="/services" className="nav-link"> Services</Link>
+                        <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active-link' : ''}`}> Home</Link>
+                        <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active-link' : ''}`}> About</Link>
+                        <Link to="/services" className={`nav-link ${location.pathname === '/services' ? 'active-link' : ''}`}> Services</Link>
                         {!h1 ? (
                             <>
                                 <Link to="/login" className="nav-link">
@@ -89,7 +89,7 @@ const Navbar = () => {
                                 </Link>
                             </>
                         ) : (
-                            <Link to="/profile" className='nav-link'>
+                            <Link to="/profile" className={`nav-link ${location.pathname === '/profile' ? 'active-link' : ''}`}>
                                 <span className='hot-prof'>{h1.toUpperCase()}</span>
                             </Link>
                         )}
@@ -103,7 +103,7 @@ const Navbar = () => {
                 <div className="user">
                     <Link to={"/search"}><span className='hot-prof'><FaSearch /></span></Link>
                     <Link to={"/profile"}><span className='hot-prof'><FaUser /></span></Link>
-                    <Link to={"/buy"}><span className='hot-prof hot-prof1'><TiShoppingCart /> {cartItems.cart &&<>({cartItems.cart.length})</>}</span></Link>
+                    <Link to={"/buy"}><span className='hot-prof hot-prof1'><TiShoppingCart /> {cartItems.cart && <>({cartItems.cart.length})</>}</span></Link>
                     
                 </div>
             </div>

@@ -275,7 +275,7 @@ const Items = () => {
                                         <p><FaStarOfDavid /> Full warranty on all purchases</p>
                                         <p><FaLock /> Secure Payment</p>
                                     </div>
-                                    <p className="small-b">{errorMessage}</p>
+                                    <b className="small-b">{errorMessage}</b>
                                 </div>
                             </div>
                             <div className="img-group-padd">

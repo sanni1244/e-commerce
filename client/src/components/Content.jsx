@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import { GrFormEdit } from "react-icons/gr";
+import empt from "../images/none.png";
+
 
 const loggedInUser = localStorage.getItem('loggedInUser');
 const Content = ({ item, discount, discountVal }) => (
@@ -17,7 +19,7 @@ const Content = ({ item, discount, discountVal }) => (
                     />
                 </div>
             ) : (
-                <div className='img-container'><img className='img-style' src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="No img" /></div>
+                <div className='img-container'><img className='img-style' src={empt} alt="No img" /></div>
             )}
             <div className='prod-details'>
                 <div className="cot-tain">

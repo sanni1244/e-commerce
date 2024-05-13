@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import useFetchItems from '../components/pickdatabase';
 import PaymentForm from '../components/payment';
 import { FaCheck } from "react-icons/fa6";
-import { FaCalendarCheck } from "react-icons/fa";
+import { FaCalendarCheck, FaTrashAlt } from "react-icons/fa";
 import { Loading1, Error1, Not1 } from '../components/Loading';
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
@@ -14,7 +14,7 @@ function Buy() {
   const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState({});
   const [isChecked, setChecked] = useState([]);
-  const [checkoutItems, setCheckoutItems] = useState([]);
+  const [checkoutItems, setCheckoutItems] = useState([]); 
   const [paymentStatus, setPaymentStatus] = useState('');
   const { items, loading, error } = useFetchItems();
   const [showPaymentForm, setShowPaymentForm] = useState(false);
@@ -178,7 +178,7 @@ function Buy() {
                 <p>Shipping: {(items.find((product) => product.productId === item?.itemId)?.shippingFee || "Free").toLocaleString()}</p>
                 <p>Total: <b>{"₦" + (parseInt(items.find((product) => product.productId === item?.itemId)?.productPrice) * parseInt(quantity[item.itemId] || item?.selectedValue) + parseInt(items.find((product) => product.productId === item?.itemId)?.shippingFee || 0)).toLocaleString() || 0}</b></p>
               </div>
-              <button className="button" onClick={() => removeContent(item.itemId)}>Remove</button>
+              <p className='trash-icon' onClick={() => removeContent(item.itemId)}><FaTrashAlt/></p>
             </li>
           ))}
         </ul>

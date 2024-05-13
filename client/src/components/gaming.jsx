@@ -39,6 +39,7 @@ const Gaming = () => {
     return (<Not1/>);
   }
 
+  
   return (
     <div className='showcaseheader'>
       <div className='showcasecontainer'>
