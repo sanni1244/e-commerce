@@ -21,17 +21,14 @@ function Products() {
 
             if (subcat === "clothing") {
                 filteredItems = items.filter(item =>
-                    item.productSubCategory.toUpperCase() === "ALL" ||
-                    item.productSubCategory.toUpperCase() === "WOMEN" ||
-                    item.productSubCategory.toUpperCase() === "MEN" ||
-                    ( item.productCategory.toUpperCase() === "CLOTHING")
+                    item.productCategory === "Clothing and Accessories"
                 );
                 setSub("Fashion")
                 setDiscount(false)
             }
             else if (subcat === "laptop") {
                 filteredItems = items.filter(item =>
-                    item.productCategory.toUpperCase() === "COMPUTER"
+                    item.productSubCategory === "Laptops"
                 );
                 setSub("Computer and Accessories")
                 setDiscount(false)
@@ -52,14 +49,14 @@ function Products() {
             }
             else if (subcat === "electronics") {
                 filteredItems = items.filter(item =>
-                    item.productCategory.toUpperCase() === subcat.toUpperCase()
+                    item.productCategory === "Electronics and Gadgets"
                 );
                 setSub("Electronic Devices")
                 setDiscount(false)
             }
             else if (subcat === "video") {
                 filteredItems = items.filter(item =>
-                    item.productSubCategory.toLowerCase() === "video game consoles & accessories"
+                    item.productSubCategory === "Gaming and Peripherals"
                 );
                 setDiscount(true)
                 setSub("Video games and consoles")

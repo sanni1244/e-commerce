@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaUser, FaTimes, FaSearch } from 'react-icons/fa';
 import { TiShoppingCart } from "react-icons/ti";
+import { MdAppRegistration, MdLogin, MdLogout } from "react-icons/md";
 import Categories from './Categories';
 import logo from '../images/l.png';
 import bcrypt from 'bcryptjs'
@@ -13,8 +14,7 @@ const Navbar = () => {
     const h1 = localStorage.getItem('loggedInUser');
     const hr = localStorage.getItem('hdfe');
     const [cartItems, setCartItems] = useState([]);
-    const [change, setChange] = useState(true); 
-    const loggedInUser = localStorage.getItem('loggedInUser');
+    const [change, setChange] = useState(true);
     const location = useLocation();
     const isHomePage = location.pathname === '/';
     const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
@@ -38,7 +38,7 @@ const Navbar = () => {
     useEffect(() => {
         const getCart = async () => {
             try {
-                const response = await axios.get(`${SERVER_URL}/cart/buy`, { params: { myusername: loggedInUser } });
+                const response = await axios.get(`${SERVER_URL}/cart/buy`, { params: { myusername: h1 } });
                 setCartItems(response.data);
             } catch (error) {
                 console.error('Error fetching cart:', error);
@@ -60,10 +60,12 @@ const Navbar = () => {
     return (
         <nav className={isHomePage ? 'hidden' : ''}>
             <div className='nav-bar'>
+                <Link to={"/home"}>
                 <div className="logo">
                     <img src={logo} alt="logo" />
                     <span>Rizz</span>
                 </div>
+                </Link>
                 <div className='category123'>
                     <div className="sss11" onClick={toggleMenu}>
                         {isOpen ? <><FaTimes /></> : <><FaBars /> <span>Categories</span></>}
@@ -76,35 +78,34 @@ const Navbar = () => {
                 </div>
                 <div className="link">
                     <ul>
-                        <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active-link' : ''}`}> Home</Link>
+                        <Link to="/" className={`nav-link zxder ${location.pathname === '/' ? 'active-link' : ''}`}> Home</Link>
                         <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active-link' : ''}`}> About</Link>
                         <Link to="/services" className={`nav-link ${location.pathname === '/services' ? 'active-link' : ''}`}> Services</Link>
-                        {!h1 ? (
+                        {!h1 && (
                             <>
-                                <Link to="/login" className="nav-link">
+                                <Link to="/login" className="nav-link logoutin">
                                     Log in
                                 </Link>
-                                <Link to="/register" className="nav-link">
+                                <Link to="/register" className="nav-link logoutin">
                                     Sign up
                                 </Link>
+                                <Link title='Login' to={"/login"}><span className='hot-prof logoutnow'><MdLogin /></span></Link>
                             </>
-                        ) : (
-                            <Link to="/profile" className={`nav-link ${location.pathname === '/profile' ? 'active-link' : ''}`}>
-                                <span className='hot-prof'>{h1.toUpperCase()}</span>
-                            </Link>
                         )}
                         {h1 && (
-                            <Link to="/login" className="nav-link" onClick={handleLogout}>
-                                Log out
-                            </Link>
-                        )}
+                            <>
+                                <Link to="/login" className="nav-link logoutin" onClick={handleLogout}>
+                                    Log out
+                                </Link>
+                                <Link title='Logout' onClick={handleLogout}><span className='nav-link logoutnow'><MdLogout/></span></Link>
+
+                            </>)}
                     </ul>
                 </div>
                 <div className="user">
                     <Link to={"/search"}><span className='hot-prof'><FaSearch /></span></Link>
-                    <Link to={"/profile"}><span className='hot-prof'><FaUser /></span></Link>
-                    <Link to={"/buy"}><span className='hot-prof hot-prof1'><TiShoppingCart /> {cartItems.cart && <>({cartItems.cart.length})</>}</span></Link>
-                    
+                    {h1 ? <Link to={"/profile"}><span className='hot-prof hot-prof1'><b>{h1.toUpperCase()}</b> <FaUser /></span></Link> : null}
+                    <Link to={"/buy"}><span className='hot-prof hot-prof1'><TiShoppingCart /> {(cartItems.cart && <>({cartItems.cart.length})</>)  || 0}</span></Link>
                 </div>
             </div>
         </nav>

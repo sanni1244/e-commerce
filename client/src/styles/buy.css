@@ -57,14 +57,14 @@
 }
   
 .cart-container .cart-item-info a {
-    color: #6b1895a9;
+    color: #221b25cf;
     text-decoration: none;
     transition: color 0.3s ease;
     font-family: "Bree Serif", serif;
 }
   
 .cart-container .cart-item-info a:hover {
-    color: #0057b3c8;
+    color: #153d67c8;
 
 }
   

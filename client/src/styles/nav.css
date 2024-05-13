@@ -14,6 +14,7 @@
     list-style-type: none;
     flex-direction: row;
     gap: 2.4rem;
+    align-items: center;
     justify-content: right;
 }
 
@@ -42,16 +43,19 @@
 }
 
 .nav-bar .user a {
-    color: rgb(69, 15, 79)
+    font-weight: 800;
+    color: #e4e4e4;
+    font-size: 13.5px;
+
 }
 
 .nav-bar .link a:hover, .nav-bar .user a:hover  {
-    color: #007bff;
+    color: rgb(218, 188, 155);
 }
 
 .nav-bar .hot-prof {
-    padding: 11px;
-    background-color: var(--background);
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
     border-radius: 7px;
     gap: 8px;
 }
@@ -72,11 +76,11 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 12rem;
+    width: 12.5rem;
+    background-color: #3c5f7c;
+    color: white;
     z-index: 1000;
     border-radius: 10px;
-    background-color: rgb(233, 235, 235);
-    box-shadow: inset -19px -20px 11px 20px rgba(202, 202, 202, 0.605);
     padding: 5px;
 }
 
@@ -100,7 +104,10 @@
     flex-direction: column;
     
 }
-
+.logoutnow{
+    display: none;
+    font-size: 18px;
+}
 .CategoryContainer h3 {
     margin: 0;
     padding: 10px;
@@ -108,7 +115,6 @@
     border-radius: 5px 5px 0 0;
     cursor: pointer;
     transition: background-color 0.3s;
-    color: black;
 }
 
 .CategoryContainer ul {
@@ -134,3 +140,8 @@
 .CategoryContainer li:hover {
     color: #007bff;
 }
+
+
+
+
+

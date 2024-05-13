@@ -29,7 +29,6 @@ function Footer() {
         <div className="footer-column">
           <h4>Connect With Us</h4>
           <ul className="social-icons">
-            <li><a href="#"><FaFacebook/></a></li>
             <li><a href="#"><IoCall/></a></li>
             <li><a href="#"><IoMail/></a></li>
             <li><a href="#"><FaFacebook/></a></li>

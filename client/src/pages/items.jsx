@@ -29,9 +29,8 @@ const Items = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [errorMessage2, setErrorMessage2] = useState('');
     const [comments, setComments] = useState([]);
-    const [ghj, Sghj] = useState(null);
     let abc = 0;
-    
+
     const fetchComments = async () => {
         try {
             const response = await axios.get(`${SERVER_URL}/comments/${itemId}`);
@@ -45,7 +44,7 @@ const Items = () => {
 
             await axios.put(`${SERVER_URL}/crating`, {
                 itemId,
-                ratingMerge : average
+                ratingMerge: average
             });
             setRatingMerge(average)
             setRating(average)
@@ -60,22 +59,21 @@ const Items = () => {
 
     let count = 0;
     useEffect(() => {
-        Sghj(Math.floor(Math.random() * 25001))
         fetchComments();
     }, []);
     useEffect(() => { }, [items]);
 
 
     if (loading) {
-        return (<Loading1/>);
+        return (<Loading1 />);
     }
 
     if (error) {
-        return (<Error1/>);
+        return (<Error1 />);
     }
 
     if (!items[0]) {
-        return (<Not1/>);
+        return (<Not1 />);
     }
 
     const handleComment = async (e) => {
@@ -91,7 +89,7 @@ const Items = () => {
                     comment,
                     rating
                 });
- 
+
                 setErrorMessage2('You made a comment');
                 setComment('')
                 fetchComments();
@@ -107,7 +105,7 @@ const Items = () => {
 
     const handleBuyNowClick = () => {
         if (loggedInUser) {
-            window.location.href = '/buy'; 
+            window.location.href = '/buy';
 
         } else {
             window.location.href = '/login';
@@ -231,13 +229,13 @@ const Items = () => {
                                                 <FaRegStar key={index} className='color-stars' />
                                             ))} &nbsp;
                                             {abc ? parseFloat(abc).toFixed(1) : "0"} <br />
-                                            
+
                                         </b>
                                         <span>
                                             <IoMdChatboxes /> {comments.length === 1 ? comments.length + " review" : comments.length + " reviews"}
                                         </span>
                                         <span>
-                                            <FcSalesPerformance /> {ghj}  orders
+                                            <FcSalesPerformance /> {(item.productPrice.toLocaleString()[0] * Math.max(item.shippingFee.toLocaleString()[0], 2) * Math.pow(2, Math.max(comments.length, 2))) || 5}  orders
                                         </span>
                                     </div>
                                     <div className="dfffa">{item.productAvailability ? <span style={{ color: "green" }}><FaCheck /> In Stock</span> : <span style={{ color: "red" }}><FcCancel />Unavailable</span>}</div>
@@ -259,6 +257,13 @@ const Items = () => {
                                     <p className="myprice">
                                         {item.shippingFee ? "₦" + item.shippingFee.toLocaleString() : "Free"}
                                         <i className="shadow">Shipping Fee</i>
+                                        <i className="shadow">
+                                            {
+                                                item.shippingFee.toLocaleString()[0] === "0" ? "Domestic Shipping - Nigeria" : item.shippingFee.toLocaleString()[0] === "1" ? "International Shipping - United States" : item.shippingFee.toLocaleString()[0] === "2" ? "International Shipping - China" : item.shippingFee.toLocaleString()[0] === "3" ? "International Shipping - Germany" : item.shippingFee.toLocaleString()[0] === "4" ? "International Shipping - India" : 
+                                                item.shippingFee.toLocaleString()[0] === "5" ? "International Shipping - United Kingdom" : item.shippingFee.toLocaleString()[0] === "6" ? "International Shipping - Australia" : item.shippingFee.toLocaleString()[0] === "7" ? "Yet another condition" : item.shippingFee.toLocaleString()[0] === "8" ? "International Shipping - United States" : item.shippingFee.toLocaleString()[0] === "9" ? "International Shipping - India" : "Domestic Shipping - Nigeria"
+                                            }
+                                        </i>
+
                                     </p>
                                     <p className="counter">
                                         <span className="decrement" onClick={selectedValue > 1 ? () => setSelectedValue(selectedValue - 1) : null}>-</span>
@@ -367,7 +372,7 @@ const Items = () => {
                         </div>
                     )
                 }
-                else { return null;}
+                else { return null; }
             })}
             {
                 count === 0 ? <div className="item-not-found-container">

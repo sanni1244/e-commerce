@@ -5,19 +5,16 @@ import img1 from '../images/img1.jpg';
 import img2 from '../images/img2.jpg';
 import logo from '../images/l.png';
 import { CSSTransition } from 'react-transition-group';
-import { MdOutlineLaptopChromebook, MdElectricalServices } from "react-icons/md";
+import { MdOutlineLaptopChromebook, MdElectricalServices, MdLogin, MdLogout } from "react-icons/md";
 import { FaBars, FaUser, FaTimes, FaSearch } from 'react-icons/fa';
 import { GiWineBottle } from "react-icons/gi";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoShirt, IoGameController } from "react-icons/io5";
-import { BsPhone } from "react-icons/bs";
-import Ratings from '../components/highratings';
-import Apple from '../components/Appledeals';
-import Clothes from '../components/Clothes';
-import Gaming from '../components/gaming';
+import { BsPhone } from "react-icons/bs"; 
 import Categories from '../components/Categories';
 import bcrypt from 'bcryptjs'
-
+import Random from '../components/random';
+import axios from 'axios';
 
 const BackgroundPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -25,8 +22,9 @@ const BackgroundPage = () => {
     const h1 = localStorage.getItem('loggedInUser');
     const hr = localStorage.getItem('hdfe');
     const [change, setChange] = useState(true);
+    const [cartItems, setCartItems] = useState([]);
+    const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
- 
 
     useEffect(() => {
         if (h1) {
@@ -43,6 +41,18 @@ const BackgroundPage = () => {
             });
         }
     }, [])
+
+    useEffect(() => {
+        const getCart = async () => {
+            try {
+                const response = await axios.get(`${SERVER_URL}/cart/buy`, { params: { myusername: h1 } });
+                setCartItems(response.data);
+            } catch (error) {
+                console.error('Error fetching cart:', error);
+            }
+        };
+        getCart();
+    }, [cartItems]);
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
@@ -84,31 +94,31 @@ const BackgroundPage = () => {
                         <ul>
                             <Link to="/about" className="nav-link"> About</Link>
                             <Link to="/services" className="nav-link"> Services</Link>
-                            {!h1 ? (
-                                <>
-                                    <Link to="/login" className="nav-link">
-                                        Log in
-                                    </Link>
-                                    <Link to="/register" className="nav-link">
-                                        Sign up
-                                    </Link>
-                                </>
-                            ) : (
-                                <Link to="/profile" className='nav-link'>
-                                    <span className='hot-prof'>{h1.toUpperCase()}</span>
+                            {!h1 && (
+                            <>
+                                <Link to="/login" className="nav-link logoutin">
+                                    Log in
                                 </Link>
-                            )}
-                            {h1 && (
-                                <Link to="/login" className="nav-link" onClick={handleLogout}>
+                                <Link to="/register" className="nav-link logoutin">
+                                    Sign up
+                                </Link>
+                                <Link title='Login' to={"/login"}><span className='hot-prof logoutnow'><MdLogin /></span></Link>
+                            </>
+                        )}
+                        {h1 && (
+                            <>  
+                                <Link to="/login" className="nav-link logoutin" onClick={handleLogout}>
                                     Log out
                                 </Link>
-                            )}
+                                <Link title='Logout' onClick={handleLogout}><span className='nav-link logoutnow'><MdLogout/></span></Link>
+
+                            </>)}
                         </ul>
                     </div>
                     <div className="user">
                         <Link to={"/search"}><span className='hot-prof'><FaSearch /></span></Link>
-                        <Link to={"/profile"}><span className='hot-prof'><FaUser /></span></Link>
-                        <Link to={"/buy"}><span className='hot-prof'><TiShoppingCart /></span></Link>
+                        {h1 ? <Link to={"/profile"}><span className='hot-prof hot-prof1'><b>{h1.toUpperCase()}</b> <FaUser /></span></Link> : null}
+                        <Link to={"/buy"}><span className='hot-prof hot-prof1'><TiShoppingCart /> {(cartItems.cart && <>({cartItems.cart.length})</>)  || 0}</span></Link>
                     </div>
                 </div>
             </nav>
@@ -140,37 +150,37 @@ const BackgroundPage = () => {
                 <div className="showcase">
                     <Link to={`/products?subcat=clothing`}>
                         <div className="box-cat">
-                            <IoShirt className='box-cat cat-icon' />
+                            <IoShirt className='cat-icon' />
                             <span>Clothes and footwear</span>
                         </div>
                     </Link>
                     <Link to={`/products?subcat=laptop`}>
                         <div className="box-cat">
-                            <MdOutlineLaptopChromebook className='box-cat cat-icon' />
+                            <MdOutlineLaptopChromebook className='cat-icon' />
                             <span>Laptops</span>
                         </div>
                     </Link>
                     <Link to={`/products?subcat=phones`}>
                         <div className="box-cat">
-                            <BsPhone className='box-cat cat-icon' />
+                            <BsPhone className='cat-icon' />
                             <span>Mobile Phones</span>
                         </div>
                     </Link>
                     <Link to={`/products?subcat=electronics`}>
                         <div className="box-cat">
-                            <MdElectricalServices className='box-cat cat-icon' />
+                            <MdElectricalServices className='cat-icon' />
                             <span>Electronic gadgets</span>
                         </div>
                     </Link>
                     <Link to={`/products?subcat=video`}>
                         <div className="box-cat bb2">
-                            <IoGameController className='box-cat cat-icon' />
+                            <IoGameController className='cat-icon' />
                             <span>Video Game</span>
                         </div>
                     </Link>
                     <Link to={`/products?subcat=drinks`}>
                         <div className="box-cat bb3">
-                            <GiWineBottle className='box-cat cat-icon' />
+                            <GiWineBottle className='cat-icon' />
                             <span>Drinks</span>
                         </div>
                     </Link>
@@ -183,7 +193,7 @@ const BackgroundPage = () => {
                     <Link to={`/products?subcat=rating`}>Show More</Link>
                 </div>
                 <div className="">
-                    <Ratings />
+                    <Random gold={"price"} />
                 </div>
             </section>
             <section className='showcase-flash'>
@@ -193,7 +203,7 @@ const BackgroundPage = () => {
                         <Link to={`/products?subcat=apple`}>Show More</Link>
                     </div>
                     <div className="">
-                        <Apple />
+                        <Random gold={"apple"} />
                     </div>
                 </div>
             </section>
@@ -222,7 +232,8 @@ const BackgroundPage = () => {
                     <Link to={`/products?subcat=clothing`}>Show More</Link>
                 </div>
                 <div className="">
-                    <Clothes />
+                    <Random gold={"clothes"} />
+
                 </div>
             </section >
             <section className="deals-section">
@@ -241,8 +252,35 @@ const BackgroundPage = () => {
                         <Link to={`/products?subcat=video`}>Show More</Link>
                     </div>
                     <div className="">
-                        <Gaming />
+                        <Random gold={"gaming"} />
                     </div>
+                </div>
+            </section>
+            <section className='showcase-flash'>
+                <div className="category-show">
+                    <p>Don't Miss Out</p>
+                    <Link to={`/products?subcat=sss`}>Show More</Link>
+                </div>
+                <div className="">
+                    <Random gold={"random"} />
+                </div>
+            </section>
+            <section className='showcase-flash'>
+                <div className="category-show">
+                    <p>Children's Style</p>
+                    <Link to={`/products?subcat=sss`}>Show More</Link>
+                </div>
+                <div className="">
+                    <Random gold={"children"} />
+                </div>
+            </section>
+            <section className='showcase-flash'>
+                <div className="category-show">
+                    <p>Laptops and Mobile Devices</p>
+                    <Link to={`/products?subcat=sss`}>Show More</Link>
+                </div>
+                <div className="">
+                    <Random gold={"laptop"} />
                 </div>
             </section>
         </div>

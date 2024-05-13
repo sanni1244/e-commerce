@@ -26,7 +26,7 @@ function GroceriesPage() {
         const filteredProducts3 = Object.values(items).flat().filter(item => item.productSubCategory === 'Foodstuff');
         setSortedProducts3(filteredProducts3);
 
-        const filteredProducts4 = Object.values(items).flat().filter(item => item.productSubCategory === 'Household care');
+        const filteredProducts4 = Object.values(items).flat().filter(item => item.productSubCategory === 'Home utilities');
         setSortedProducts4(filteredProducts4);
 
         const filteredProducts5 = Object.values(items).flat().filter(item => item.productSubCategory === 'Fragrances');
@@ -47,12 +47,11 @@ function GroceriesPage() {
     }
 
     return (
-        <div className='groceries-order'>
-            <center><h1>Groceries</h1></center>
-
+        <div className='groceries-order'> 
+            <h1 style={{marginLeft: "5rem"}}>Food, Home, Health and Beauty</h1>
             <section id="drinks-section">
                 <div className='branch'>
-                    <h2>Drinks, Wine & Liquor</h2>
+                    <h4>Drinks, Wine & Liquor</h4>
                     <img className='lostfile' src={con1} alt="Drinks" />
                 </div>
                 <div className='showcaseheader'>
@@ -68,7 +67,7 @@ function GroceriesPage() {
 
             <section id="snacks-section">
                 <div className='branch'>
-                    <h2>Snacks and Junks</h2>
+                    <h4>Snacks and Junks</h4>
                     <img className='lostfile' src={con8} alt="Junks and items" />
                 </div>
                 <div className='showcaseheader'>
@@ -83,7 +82,7 @@ function GroceriesPage() {
             </section>
             <section id="food-section">
                 <div className='branch'>
-                    <h2>Food Stuff</h2>
+                    <h4>Food Stuff</h4>
                     <img className='lostfile' src={cart} alt="Food" />
                 </div>
                 <div className='showcaseheader'>
@@ -99,7 +98,7 @@ function GroceriesPage() {
 
             <section id="perfumes-section">
                 <div className='branch'>
-                    <h2>Fragrance</h2>
+                    <h4>Fragrance</h4>
                     <img className='lostfile' src={con2} alt="Fragrances" />
                 </div>
                 <div className='showcaseheader'>
@@ -115,7 +114,7 @@ function GroceriesPage() {
 
             <section id="household-section">
                 <div className='branch'>
-                    <h2>Household care</h2>
+                    <h4>Household care</h4>
                     <img className='lostfile' src={con3} alt="House care" />
                 </div>
                 <div className='showcaseheader'>

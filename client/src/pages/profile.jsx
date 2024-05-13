@@ -34,10 +34,10 @@ const Profile = () => {
     <div className="profile-container">
       <div className="left-nav">
         <ul>
-          <li onClick={() => handleNavClick('user-info')}><FaUser /> User Information</li>
-          <li onClick={() => handleNavClick('order-history')}><FaHistory /> Order History</li>
-          <li onClick={() => handleNavClick('payment-info')}><FaCreditCard /> Payment Information</li>
-          <li onClick={() => handleNavClick('settings')}><FaCog /> Settings</li>
+          <li onClick={() => handleNavClick('user-info')}><b><FaUser /> </b>User Information</li>
+          <li onClick={() => handleNavClick('order-history')}><b><FaHistory /> </b>Order History</li>
+          <li onClick={() => handleNavClick('payment-info')}><b><FaCreditCard /></b> Payment Information</li>
+          <li onClick={() => handleNavClick('settings')}><b><FaCog /> </b>Settings</li>
         </ul>
       </div>
 

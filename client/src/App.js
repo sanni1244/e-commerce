@@ -14,6 +14,9 @@ import './styles/about.css'
 import './styles/item.css'
 import './styles/profile.css';
 import './styles/userinfo.css';
+import './styles/login.css';
+import './styles/responsive.css';
+
 
 
 import Navigation from './components/navigation';
@@ -42,7 +45,7 @@ function App() {
   return (
     <Router>
       <Navigation />
-      <Back />
+      <Back/>
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/edit" element={<Edit />} />
@@ -60,7 +63,7 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/services" element={<Services />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage />} /> 
       </Routes>
       <Footer />
     </Router>

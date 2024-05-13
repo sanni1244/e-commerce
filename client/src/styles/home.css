@@ -67,7 +67,7 @@
     flex-wrap: wrap;
 }
 
-.first-class .box-cat, .bb2, .bb3 {
+.first-class .box-cat {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -115,16 +115,12 @@
 /* groceries  */
 .my-groceries .border-class {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     max-width: 800px;
-    margin: auto;
-    padding: 30px;
-    border-radius: 20px;
+    padding: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
     flex-direction: row-reverse;
-    flex-wrap: nowrap;
 }
   
 .my-groceries .img-side {
@@ -162,7 +158,7 @@
 .my-groceries .flex {
     display: flex;
     flex-direction: row;
-    gap: 8rem;
+    gap: 3rem;
 }
 
 

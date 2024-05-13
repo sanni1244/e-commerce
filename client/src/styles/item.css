@@ -60,6 +60,7 @@
   font-family: var(--primary_font);
   font-weight: 700;
   font-style: normal;
+  font-size: 18px !important;
   color: var(--primary_color);
 }
 
@@ -235,15 +236,15 @@
   font-weight: bold;
 }
 
-/* comments  */
+
 .cmmt-section{
   padding: 3rem;
 }
 
 .cmmt-section .comment-form {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+  width: 95%;
+  /* max-width: 600px; */
+  /* margin: 0 auto; */
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -357,3 +358,39 @@
   padding: 3rem;
   box-sizing: border-box;
 }
+
+
+
+
+
+
+
+
+.cmmt-section .comment-heading {
+  margin-top: 3rem;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.cmmt-section .comment-form {
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #303030;
+  color: white;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(199, 159, 199, 0.5);
+}
+
+.cmmt-section .tx-ar {
+  width: 97% ;
+  padding: 20px ;
+  margin-bottom: 30px ;
+  border: 2px solid #ff00ff ;
+  border-radius: 15px ;
+  font-size: 1.5rem ;
+  color: #fff ;
+  background-color: #1f1f1f ;
+}
+
+

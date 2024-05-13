@@ -1,52 +1,27 @@
-.groceries-order {
-    width: 91vw;
-    margin: auto;
-    position: relative;
-}
-  
-.groceries-order h1 {
-    font-size: 36px;
-    font-family: var(--font);
-    margin-bottom: 2rem;
-}
-  
-.groceries-order .branch {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    background-color: rgba(219, 222, 225, 0.352);
-    box-shadow: 0px 1px 3px gray;
-    padding: 1rem;
-    border-radius: 20px;
-}
-  
-.groceries-order .lostfile {
-    width: 35rem;
-    height: 19rem;
+.branch {
+    text-align: center;
+    padding: 20px;
     border-radius: 10px;
-    object-fit: cover;
-    object-position: bottom;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-  
-.groceries-order .productCard {
-    width: calc(13%);
+
+.branch h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
 }
-  
-.groceries-order .product-desc {
-    display: none;
+
+.branch img.lostfile {
+    max-width: 40%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
-  
-.groceries-order .cot-tain {
-    height: 2rem;
+
+.branch img.lostfile:hover {
+    transform: scale(1.03);
 }
-  
-.groceries-order .img-container {
-    height: 110px;
-    margin-top: 5px;
-}
-  
-.groceries-order .img-style {
-    height: 90%;
-}
+
+
+
