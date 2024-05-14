@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaGithub, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaGithub, FaWhatsapp, FaTelegramPlane, FaTelegram } from "react-icons/fa";
 import { IoMail, IoCall } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -29,14 +29,13 @@ function Footer() {
         <div className="footer-column">
           <h4>Connect With Us</h4>
           <ul className="social-icons">
-            <li><a href="#"><IoCall/></a></li>
-            <li><a href="#"><IoMail/></a></li>
-            <li><a href="#"><FaFacebook/></a></li>
+            <li><a href="+2349083575587"><IoCall/></a></li>
+            <li><a href="astro8va@gmail.com"><IoMail/></a></li>
+            <li><a href="t.me/OpeyemiM1"><FaTelegram/></a></li>
             <li><a href="#"><FaTwitter/></a></li>
-            <li><a href="#"><FaInstagram/></a></li>
-            <li><a href="#"><FaGithub/></a></li>
-            <li><a href="#"><FaWhatsapp/></a></li>             
-            <li><a href="#"></a></li>
+            <li><a href="https://www.instagram.com/blank_intro/"><FaInstagram/></a></li>
+            <li><a href="https://github.com/sanni1244"><FaGithub/></a></li>
+            <li><a href="https://wa.link/nzt6fb"><FaWhatsapp/></a></li>             
           </ul> 
         </div>
       </div>
