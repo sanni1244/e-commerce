@@ -1,0 +1,217 @@
+/* Hero section  */
+.hero-section .background-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+  
+.hero-section .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(1.75px);
+    z-index: -1;
+}
+
+.hero-section .content {
+    position: absolute;
+    top: 20%;
+    left: 6%;
+    font-weight: 900;
+    color: hwb(0 13% 86%);
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 1rem 3rem 2rem;
+    border-radius: 30px;
+}
+  
+.hero-section .content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    font-family: "Jersey 25", sans-serif;
+}
+  
+.hero-section .content p {
+    font-size: 17px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    width: 70%;
+    font-family: "Teko", sans-serif;
+}
+  
+.hero-section .search-form {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+  
+.hero-section .search-input {
+    padding: 0px 15px;
+    height: 32px;
+    border: none;
+    width: 200px;
+    border-radius: 13px;
+    font-size: 13px;
+}
+  
+/* first-class  */
+.first-class .category-show,
+.showcase {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.first-class .box-cat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+    width: 110px;
+    height: 150px;
+    text-align: center;
+    background-color: var(--background);
+    border-radius: 20px;
+    color: rgb(11, 55, 25);
+    font-size: 12px;
+    font-family: var(--font);
+    transition: all ease-in-out 0.5s;
+}
+.box-cat:hover{
+    background-color: rgb(126, 193, 143);
+    transform: scale(1.05);
+}
+
+.first-class .bb2::before, .bb3::before { 
+    content: "10% off"; 
+    position: absolute;
+    top: 27px; 
+    right: 5px; 
+    background-color: red; 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transform: translateY(-50%) rotate(30deg); 
+} 
+
+.first-class .bb3::before{
+    content: "6% off"; 
+}
+
+.first-class .cat-icon {
+    color: rgb(131, 191, 139);
+    width: 30px;
+    height: 30px;
+}
+
+/* groceries  */
+.my-groceries .border-class {
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    flex-direction: row-reverse;
+}
+  
+.my-groceries .img-side {
+    width: 40%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 0 20px var(--background);
+}
+  
+.my-groceries .content9 {
+    width: 60%;
+    padding-left: 20px;
+}
+  
+.my-groceries .groceries-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.my-groceries .groceries-list li {
+    margin-bottom: 10px;
+}
+  
+.my-groceries .groceries-list a {
+    color: #333;
+    transition: color 0.3s ease;
+}
+  
+.my-groceries .groceries-list a:hover {
+    color: #007bff;
+}
+
+.my-groceries .flex {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+
+.deals-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px;
+    background-color: #f0f0f0;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+  
+.deals-section .deals-content {
+    max-width: 50%;
+}
+  
+.deals-section .deals-content h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+  
+.deals-section .deals-content p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+}
+  
+.deals-section .deals-image img {
+    width: 85%;
+    max-height: 400px;
+    border-radius: 20px;
+    object-fit: cover;
+    transform: rotate(-5deg);
+}
+
+.category-show{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Poetsen One", sans-serif;
+    align-items: center;
+    font-size: 20px;
+}
+
+.category-show a{
+    color: rgb(15, 46, 130);
+    font-size: 14px;
+
+}
+.category-show:hover a{
+    color: #007bff;    
+}

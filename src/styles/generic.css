@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Jersey+25&family=Lexend:wght@100..900&family=Poetsen+One&family=Roboto+Slab:wght@100..900&family=Teko:wght@300..700&family=Tilt+Neon&display=swap');
+
+body {
+  padding: 0;
+  margin: 0;
+  --font: "Roboto Slab", serif;
+  --primary_color: #020202;
+  --background: rgba(209, 229, 228, 0.658);
+}
+
+.container {
+  width: 70vw;
+  margin: auto;
+}
+
+.hidden{
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+}
+h2 {
+  font-size: 24px;
+  font-family: var(--font);
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: 20px;
+  font-family: var(--font);
+}
+
+.white {
+  color: rgb(255, 255, 255);
+}
+
+section:not(:nth-child(2)) {
+  margin-top: 3.7rem;
+}
+
+.back-btn {
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  margin-left: 1rem;
+  position: absolute;
+  z-index: 1000;
+  margin-top: 1rem;
+}
+
+.back-btn:hover {
+  transform: rotate(-20deg);
+}
+
+.button {
+  padding: 13px;
+  color: #fff;
+  width: 18rem;
+  margin: 0 auto;
+  font-weight: 600;
+  background-color: #0D6EFD;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+   
+.button:hover {
+  background-color: #0d6dfdca;
+}
+
+.error1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  font-size: 24px;
+  color: #f00;
+}
+
+.relative {
+  position: relative;
+}
+.errbad {
+  color: rgb(0, 102, 255);
+  font-size: 13px;
+}
+
+.active-link {
+  color: #219102 !important;
+}
+
+/*   
+  
+
+  .realmoney {
+    font-family: Arial, sans-serif;
+    color: rgb(14, 27, 146);
+}
+
+.realmoney::before {
+    content: "₦";
+    margin-right: 0px;
+}
+
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+} */

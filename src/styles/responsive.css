@@ -1,0 +1,276 @@
+@media (max-width: 1300px) {
+  .showcasecontainer{
+    gap: 1rem;
+    padding: 0px;
+  }
+  .cover-up{
+    padding: 1.3rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .first-class .box-cat {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container{
+    width: 88vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container{
+    width: 99vw;
+  }
+  .footer-container {
+    padding: 1rem 3rem;
+  }
+  .first-class .showcase {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr); 
+  }
+  .first-class .box-cat {
+    width: 110px;
+    height: 110px;
+  }
+  .cart-container {
+    margin: auto;
+  }
+}
+
+
+@media (max-width: 850px) {
+  .showcasecontainer .productCard {
+    padding-top: 2px;
+    width: calc(28%);
+  }
+  .category123 .sss11 span{
+    display: none;
+  }
+  .nav-bar .hot-prof {
+    padding: 5px;
+    border: 1px solid black;
+  }
+  .nav-bar .logo,
+  .nav-bar .user,
+  .nav-bar .sss11 {
+    gap: 0.3rem;
+  }
+  .nav-bar .link ul{
+    gap: 1rem;
+  }
+  .nav-bar .link a, .nav-bar .hot-prof {
+    font-size: 12.7px;
+    background-color: transparent;
+    font-family: "Lexend", Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+  }
+
+}
+
+@media (max-width: 650px) {
+  .showcasecontainer .productCard {
+    min-width: calc(38%);
+  }
+  .cart-container .cart-item {
+    display: block;
+    padding: 10px 30px;
+  }
+  .cart-container .cart-item-info {
+    padding: 0;
+  }
+  .cart-item-image{
+    width: 150px;
+  }
+} 
+@media screen and (max-width: 600px) {
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .profile-container{
+    display: block;
+  } 
+  .profile-container .left-nav ul {
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-container .left-nav {
+    border-right: none;
+    margin-top: 3rem;
+  }
+  .profile-container {
+    padding: 3px;
+  }
+  .bsector {
+    margin: 0;
+    max-width: 100vw;
+  }
+  section:not(:nth-child(2)) {
+    margin-top: 0.3rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .first-class .box-cat {
+    width: 80px;
+    height: 90px;
+  }
+  .cover-up{
+    padding: 0rem;
+    padding-bottom: 1.5rem;
+  }
+  .category-show p{
+    font-size: 14px;
+  }
+  .my-groceries .flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .nav-bar .logo span{
+    display: none;
+  }
+  .nav-bar .link a, .nav-bar .hot-prof {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .logoutin{
+    display: none;
+  }
+  .logoutnow{
+    display: flex;
+    align-items: center;
+  }
+  .user b{
+    display: none;
+  }
+  .section-dvv .contact-us .contact-info {
+    display: block;
+  }
+  .profile-container .left-nav {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+}
+@media screen and (max-width: 400px) {
+  .showcasecontainer .productCard {
+    width: calc(40%);
+  }
+  .img-container {
+    height: 120px;
+    margin-top: 3px;
+  }
+  .product-name {
+    font-size: 11px;
+    font-weight: 500;
+    /* height: 2.2rem; */
+  }
+  .searching .searchbar {
+    margin-top: 5rem;
+
+  }
+  .color-stars {
+    display: none;
+  }
+
+  .product-desc {
+    font-size: 10px;
+    height: 2.3rem;
+  }
+  .first-class .box-cat {
+    width: 68px;
+    height: 80px;
+  }
+  .first-class .bb2::before, .bb3::before { 
+    padding: 2px 5px;
+    font-size: 8px;
+    top: 15px; 
+    right: 3px;
+  } 
+  .profile-container .left-nav{
+    padding: 6px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .showcasecontainer .productCard {
+    width: calc(47%);
+  }
+  .nav-bar .link a, .nav-bar .hot-prof {
+    font-size: 9px;
+  }
+  .section-dvv p{
+    font-size: 12.5px !important;
+    text-align: justify;
+  }
+  .zxder{
+    display: none;
+  }
+  .img-container {
+    height: 90px;
+    margin-top: 3px;
+  }
+  .product-name {
+    height: auto;
+  }
+  .product-desc {
+    display: none; 
+  }
+  .cot-tain {
+    height: auto;
+  }
+  .category-show p{
+    width: 120px;
+  }
+  .deals-section {
+    display: block;
+  }
+  .my-groceries .border-class {
+    padding: 5px;
+  }
+  .deals-section .deals-content {
+    max-width: 95%;
+  }
+  .footer-container {
+    padding: 0.4rem 1rem;
+  }
+  .footer-container h4{
+    font-size: 12.5px !important;
+  }
+  .footer-column{
+    font-size: 11px !important
+  }
+  .footer .social-icons {
+    grid-template-columns: repeat(3, 30px);
+  }
+  .footer-bottom{
+    font-size: 12px;
+  }
+  .profile-container .left-nav {
+    padding: 7px;
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 269px) {
+  .showcasecontainer .productCard {
+    width: calc(80%);
+  }  
+  .left-nav b{
+    display: none;
+  }
+}
+
+
+
+
+
+

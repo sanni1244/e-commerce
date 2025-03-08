@@ -1,0 +1,229 @@
+.cart-container {
+    margin: 40px 150px;
+    padding: 12px;
+    min-height: 23rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+}
+  
+.cart-container .cart-header {
+    color: var(--primary_color);
+    font-family: var(--primary_font);
+    font-size: 22px !important;
+    font-weight: 600;
+    margin-left: 5rem;
+}
+  
+.cart-container .cart-list {
+    padding: 0;
+}
+  
+.cart-container .cart-item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 0.2fr 0.4fr 1fr 0.3fr 0.5fr 0.1fr;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+  
+.cart-container .cart-item:last-child {
+    border-bottom: none;
+}
+  
+.cart-container .cart-item-image img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+  
+.cart-container .cart-item-image img:hover {
+    transform: scale(1.1);
+}
+  
+.cart-container .cart-item-info {
+    font-weight: 400;
+    font-family: "Bree Serif", serif;
+    padding: 22px;
+}
+   
+.cart-container .cart-item-info h3 {
+    font-size: 14px;
+}
+  
+.cart-container .cart-item-info p {
+    font-size: 12px;
+    color: #666;
+
+}
+  
+.cart-container .cart-item-info a {
+    color: #221b25cf;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: "Bree Serif", serif;
+}
+  
+.cart-container .cart-item-info a:hover {
+    color: #153d67c8;
+
+}
+  
+.cart-container .item-quantity select {
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+}
+  
+.cart-container .product-q {
+    font-size: 14px;
+    color: rgb(100, 100, 100);
+}
+  
+.cart-container .cart-list .button {
+    width: 6rem;
+    transition: background-color 0.3s ease;
+}
+  
+.cart-container .cart-list .button:hover {
+    background-color: var(--primary_color)
+}
+  
+.cart-container .empty-cart-message-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 50px;
+}
+
+.cart-container .empty-cart-message-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+  
+.cart-container .empty-cart-message-content p {
+    font-size: 16px;
+    color: #666;
+}
+  
+.cart-container .checkout-section {
+    margin-top: 40px;
+    font-family: "Reem Kufi Fun", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.cart-container .cart-container .checkout-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+  
+.cart-container .checkout-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--primary_font);
+  
+}
+  
+.cart-container .checkout-table td {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+  
+.cart-container .checkout-table td:first-child {
+    width: 70%;
+}
+  
+.cart-container .payment-status {
+    text-align: center;
+    padding: 20px;
+}
+  
+.cart-container .payment-success-icon {
+    color: var(--primary_color) !important;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+  
+.cart-container .checkcolor {
+    color: var(--primary_color) !important;
+}
+  
+.cart-container .pay-btn,
+.cart-container .continue-shopping-btn {
+    background-color: var(--primary_color);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: var(--primary_font);
+}
+  
+.cart-container .ltl,
+.cart-container .ltl td {
+    margin-top: 2rem;
+    border-top: 2px solid var(--primary_color);
+    color: black;
+    padding-top: 3rem;
+}
+  
+.payment-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: var(--primary_font);
+  }
+  
+  .payment-form-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .payment-form-container .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .payment-form-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .payment-form-container input[type='text'],
+  .payment-form-container input[type='email'],
+  .payment-form-container input[type='tel'],
+  .payment-form-container textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--primary_font);
+
+  }
+  
+  .payment-form-container button[type='submit'] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .payment-form-container button[type='submit']:hover {
+    background-color: #45a049;
+  }
+
+
+  .trash-icon{
+    color: red;
+    font-size: 18px;
+    cursor: pointer;
+  }

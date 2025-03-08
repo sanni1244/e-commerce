@@ -1,0 +1,154 @@
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container .main-content {
+  flex: 1;
+}
+
+.profile-container .profile-section {
+  display: none;
+}
+
+.profile-container .profile-section.active {
+  display: block;
+}
+
+.profile-container form {
+  margin-bottom: 20px;
+}
+
+.profile-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.profile-container input[type="text"],
+.profile-container input[type="email"],
+.profile-container input[type="password"],
+.profile-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profile-container th,
+.profile-container td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.profile-container th {
+  background-color: #f2f2f2;
+  text-align: left;
+  font-weight: bold;
+}
+
+.profile-container .notification {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 5px solid #007bff;
+  background-color: #f9f9f9;
+}
+
+.profile-container .left-nav {
+  padding: 23px;
+  font-family: var(--primary_font);
+  border-right: 1px solid #ccc;
+}
+
+.profile-container .left-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-container .left-nav li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.profile-container .left-nav li svg {
+  margin-right: 10px;
+}
+
+.profile-container .profile-section {
+  display: none;
+}
+
+.profile-container .profile-section.active {
+  display: block;
+}
+
+.profile-container .hidden {
+  display: none;
+}
+
+.profile-container h2 {
+  color: var(--primary_color) !important;
+  font-family: var(--primary_font) !important;
+}
+
+.profile-container input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.profile-container input[type="checkbox"]:checked {
+  background-color: var(--primary_color);
+  color: black;
+}
+
+
+
+.buyverse{
+  font-size: 1.4rem; 
+  font-family: var(--primary_font) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.small-table{
+  font-family: var(--primary_font) !important;
+}
+
+
+
+.dlb-order {
+  position: relative;
+  background-color: rgba(0, 167, 42, 0.521) !important;
+}
+
+
+

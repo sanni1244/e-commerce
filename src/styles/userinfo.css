@@ -1,0 +1,232 @@
+.bsector.active,
+.bsector.active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.bsector.hidden,
+.bsector.hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.bsector {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 80vw;
+    margin-left: 3rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; 
+}
+
+.bsector h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.bsector form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.bsector label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #666;
+    position: relative;
+    cursor: pointer;
+}
+
+.bsector label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.bsector label:hover:after {
+    opacity: 0.2;
+}
+
+.bsector input[type="text"],
+.bsector input[type="email"],
+.bsector input[type="password"],
+.bsector select,
+.bsector textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    font-family: var(--primary_font); 
+}
+
+.bsector input:focus {
+    border-color: var(--primary_color);
+}
+
+.bsector button {
+    background-color: var(--primary_color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.bsector button:hover {
+    background-color: #2b3034;
+}
+
+.bsector button:active {
+    transform: translateY(2px);
+}
+
+.bsector .vvdd {
+    background-color: var(--primary_color) !important;
+}
+
+.bsector table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bsector thead th {
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    border: 1px solid #ddd;
+    border-bottom: 2px solid #ccc;
+    background-color: #f5f5f5;
+}
+
+.bsector tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.bsector tbody tr:hover {
+    background-color: #eee;
+}
+
+.bsector tbody td {
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+.bsector a {
+    color: rgb(14, 27, 146);
+    text-decoration: none;
+}
+
+.bsector a:hover {
+    text-decoration: underline;
+    color: #2eafff;
+}
+
+.bsector tr.no-orders td {
+    text-align: center;
+    font-style: italic;
+    color: #aaa;
+}
+
+.bsector tbody tr:hover::after {
+    opacity: 1;
+}
+
+.bsector .width-extra {
+    width: 2000px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+.settings form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.settings .setting-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.settings .setting-option label {
+    flex: 1;
+    margin-right: 10px;
+    font-size: 16px;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 100;
+    color: #666;
+}
+
+.settings .setting-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.settings .setting-option input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60px;
+}
+
+.settings .fddd-select {
+    appearance: none;
+    position: relative;
+    flex: 0.2;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-family: "Bree Serif", serif !important;
+}
+
+.settings .fddd-select:focus {
+    outline: none;
+    border-color: var(--primary_color);
+    box-shadow: 0 0 0 3px var(--primary_color);
+}
+
+.settings .fddd-select option:checked {
+    background-color: var(--primary_color);
+    color: #fff;
+}
