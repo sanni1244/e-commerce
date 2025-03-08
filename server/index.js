@@ -331,6 +331,32 @@ app.post('/cart/remove', async (req, res) => {
     }
 })
 
+app.post('/cart/remove1', async (req, res) => {
+    try {
+        const { myusername, itemId } = req.body;
+
+        await client.connect();
+        const db = client.db(dbName);
+        const collection = db.collection('users');
+
+        const user = await collection.findOne({ username: myusername });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        await collection.updateOne(
+            { username: myusername },
+            { $pull: { cart: { itemId } } } // Removes the item with the matching itemId
+        );
+
+        return res.status(200).json({ message: 'Item removed from cart successfully' });
+    } catch (error) {
+        console.error('Error removing item from cart:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 app.delete('/buy/remove', async (req, res) => {
     try {
         const { ind, username } = req.body;
