@@ -5,7 +5,7 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 const loggedInUser = localStorage.getItem('loggedInUser');
 
 const Edit = () => {
-    document.title = "Edit"
+    document.title = "Buyverse: Edit";
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     let myid = searchParams.get('myid')

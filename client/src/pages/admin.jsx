@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 const Admin = () => {
-  document.title = "Admin"
+  document.title = "Buyverse: Admin";
+
   const loggedInUser = localStorage.getItem('loggedInUser');
 
   if (loggedInUser !== "admin") {

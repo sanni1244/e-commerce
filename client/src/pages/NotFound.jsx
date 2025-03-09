@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaExclamationTriangle } from 'react-icons/fa';
 
 function NotFound() {
+  document.title = "Buyverse: Not found";
   return (
     <div className="not-found-container">
       <div className="not-found-content">

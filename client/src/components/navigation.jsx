@@ -5,7 +5,7 @@ import { FaBars, FaUser, FaTimes, FaSearch } from 'react-icons/fa';
 import { TiShoppingCart } from "react-icons/ti";
 import { MdAppRegistration, MdLogin, MdLogout } from "react-icons/md";
 import Categories from './Categories';
-import logo from '../images/l.png';
+import logo from '../images/logo.jpg';
 import bcrypt from 'bcryptjs'
 import axios from 'axios';
 
@@ -60,11 +60,11 @@ const Navbar = () => {
     return (
         <nav className={isHomePage ? 'hidden' : ''}>
             <div className='nav-bar'>
-                <Link to={"/home"}>
+                <Link to={"/"}>
                 <div className="logo">
-                    <img src={logo} alt="logo" />
-                    <span>Rizz</span>
-                </div>
+                    <img src={logo} alt="logo" /> 
+                    <span className='buyverse'>Buyverse</span>
+                </div> 
                 </Link>
                 <div className='category123'>
                     <div className="sss11" onClick={toggleMenu}>

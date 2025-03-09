@@ -5,7 +5,7 @@ const Back = () => {
     let themeC = localStorage.getItem('themeColor') || "#967BB6"
     const location = useLocation();
     const isHome = location.pathname === '/';
-    const isHome2 = location.pathname === '/home';
+    const isHome2 = location.pathname === '/';
 
     
     document.documentElement.style.setProperty('--primary_color', themeC);
@@ -19,7 +19,7 @@ const Back = () => {
                 if (window.history.length > 1) {
                     window.history.back();
                 } else {
-                    window.location.href = "/home";
+                    window.location.href = "/";
                 } 
             }} />
         )

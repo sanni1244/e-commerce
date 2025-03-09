@@ -13,7 +13,7 @@ const Content = ({ item, discount, discountVal }) => (
                 <div className='img-container'>
                     <img
                         className='img-style'
-                        src={item.productImg[0]}
+                        // src={item.productImg[0]} 
                         alt={item.productName}
                         onError={(e) => { e.target.onerror = null; e.target.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'; }}
                     />
@@ -32,6 +32,7 @@ const Content = ({ item, discount, discountVal }) => (
                 </div>
                 <span>
                     <p className='fg'>
+                        
                         {[...Array(Math.floor(item.productRatings))].map((_, index) => (
                             <FaStar key={index} className='color-stars' />
                         ))}

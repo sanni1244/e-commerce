@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import background from '../images/img.jpg';
 import img1 from '../images/img1.jpg';
 import img2 from '../images/img2.jpg';
-import logo from '../images/l.png';
+import logo from '../images/logo.jpg';
 import { CSSTransition } from 'react-transition-group';
 import { MdOutlineLaptopChromebook, MdElectricalServices, MdLogin, MdLogout } from "react-icons/md";
 import { FaBars, FaUser, FaTimes, FaSearch } from 'react-icons/fa';
 import { GiWineBottle } from "react-icons/gi";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoShirt, IoGameController } from "react-icons/io5";
-import { BsPhone } from "react-icons/bs"; 
+import { BsPhone } from "react-icons/bs";
 import Categories from '../components/Categories';
 import bcrypt from 'bcryptjs'
 import Random from '../components/random';
@@ -24,7 +24,7 @@ const BackgroundPage = () => {
     const [change, setChange] = useState(true);
     const [cartItems, setCartItems] = useState([]);
     const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
-
+    document.title = "Buyverse: Your Shopping world!";
 
     useEffect(() => {
         if (h1) {
@@ -78,7 +78,7 @@ const BackgroundPage = () => {
                 <div className='nav-bar'>
                     <div className="logo">
                         <img src={logo} alt="logo" />
-                        <span>Rizz</span>
+                        {/* <span className='buyverse'>Buyverse</span> */}
                     </div>
                     <div className='category123'>
                         <div className="sss11" onClick={toggleMenu}>
@@ -95,30 +95,30 @@ const BackgroundPage = () => {
                             <Link to="/about" className="nav-link"> About</Link>
                             <Link to="/services" className="nav-link"> Services</Link>
                             {!h1 && (
-                            <>
-                                <Link to="/login" className="nav-link logoutin">
-                                    Log in
-                                </Link>
-                                <Link to="/register" className="nav-link logoutin">
-                                    Sign up
-                                </Link>
-                                <Link title='Login' to={"/login"}><span className='hot-prof logoutnow'><MdLogin /></span></Link>
-                            </>
-                        )}
-                        {h1 && (
-                            <>  
-                                <Link to="/login" className="nav-link logoutin" onClick={handleLogout}>
-                                    Log out
-                                </Link>
-                                <Link title='Logout' onClick={handleLogout}><span className='nav-link logoutnow'><MdLogout/></span></Link>
+                                <>
+                                    <Link to="/login" className="nav-link logoutin">
+                                        Log in
+                                    </Link>
+                                    <Link to="/register" className="nav-link logoutin">
+                                        Sign up
+                                    </Link>
+                                    <Link title='Login' to={"/login"}><span className='hot-prof logoutnow'><MdLogin /></span></Link>
+                                </>
+                            )}
+                            {h1 && (
+                                <>
+                                    <Link to="/login" className="nav-link logoutin" onClick={handleLogout}>
+                                        Log out
+                                    </Link>
+                                    <Link title='Logout' onClick={handleLogout}><span className='nav-link logoutnow'><MdLogout /></span></Link>
 
-                            </>)}
+                                </>)}
                         </ul>
                     </div>
                     <div className="user">
                         <Link to={"/search"}><span className='hot-prof'><FaSearch /></span></Link>
                         {h1 ? <Link to={"/profile"}><span className='hot-prof hot-prof1'><b>{h1.toUpperCase()}</b> <FaUser /></span></Link> : null}
-                        <Link to={"/buy"}><span className='hot-prof hot-prof1'><TiShoppingCart /> {(cartItems.cart && <>({cartItems.cart.length})</>)  || 0}</span></Link>
+                        <Link to={"/buy"}><span className='hot-prof hot-prof1'><TiShoppingCart /> {(cartItems.cart && <>({cartItems.cart.length})</>) || 0}</span></Link>
                     </div>
                 </div>
             </nav>
@@ -154,6 +154,12 @@ const BackgroundPage = () => {
                             <span>Clothes and footwear</span>
                         </div>
                     </Link>
+                    <Link to={`/products?subcat=drinks`}>
+                        <div className="box-cat bb3">
+                            <GiWineBottle className='cat-icon' />
+                            <span>Drinks</span>
+                        </div>
+                    </Link>
                     <Link to={`/products?subcat=laptop`}>
                         <div className="box-cat">
                             <MdOutlineLaptopChromebook className='cat-icon' />
@@ -178,12 +184,7 @@ const BackgroundPage = () => {
                             <span>Video Game</span>
                         </div>
                     </Link>
-                    <Link to={`/products?subcat=drinks`}>
-                        <div className="box-cat bb3">
-                            <GiWineBottle className='cat-icon' />
-                            <span>Drinks</span>
-                        </div>
-                    </Link>
+                    
                 </div>
             </section>
 

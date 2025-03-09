@@ -9,6 +9,7 @@ import con8 from '../images/con8.jpg'
 import { Loading1, Error1, Not1 } from '../components/Loading.jsx';
 
 function GroceriesPage() {
+    document.title = "Buyverse: Groceries for you";
     const { items, loading, error } = useFetchItems();
     const [sortedProducts1, setSortedProducts1] = useState([]);
     const [sortedProducts2, setSortedProducts2] = useState([]);
@@ -58,7 +59,7 @@ function GroceriesPage() {
                     <div className='showcasecontainer'>
                         {sortedProducts1.slice(0, 12).map((item, index) => (
                             <div className='productCard' key={index}>
-                                <Content item={item} />
+                                <Content item={item} discount={true}/>
                             </div>
                         ))}
                     </div>
@@ -89,6 +90,7 @@ function GroceriesPage() {
                     <div className='showcasecontainer'>
                         {sortedProducts3.slice(0, 12).map((item, index) => (
                             <div className='productCard' key={index}>
+                                
                                 <Content discount={true} item={item} />
                             </div>
                         ))}

@@ -9,7 +9,7 @@ import { Loading1, Error1, Not1 } from '../components/Loading';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
 function Buy() {
-  document.title = "Check Out and Purchase"
+  document.title = "Buyverse: Cart - Check Out";
   const loggedInUser = localStorage.getItem('loggedInUser');
   const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState({});

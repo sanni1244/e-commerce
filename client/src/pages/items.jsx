@@ -103,7 +103,8 @@ const Items = () => {
         }
     };
 
-    const handleBuyNowClick = () => {
+    const handleBuyNowClick = async () => {
+        await addContent()
         if (loggedInUser) {
             window.location.href = '/buy';
 
@@ -175,20 +176,23 @@ const Items = () => {
     const removeContent = async () => {
         setErrorMessage('Removing......');
         let myusername = loggedInUser;
+
         if (!myusername) {
-            window.location.href = "/login"
+            window.location.href = "/login";
+            return;
         }
+
         try {
-            const response = await axios.post(`${SERVER_URL}/cart/remove`, { myusername })
-            console.log(response.data)
+            const response = await axios.post(`${SERVER_URL}/cart/remove1`, { myusername, itemId });
+            console.log(response.data);
             setErrorMessage('Item removed from cart');
             setAlternate(!alternate);
-        }
-        catch (error) {
-            console.error('Error logging in:', error);
+        } catch (error) {
+            console.error('Error removing item:', error);
             setErrorMessage('Something went wrong!');
         }
-    }
+    };
+
 
     return (
         <div className="viewitems">
@@ -212,7 +216,7 @@ const Items = () => {
                                     ))}
                                 </div>
                                 <div className="center-stage">
-                                    <div className=""><h2 id={document.title = item.productName}>{item.productName}</h2></div>
+                                    <div className=""><h2 id={document.title = "Buyverse: " + item.productName}>{item.productName}</h2></div>
                                     <div>
                                         <small>Brand: <Link to={`/search?query=${item.productBrand}`}>{item.productBrand || "None"}</Link> &nbsp;&nbsp;
                                             {loggedInUser === "admin" ? <Link to={`/edit?myid=${item.productId}`}><GrFormEdit style={{ color: "black" }} /></Link> : ""}</small> &nbsp;&nbsp;&nbsp;
@@ -259,8 +263,8 @@ const Items = () => {
                                         <i className="shadow">Shipping Fee</i>
                                         <i className="shadow">
                                             {
-                                                item.shippingFee.toLocaleString()[0] === "0" ? "Domestic Shipping - Nigeria" : item.shippingFee.toLocaleString()[0] === "1" ? "International Shipping - United States" : item.shippingFee.toLocaleString()[0] === "2" ? "International Shipping - China" : item.shippingFee.toLocaleString()[0] === "3" ? "International Shipping - Germany" : item.shippingFee.toLocaleString()[0] === "4" ? "International Shipping - India" : 
-                                                item.shippingFee.toLocaleString()[0] === "5" ? "International Shipping - United Kingdom" : item.shippingFee.toLocaleString()[0] === "6" ? "International Shipping - Australia" : item.shippingFee.toLocaleString()[0] === "7" ? "Yet another condition" : item.shippingFee.toLocaleString()[0] === "8" ? "International Shipping - United States" : item.shippingFee.toLocaleString()[0] === "9" ? "International Shipping - India" : "Domestic Shipping - Nigeria"
+                                                item.shippingFee.toLocaleString()[0] === "0" ? "Domestic Shipping - Nigeria" : item.shippingFee.toLocaleString()[0] === "1" ? "International Shipping - United States" : item.shippingFee.toLocaleString()[0] === "2" ? "International Shipping - China" : item.shippingFee.toLocaleString()[0] === "3" ? "International Shipping - Germany" : item.shippingFee.toLocaleString()[0] === "4" ? "International Shipping - India" :
+                                                    item.shippingFee.toLocaleString()[0] === "5" ? "International Shipping - United Kingdom" : item.shippingFee.toLocaleString()[0] === "6" ? "International Shipping - Australia" : item.shippingFee.toLocaleString()[0] === "7" ? "Yet another condition" : item.shippingFee.toLocaleString()[0] === "8" ? "International Shipping - United States" : item.shippingFee.toLocaleString()[0] === "9" ? "International Shipping - India" : "Domestic Shipping - Nigeria"
                                             }
                                         </i>
 
@@ -271,6 +275,9 @@ const Items = () => {
                                         <span className="increment" onClick={() => setSelectedValue(selectedValue + 1)}>+</span>
                                     </p>
                                     <button className={`button ${alternate ? 'add-to-cart' : 'item-added'}`} onClick={alternate ? () => addContent() : () => removeContent()}>{alternate ? "Add to Cart" : "Item added"}</button>
+                                    <span class={errorMessage ? 'error-message' : ''}>
+                                        {errorMessage}
+                                    </span>
                                     <br />
                                     <button className="button button-buy" onClick={handleBuyNowClick}>Buy Now</button>
                                     <br />
@@ -280,7 +287,8 @@ const Items = () => {
                                         <p><FaStarOfDavid /> Full warranty on all purchases</p>
                                         <p><FaLock /> Secure Payment</p>
                                     </div>
-                                    <b className="small-b">{errorMessage}</b>
+                                    
+
                                 </div>
                             </div>
                             <div className="img-group-padd">
@@ -308,6 +316,8 @@ const Items = () => {
                                         <textarea className="tx-ar"
                                             value={comment}
                                             maxLength={850}
+                                            required
+                                            minLength={15}
                                             onChange={(e) => setComment(e.target.value)}
                                             placeholder="Enter your comment...."
                                         ></textarea>
@@ -323,7 +333,7 @@ const Items = () => {
                                         <button className="button" type="submit">Submit</button>
                                     </form>
 
-                                    {errorMessage2 && <p className="errbad">{errorMessage2}</p>} <br /><br /><br />
+                                    {errorMessage2 && <p className="error-glow">{errorMessage2}</p>}
                                     <div className="cmmt-section">
                                         {comments && comments.length > 0 ? (
                                             <>

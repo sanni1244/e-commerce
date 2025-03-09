@@ -5,6 +5,7 @@ import { Loading1, Error1, Not1 } from '../components/Loading.jsx';
 import useFetchItems from '../components/pickdatabase';
 
 const SearchPage = () => {
+  document.title = "Buyverse: Search Products";
   const { items, loading, error } = useFetchItems();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);

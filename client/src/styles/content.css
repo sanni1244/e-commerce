@@ -9,12 +9,12 @@
 
 .showcasecontainer1 {
     display: flex;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
     overflow-x: scroll;
-    justify-content: space-evenly;
-    gap: 1.4rem;
+    /* gap: 1.4rem; */
     margin-bottom: 3rem;
     scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 .showcasecontainer .productCard {
@@ -31,8 +31,8 @@
 .showcasecontainer1 .productCard {
     box-shadow: none;
     border-radius: 0px;
-    border: 6px solid rgba(160, 165, 182, 0.633);
-    background-color: transparent;
+    border: 1px solid rgba(160, 165, 182, 0.633);
+    background-color: white;
 }
 
 .showcasecontainer1 .img-style {
@@ -136,9 +136,36 @@
   }
 
 
-
-
-
-
-
-
+  .scroll-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  
+  
+  .scroll-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .scroll-btn.left {
+    left: -21px;
+  }
+  
+  .scroll-btn.right {
+    right: -21px;
+  }
+  
+  .productCard {
+    min-width: 200px;
+    max-width: 200px;
+  }
+  

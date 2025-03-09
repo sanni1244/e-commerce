@@ -4,7 +4,8 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 const loggedInUser = localStorage.getItem('loggedInUser');
 
 const Create = () => {
-    document.title = "Create"
+    document.title = "Buyverse: Create";
+
 
     const [formData, setFormData] = useState({
         productId: "",

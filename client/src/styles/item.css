@@ -242,13 +242,13 @@
 }
 
 .cmmt-section .comment-form {
-  width: 95%;
+  width: 85%; 
   /* max-width: 600px; */
   /* margin: 0 auto; */
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 1px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -256,12 +256,13 @@
 }
 
 .cmmt-section .comment-form .tx-ar {
-  width: 95%;
+  width: 85%;
   height: 200px;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1px;
   resize: none;
 }
 
@@ -351,10 +352,7 @@
   font-size: 12px;
 }
 
-
-
 .rshow{
-  background-color: #fff;
   padding: 3rem;
   box-sizing: border-box;
 }
@@ -375,11 +373,10 @@
 .cmmt-section .comment-form {
   margin: auto;
   padding: 30px;
-  border-radius: 20px;
-  background-color: #303030;
-  color: white;
-  width: 90%;
-  box-shadow: 0 0 20px rgba(199, 159, 199, 0.5);
+  background-color: #f3f3f3;
+  color: rgb(92, 85, 85);
+  width: 60%;
+  box-shadow: 0 0 20px rgba(160, 143, 160, 0.5);
 }
 
 .cmmt-section .tx-ar {
@@ -388,8 +385,8 @@
   margin-bottom: 30px ;
   border: 2px solid #ff00ff ;
   border-radius: 15px ;
-  font-size: 1.5rem ;
-  color: #fff ;
+  font-size: 1rem ;
+  color: #524b4b ;
   background-color: #1f1f1f ;
 }
 

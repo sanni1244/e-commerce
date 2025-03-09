@@ -37,11 +37,25 @@ const OrderDate = () => {
   }
   
   const isPastDate = (deliveryDate) => {
+    console.log(deliveryDate);
+  
+    if (!deliveryDate) {
+      return false; // Handle cases where deliveryDate is null or undefined
+    }
+  
     const today = new Date();
-    const parts = deliveryDate.split('/');
-    const delivery = new Date(parts[2], parts[1] - 1, parts[0]); // Year, month (zero-based), day
+    const delivery = new Date(deliveryDate); // Parse deliveryDate
+  
+    if (isNaN(delivery.getTime())) {
+      return false; // Handle invalid date strings
+    }
+  
+    // Set time components of both dates to 0 for accurate date-only comparison
+    today.setHours(0, 0, 0, 0);
+    delivery.setHours(0, 0, 0, 0);
+  
     return delivery < today;
-  }
+  };
 
   return (
     <div style={{ overflowX: 'auto' }}>
@@ -66,7 +80,7 @@ const OrderDate = () => {
               const deliveryDate = saveDate(order.date, matchingItem.deliveryTime);
               const isPast = isPastDate(deliveryDate);
               return (
-                <tr key={order.purchaseId}>
+                <tr class={ isPast ? 'dlb-order' : null } key={order.purchaseId}>
                   <td>{order.purchaseId}</td>
                   <td>{formatDate(order.date)}</td>
                   <td>{order.quantity}</td>
@@ -75,7 +89,7 @@ const OrderDate = () => {
                     <a href={`/items?item=${matchingItem.productId}`}>{matchingItem.productName}</a>
                   </td>
                   <td>₦{((order.price * order.quantity) + matchingItem.shippingFee).toLocaleString()}</td>
-                  <td class={ isPast ? 'dlb-order' : null }>{deliveryDate}</td>
+                  <td >{deliveryDate}</td>
                 </tr>
               );
             })

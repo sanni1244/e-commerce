@@ -4,28 +4,31 @@ import axios from 'axios';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
 const Register = () => {
-  document.title = "Register";
+  document.title = "Buyverse: Register";
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [statusMessage, setStatusMessage] = useState({ message: '', type: '' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setStatusMessage({ message: 'Registration in progress...', type: 'loading' });
+
     try {
-      setErrorMessage('Registration in progress....');
       const response = await axios.post(`${SERVER_URL}/register`, { username: username.toLowerCase(), password });
       console.log('Registration successful:', response.data);
-      setErrorMessage('Registration successful');
+
+      setStatusMessage({ message: 'Registration successful! Redirecting...', type: 'success' });
+      
       setTimeout(() => {
         window.location.href = "/login";
       }, 1000);
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        setErrorMessage('User already exists');
+        setStatusMessage({ message: 'User already exists. Please try another username.', type: 'error' });
       } else {
         console.error('Registration failed:', error);
-        setErrorMessage(error.code === "ERR_NETWORK" ? error.message : 'Something went wrong. Please try again');
+        setStatusMessage({ message: error.code === "ERR_NETWORK" ? 'Network error. Please check your connection.' : 'Something went wrong. Please try again.', type: 'error' });
       }
     }
   };
@@ -53,7 +56,13 @@ const Register = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
+          
+          {statusMessage.message && (
+            <div className={`status-message ${statusMessage.type}`}>
+              {statusMessage.message}
+            </div>
+          )}
+
           <br />
           <button className="button" type="submit">Register</button>
         </form>

@@ -1,6 +1,7 @@
 .cart-container {
     margin: 40px 150px;
     padding: 12px;
+    min-height: 23rem;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
 }
@@ -89,10 +90,12 @@
 }
   
 .cart-container .empty-cart-message-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
     margin-top: 50px;
 }
-  
+
 .cart-container .empty-cart-message-content h2 {
     font-size: 24px;
     margin-bottom: 10px;

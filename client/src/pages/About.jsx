@@ -1,7 +1,7 @@
 import React from 'react';
 
 function AboutUsPage() {
-    document.title = "About"
+    document.title = "Buyverse: About Us";
 
     return (
         <div className="section-dvv">

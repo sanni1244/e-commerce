@@ -23,7 +23,7 @@ function Products() {
                 filteredItems = items.filter(item =>
                     item.productCategory === "Clothing and Accessories"
                 );
-                setSub("Fashion")
+                setSub("Fashion") 
                 setDiscount(false)
             }
             else if (subcat === "laptop") {
@@ -89,7 +89,7 @@ function Products() {
             setShuffledItems(filteredItems);
         }
     }, [items, subcat, loading, error]);
-    document.title = subcat1 || "Products category";
+    document.title = "Buyverse: " + subcat1 || "Buyverse: Products category";
 
 
     if (loading) {

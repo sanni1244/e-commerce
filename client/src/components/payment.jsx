@@ -10,7 +10,7 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
   const loggedInUser = localStorage.getItem('loggedInUser');
   const [loading, setLoading] = useState(false);
-
+console.log({loggedInUser});
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,6 +18,7 @@ function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
     address: ''
   });
 
+  console.log({ mysent });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -35,7 +36,22 @@ function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
       setLoading(false); // Set loading to false after 5 seconds
     }, 5000);
 
-    // Your payment processing logic here
+    try {
+      await axios.post(`${SERVER_URL}/purchase/add`, { mysent, loggedInUser });
+      console.log('Items purchased successfully');
+    
+      // Remove each item from the cart after purchase
+      for (let item of mysent) {
+        await axios.post(`${SERVER_URL}/cart/remove1`, { myusername: loggedInUser, itemId: item.itemId });
+        console.log(`Removed item: ${item.itemId}`);
+      }
+    
+      console.log('All items removed from cart');
+    } catch (error) {
+      console.error('Error purchasing items:', error);
+    }
+    
+
   };
 
   const handleCancelClick = () => {
@@ -73,10 +89,10 @@ function PaymentForm({ mysent, total, handlePayment, handleCancel }) {
           ) : (
             <>
               <button className='' type="submit">Pay Now</button>
-              <button style={{marginLeft: "3rem"}} className="pay-btn" onClick={handleCancelClick}>Cancel</button>
+              <button style={{ marginLeft: "3rem" }} className="pay-btn" onClick={handleCancelClick}>Cancel</button>
 
             </>
-          )}  
+          )}
         </div>
       </form>
     </div>

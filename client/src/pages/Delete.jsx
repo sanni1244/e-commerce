@@ -4,7 +4,7 @@ const loggedInUser = localStorage.getItem('loggedInUser');
 const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
 const Delete = () => {
-    document.title = "Delete"
+    document.title = "Buyverse: Delete";
 
     const [productId, setProductId] = useState('');
     const [message, setMessage] = useState({

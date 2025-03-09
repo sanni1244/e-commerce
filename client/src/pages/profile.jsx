@@ -10,7 +10,7 @@ import { Loading1, Error1 } from '../components/Loading';
 const loggedInUser = localStorage.getItem('loggedInUser');
 
 const Profile = () => {
-  document.title = "Profile"
+  document.title = "Buyverse: Profile";
   const [activeSection, setActiveSection] = useState('user-info');
   const { loading, error } = useFetchItems();
 

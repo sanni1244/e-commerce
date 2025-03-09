@@ -5,7 +5,7 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 const loggedInUser = localStorage.getItem('loggedInUser');
 
 const Display = () => {
-    document.title = "Display";
+    document.title = "Buyverse: Display";
     const [items, setItems] = useState([]);
     const [message, setMessage] = useState("");
     const [searchQuery, setSearchQuery] = useState("");

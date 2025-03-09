@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Services = () => {
-  document.title = "Services"
+    document.title = "Buyverse: Services";
     return (
         <div className="section-dvv">
                 <section id='contact' className="contact-us">

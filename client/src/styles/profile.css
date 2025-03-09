@@ -118,7 +118,37 @@
   color: black;
 }
 
-.dlb-order {
-  color: rgb(0, 167, 42);
-  font-weight: 700;
+
+
+.buyverse{
+  font-size: 1.4rem; 
+  font-family: var(--primary_font) !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.small-table{
+  font-family: var(--primary_font) !important;
+}
+
+
+
+.dlb-order {
+  position: relative;
+  background-color: rgba(0, 167, 42, 0.521) !important;
+}
+
+
+
