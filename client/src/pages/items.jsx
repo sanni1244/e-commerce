@@ -221,7 +221,6 @@ const Items = () => {
                                         <small>Brand: <Link to={`/search?query=${item.productBrand}`}>{item.productBrand || "None"}</Link> &nbsp;&nbsp;
                                             {loggedInUser === "admin" ? <Link to={`/edit?myid=${item.productId}`}><GrFormEdit style={{ color: "black" }} /></Link> : ""}</small> &nbsp;&nbsp;&nbsp;
                                     </div>
-                                    <br />
                                     <div className="fg">
                                         <b>
                                             <div className="hidden">{abc = ratingMerge || item.productRatings}</div>
@@ -233,7 +232,7 @@ const Items = () => {
                                                 <FaRegStar key={index} className='color-stars' />
                                             ))} &nbsp;
                                             {abc ? parseFloat(abc).toFixed(1) : "0"} <br />
-
+                                            
                                         </b>
                                         <span>
                                             <IoMdChatboxes /> {comments.length === 1 ? comments.length + " review" : comments.length + " reviews"}
@@ -253,6 +252,7 @@ const Items = () => {
                                         </p>
                                     </div>
                                 </div>
+                                <div className="emptiestone"></div>
                                 <div className="salesbox">
                                     <p className="myprice">
                                         {item.productPrice ? "₦" + item.productPrice.toLocaleString() : "Unavailable"}

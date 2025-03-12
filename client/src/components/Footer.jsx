@@ -40,7 +40,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Cash Rizz. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Buyverse. All Rights Reserved.</p>
       </div>
     </footer> 
   );

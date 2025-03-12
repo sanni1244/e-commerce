@@ -68,7 +68,7 @@ const Navbar = () => {
                 </Link>
                 <div className='category123'>
                     <div className="sss11" onClick={toggleMenu}>
-                        {isOpen ? <><FaTimes /></> : <><FaBars /> <span>Categories</span></>}
+                        {isOpen ? <><FaTimes /></> : <><FaBars /></>}
                     </div>
                     <CSSTransition in={isOpen} timeout={300}
                         classNames="fade"
@@ -103,9 +103,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="user">
-                    <Link to={"/search"}><span className='hot-prof'><FaSearch /></span></Link>
-                    {h1 ? <Link to={"/profile"}><span className='hot-prof hot-prof1'><b>{h1.toUpperCase()}</b> <FaUser /></span></Link> : null}
-                    <Link to={"/buy"}><span className='hot-prof hot-prof1'><TiShoppingCart /> {(cartItems.cart && <>({cartItems.cart.length})</>)  || 0}</span></Link>
+                    <Link to={"/search"}><span className='hot-prof homesearch'><FaSearch /></span></Link>
+                    {h1 ? <Link to={"/profile"}><span className='hot-prof hot-prof1'><b>{h1.toLowerCase()}</b> <FaUser /></span></Link> : null}
+                    <Link to={"/buy"}><span className='hot-prof hot-prof1 homebuy'><TiShoppingCart /> {(cartItems.cart && <>({cartItems.cart.length})</>)  || 0}</span></Link>
                 </div>
             </div>
         </nav>

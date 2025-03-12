@@ -12,7 +12,7 @@ const Services = () => {
                             <p>Our dedicated customer support team is available to assist you with any questions, concerns, or feedback you may have. You can reach us through the following channels:</p>
                             <ul>
                                 <li>Phone: 1-800-123-4567 (Monday to Friday, 9am to 5pm)</li>
-                                <li>Email: support@rizz.com</li>
+                                <li>Email: support@buyverse.com</li>
                                 <li>Live Chat: Available on our social media during business hours</li>
                             </ul>
                         </div>
@@ -22,7 +22,7 @@ const Services = () => {
                             <ul>
                                 <li>Address: 123 Main Street, Cityville, State, ZIP</li>
                                 <li>Phone: 234-908-357-5587</li>
-                                <li>Email: info@rizz.com</li>
+                                <li>Email: info@buyverse.com</li>
                             </ul>
                         </div>
                     </div>

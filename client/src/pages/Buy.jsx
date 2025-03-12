@@ -19,6 +19,8 @@ function Buy() {
   const { items, loading, error } = useFetchItems();
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [passedData, setPassedData] = useState([])
+  const [tax, setTax] = useState(0)
+
 
   if (!loggedInUser) {
     window.location.href = '/login';
@@ -98,13 +100,16 @@ function Buy() {
   };
 
   const calculateTotal = () => {
+    let tax = 0;
     let totalPrice = 0;
     checkoutItems.forEach((item) => {
       const price = parseInt(item.price);
       const selectedQuantity = parseInt(item.quantity);
       const shippingFee = parseInt(item.shippingFee);
       const itemTotal = (price * selectedQuantity) + shippingFee;
-      totalPrice += itemTotal;
+      tax += itemTotal * 0.08; 
+      totalPrice += itemTotal; 
+      totalPrice += tax;
     });
     return totalPrice.toLocaleString();
   };
@@ -204,14 +209,14 @@ function Buy() {
                         {items.find((product) => product.productId === item?.itemId)?.productName}
                       </td>
                       <td>
-                        {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice * (quantity[item.itemId] || item.selectedValue) + items.find((product) => product.productId === item?.itemId)?.shippingFee).toLocaleString()}
+                        {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice * (quantity[item.itemId] || item.selectedValue) + items.find((product) => product.productId === item?.itemId)?.shippingFee).toLocaleString()} + {"₦" + (items.find((product) => product.productId === item?.itemId)?.productPrice* 0.08 * (quantity[item.itemId] || item.selectedValue) + items.find((product) => product.productId === item?.itemId)?.shippingFee* 0.08).toLocaleString() }
                       </td>
                     </tr>
                   ))}
                 </tbody>
                 <tfoot className='ltl'>
                   <tr>
-                    <td>Total payment </td>
+                    <td>Total payment + Tax</td>
                     <td>₦{calculateTotal()}</td>
                   </tr>
                 </tfoot>

@@ -16,6 +16,8 @@ import './styles/profile.css';
 import './styles/userinfo.css';
 import './styles/login.css';
 import './styles/responsive.css';
+import './styles/extras.css';
+
 
 
 
@@ -56,7 +58,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/buy" element={<Buy />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/Register" element={<Register />} /> 
         <Route path="/Search" element={<Search />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/Delete" element={<Delete />} />

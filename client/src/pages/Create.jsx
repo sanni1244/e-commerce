@@ -6,6 +6,32 @@ const loggedInUser = localStorage.getItem('loggedInUser');
 const Create = () => {
     document.title = "Buyverse: Create";
 
+    const categoryOptions = {
+        "Electronics and Gadgets": [
+            "Electronic Accessories",
+            "Cell Phones",
+            "TV, Audio and Entertainment",
+            "Gaming and Peripherals",
+            "Power and Generators",
+            "Laptops",
+            "Desktop & Tablets",
+        ],
+        "Clothing and Accessories": [
+            "Children's Apparel",
+            "Women's Fashion",
+            "Fashion Accessories",
+            "Footwears",
+            "Men's Fashion",
+        ],
+        "Food, Home, Health and Beauty": [
+            "Drinks and Alcohol",
+            "Snacks and Junks",
+            "Foodstuff",
+            "Home Utilities",
+            "Fragrances",
+        ],
+        "Creativity and Sports": ["Hobbies", "Art", "Toys & Vehicles"],
+    };
 
     const [formData, setFormData] = useState({
         productId: "",
@@ -24,7 +50,7 @@ const Create = () => {
         shippingFee: '',
         deliveryTime: ''
     });
-
+    const [subCategories, setSubCategories] = useState([]);
     const [message, setMessage] = useState({
         color: 'black',
         text: '',
@@ -45,10 +71,15 @@ const Create = () => {
             color: "black"
         });
     };
+    const handleCategoryChange = (e) => {
+        const selectedCategory = e.target.value;
+        handleChange(e); // Update formData state
+        setSubCategories(categoryOptions[selectedCategory] || []);
+    };
 
     const addItem = async () => {
         if (formData.productId !== "" && formData.productId !== null &&
-            formData.productName !== "" && formData.productName !== null ) {
+            formData.productName !== "" && formData.productName !== null) {
             setMessage({
                 text: "Please wait: Adding item",
                 color: "green"
@@ -72,7 +103,8 @@ const Create = () => {
                     setMessage({
                         text: "An error occured",
                         color: "red"
-                    })}
+                    })
+                }
             }
         }
         else {
@@ -101,12 +133,42 @@ const Create = () => {
                     <br />
                     <label className="input-label">
                         Product Category*
-                        <input type="text" required className="input-field" name="productCategory" value={formData.productCategory} onChange={handleChange} />
+                        <select
+                            required
+                            className="input-field"
+                            name="productCategory"
+                            value={formData.productCategory}
+                            onChange={handleCategoryChange}
+                        >
+                            <option value="">Select Category</option>
+                            {Object.keys(categoryOptions).map((category) => (
+                                <option key={category} value={category}>
+                                    {category}
+                                </option>
+                            ))}
+                        </select>
                     </label>
+
                     <br />
+
+                    {/* Sub-Category Selection */}
                     <label className="input-label">
                         Product Sub-Category*
-                        <input required type="text" className="input-field" name="productSubCategory" value={formData.productSubCategory} onChange={handleChange} />
+                        <select
+                            required
+                            className="input-field"
+                            name="productSubCategory"
+                            value={formData.productSubCategory}
+                            onChange={handleChange}
+                            disabled={subCategories.length === 0}
+                        >
+                            <option value="">Select Sub-Category</option>
+                            {subCategories.map((subCategory) => (
+                                <option key={subCategory} value={subCategory}>
+                                    {subCategory}
+                                </option>
+                            ))}
+                        </select>
                     </label>
                     <br />
                     <label className="input-label">

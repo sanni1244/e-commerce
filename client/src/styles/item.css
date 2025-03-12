@@ -7,7 +7,7 @@
 
 .viewitems .grid-items {
   display: grid;
-  grid-template-columns: 1.4fr 1.7fr 1fr;
+  grid-template-columns: 1.4fr 1.7fr 0fr 1fr;
   padding: 3rem;
 }
 
