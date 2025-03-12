@@ -82,7 +82,7 @@
     }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 600px) {
     .category123 .cat-hold {
         top: 15vw;
     }
@@ -105,11 +105,13 @@
         color: whitesmoke;
         font-family: 'Times New Roman', Times, serif;
     }
-    .viewitems .dfffa {
-        margin-top: 1rem;
+    .viewitems .dfffa{
+        margin-top: 4px;
         font-size: 9px !important;
-        text-align: justify;
-        font-weight: 100;
+    }
+    .viewitems .dfffa p{
+        margin-top: 10px;
+        font-size: 9px !important;
     }
 
     .viewitems h2 {
@@ -123,7 +125,14 @@
         margin: 5px;
         margin-left: 0;
     }
+    .viewitems .prev , .viewitems .next {
+        background-color: transparent;
+        border: 1px solid black;
+        filter: invert(100%);
+    }
+    
 }
+
 
 
 
